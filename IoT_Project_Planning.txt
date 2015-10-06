@@ -1,0 +1,16 @@
+IoT Project
+  - Idea
+    - Internet-enabled cheap sensor devices
+    - Sensors
+      - Temperature
+        - https://www.sparkfun.com/products/250
+      - Light
+        - https://www.sparkfun.com/products/9088
+      - Sound
+        - https://www.sparkfun.com/products/8635
+  - Planning
+  - Documentation
+  - Implementation
+    - Git
+      - Clone: https://github.com/wing2048/IoT.git
+      - Repo URL: https://github.com/wing2048/IoT 
