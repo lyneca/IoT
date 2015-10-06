@@ -42,6 +42,7 @@ void setup() {
   pinMode(SLIDER1, INPUT);
   pinMode(SLIDER2, INPUT);
   pinMode(SLIDER3, INPUT);
+  pinMode(KNOCK, INPUT);
   pinMode(LATCH, OUTPUT);
   pinMode(CLOCK, OUTPUT);
   pinMode(DATA, OUTPUT);
@@ -49,6 +50,7 @@ void setup() {
 }
 
 void loop() {
+  int slider = analogRead(SLIDER1);
   float temperature = analogRead(TEMP);
   long light = analogRead(LIGHT);
   if (light <= 200) {
@@ -65,9 +67,9 @@ void loop() {
   if (i == averageLength) {
     i = 0;
     float tempAverage = sumArray(temps, averageLength) / averageLength;
-    Serial.println(tempAverage);
+    Serial.println(analogRead(KNOCK));
     digitalWrite(LATCH, LOW);
-    shiftOut(DATA, CLOCK, MSBFIRST, ~(ledCharSet[map(round(tempAverage), 15, 35, 0, 9)]));
+    shiftOut(DATA, CLOCK, MSBFIRST, ~(ledCharSet[map(round(tempAverage), 15, 35, 0, 9) - map(slider, 0, 255, 0, 9)]));
     digitalWrite(LATCH, HIGH);
   }
 }
