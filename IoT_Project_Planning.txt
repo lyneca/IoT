@@ -8,9 +8,48 @@ IoT Project
         - https://www.sparkfun.com/products/9088
       - Sound
         - https://www.sparkfun.com/products/8635
+    - Sensors pick up data and communicate it with a server
+    - Server then makes decisions
+      - Whether to turn the aircon/lights on in a room
+      - Tell via sound whether there is a class in the room
+      - Sustainability
+        - Notify when the aircon isn't needed
+      - How loud particular classes are
+        - If the class next door is doing a test, it can notify the loud peeps
   - Planning
+    - Cost
+    - Arduino Nano: $5
+    - WiFi module: $5
+    - Temp Sensor: $0.75
+    - Light Sensor: $0.95
+    - Sound Sensor: $0.75
+    - Total: $12.65 per unit
+    - Five units: $63.25
   - Documentation
   - Implementation
     - Git
       - Clone: https://github.com/wing2048/IoT.git
-      - Repo URL: https://github.com/wing2048/IoT 
+      - Repo URL: https://github.com/wing2048/IoT
+    - Data
+      - Collect average noise levels for classes
+        - Leave a sensor bot in a classroom and at the end ask how noisy it was
+          (Qualitative)
+      - Collate into table (data vs time) and identify trends
+        - Sound
+          - Noisy classes
+            - Next to tests
+        - Light
+          - Lights left on overnight
+        - Temperature
+          - Average temperatures with/without aircon
+        - Sound vs Temperature
+          - Comfort study (hot students = rousy students)
+  - IO chart
+    - Input
+      - Light
+      - Sound
+      - Temperature
+    - Output
+      - LEDs
+      - LCD?
+      - Speaker/buzzer?
