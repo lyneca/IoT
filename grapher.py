@@ -5,7 +5,7 @@ import threading
 import serial
 
 
-port = 'COM4'
+port = 'COM5'
 
 point_size = 1.5
 graph_x_offset = 48
