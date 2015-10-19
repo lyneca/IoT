@@ -4,6 +4,7 @@ import threading
 
 import serial
 
+debug = True
 
 port = 'COM5'
 
@@ -11,8 +12,11 @@ point_size = 1.5
 graph_x_offset = 48
 graph_y_offset = 32
 
-graph_width = 300
-graph_height = 300
+frame_width = 300
+frame_height = 300
+
+graph_width = frame_width // 2
+graph_height = frame_height // 2
 
 grid_spacing_y = 23
 grid_spacing_x = 30
@@ -22,13 +26,23 @@ time_magnitude = 100
 root = Tk()
 root.wm_title('Readings from Arduino on ' + port)
 root.configure(background='black')
-t_graph = Canvas(root, width=graph_width, height=graph_height, bg='black')
-l_graph = Canvas(root, width=graph_width, height=graph_height, bg='black')
-s_graph = Canvas(root, width=graph_width, height=graph_height, bg='black')
-t_graph.grid(row=0, column=0)
-l_graph.grid(row=1, column=0)
-s_graph.grid(row=0, column=1)
 
+class SensorFrame:
+    def __init__(self, x, y):
+        self.frame = Frame(root, width=frame_width, height=frame_height)
+        self.frame.grid(column=x, row=y)
+        self.temp = Canvas(self.frame, width=graph_width * 2 + 4, height=graph_height, bg='black')
+        self.light = Canvas(self.frame, width=graph_width, height=graph_height, bg='black')
+        self.sound = Canvas(self.frame, width=graph_width, height=graph_height, bg='black')
+        self.light.grid(row=0, column=0)
+        self.sound.grid(row=0, column=1)
+        self.temp.grid(row=1, columnspan=2)
+
+
+sensor_1 = SensorFrame(0, 0)
+sensor_2 = SensorFrame(0, 1)
+sensor_3 = SensorFrame(1, 0)
+sensor_4 = SensorFrame(1, 1)
 
 def map(v, fl, fh, tl, th):
     return (v - fl) / (fh - fl) * (th - tl) + tl
@@ -128,13 +142,14 @@ def update():
             l_points.pop(0)
         if len(s_points) > graph_width / grid_spacing_x - 1:
             s_points.pop(0)
-    redraw(t_graph, t_points, 5, len(m_list), 'Temperature (Degrees Celsius)')
-    redraw(l_graph, l_points, 100, len(m_list), 'Light Level (Possibly Lux?)')
-    redraw(s_graph, s_points, 10, len(m_list), 'Sound level (Decibels)')
+    redraw(sensor_1.temp, t_points, 5, len(m_list), 'Temperature (Degrees Celsius)')
+    redraw(sensor_1.light, l_points, 100, len(m_list), 'Light Level (Possibly Lux?)')
+    redraw(sensor_1.sound, s_points, 10, len(m_list), 'Sound level (Decibels)')
     root.after(1, start_update_thread)
 
 
 m_list = []
-s = serial.Serial(port, 9600)
-root.after(1, start_update_thread)
+if not debug:
+    s = serial.Serial(port, 9600)
+    root.after(1, start_update_thread)
 root.mainloop()
