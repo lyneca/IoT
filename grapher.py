@@ -76,6 +76,7 @@ class Sensor:
                 self.l_points.pop(0)
             if len(self.s_points) > graph_width / grid_spacing_x - 1:
                 self.s_points.pop(0)
+        root.after(1000, self.start_thread)
 
     def start_thread(self):
         self.thread = threading.Thread(target=self.read)
@@ -83,12 +84,12 @@ class Sensor:
 
 
 sensors = [
-    Sensor('COM1', 0, 0, "Computer Room"),
-    Sensor('COM2', 1, 0, "Office"),
-    Sensor('COM3', 2, 0, "A16"),
-    Sensor('COM4', 0, 1, "MMC"),
-    Sensor('COM5', 1, 1, "A1"),
-    Sensor('COM6', 2, 1, "B3"),
+    # Sensor('COM1', 0, 0, "Computer Room 2"),
+    # Sensor('COM2', 1, 0, "Office"),
+    # Sensor('COM3', 2, 0, "A16"),
+    Sensor('COM4', 0, 1, "MMC", False),
+    Sensor('COM5', 1, 1, "A1", False),
+    # Sensor('COM6', 2, 1, "B3"),
 ]
 
 
@@ -169,12 +170,30 @@ def start_update_thread():
 
 def update():
     for sensor in sensors:
-        if not sensor.thread.is_alive():
-            sensor.start_thread()
-        redraw(sensor.temp, sensor.t_points, 10, len(sensor.m_list), 'Temperature')
-        redraw(sensor.light, sensor.l_points, 1000 // (graph_height // grid_spacing_y), len(sensor.m_list), 'Light Level')
-        redraw(sensor.sound, sensor.s_points, 10, len(sensor.m_list), 'Sound level')
+        redraw(
+            sensor.temp,
+            sensor.t_points,
+            10,
+            len(sensor.m_list),
+            'Temperature'
+        )
+        redraw(
+            sensor.light,
+            sensor.l_points,
+            1000 // (graph_height // grid_spacing_y),
+            len(sensor.m_list),
+            'Light Level'
+        )
+        redraw(
+            sensor.sound,
+            sensor.s_points,
+            10,
+            len(sensor.m_list),
+            'Sound level'
+        )
     root.after(1000, start_update_thread)
-
+for sensor in sensors:
+    if not sensor.thread.is_alive():
+        sensor.start_thread()
 root.after(1, start_update_thread)
 root.mainloop()
