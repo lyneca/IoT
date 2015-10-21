@@ -50,13 +50,12 @@ class Sensor:
         self.s_points = []
         if not dummy:
             self.serial = serial.Serial(port, 9600)
-        else:
-            self.thread = threading.Thread(target=self.read)
+        self.thread = threading.Thread(target=self.read)
 
     def read(self):
         temp_list = []
         if self.is_dummy:
-            m_list.append(Measurement(1, random.randint(300, 400), random.randint(15, 20), random.randint(30, 60)))
+            self.m_list.append(Measurement(1, random.randint(300, 400), random.randint(15, 20), random.randint(30, 60)))
         else:
             while True:
                 read = self.serial.read()
@@ -67,7 +66,7 @@ class Sensor:
         self.t_points = []
         self.l_points = []
         self.s_points = []
-        for m in m_list:
+        for m in self.m_list:
             self.l_points.append(map(m.light, 0, 1000, 0, graph_height / grid_spacing_y - 3))
             self.t_points.append(map(m.temp, 0, 45, 0, graph_height / grid_spacing_y - 3))
             self.s_points.append(map(m.sound, 0, 100, 0, graph_height / grid_spacing_y - 3))
@@ -77,7 +76,6 @@ class Sensor:
                 self.l_points.pop(0)
             if len(self.s_points) > graph_width / grid_spacing_x - 1:
                 self.s_points.pop(0)
-        root.after(1000, self.start_thread)
 
     def start_thread(self):
         self.thread = threading.Thread(target=self.read)
@@ -130,7 +128,7 @@ def redraw(c, point_list, inc_val, t_start, title):
         fill="blue"
     )
     c.create_text(
-        graph_width // 2,
+        c.winfo_width() // 2,
         graph_height - 10,
         text='%s Seconds' % (t_start / 10),
         font=('Courier New', 10),
@@ -171,14 +169,12 @@ def start_update_thread():
 
 def update():
     for sensor in sensors:
-        redraw(sensor.temp, sensor.t_points, 10, len(m_list), 'Temperature')
-        redraw(sensor.light, sensor.l_points, 1000 // (graph_height // grid_spacing_y), len(m_list), 'Light Level')
-        redraw(sensor.sound, sensor.s_points, 10, len(m_list), 'Sound level')
+        if not sensor.thread.is_alive():
+            sensor.start_thread()
+        redraw(sensor.temp, sensor.t_points, 10, len(sensor.m_list), 'Temperature')
+        redraw(sensor.light, sensor.l_points, 1000 // (graph_height // grid_spacing_y), len(sensor.m_list), 'Light Level')
+        redraw(sensor.sound, sensor.s_points, 10, len(sensor.m_list), 'Sound level')
     root.after(1000, start_update_thread)
 
-
-m_list = []
 root.after(1, start_update_thread)
-for sensor in sensors:
-    root.after(1, sensor.start_thread)
 root.mainloop()
