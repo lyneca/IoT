@@ -2,9 +2,9 @@ __author__ = 'wing2048'
 from tkinter import *
 import threading
 import random
+import socket
 
 import serial
-import socket
 
 
 debug = True
@@ -201,6 +201,8 @@ def update():
             'Sound level'
         )
     root.after(1000, start_update_thread)
+
+
 for sensor in sensors:
     if not sensor.thread.is_alive():
         sensor.start_thread()

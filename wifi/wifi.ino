@@ -13,7 +13,6 @@
 
 #include <SoftwareSerial.h>
 SoftwareSerial ESPserial(2, 3); // RX | TX
-char buf[12]; // "-2147483648\0"
 String inData = "";
 void setup() {
     Serial.begin(115200);     // communication with the host computer
