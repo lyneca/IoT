@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38e8681b-fe5c-495c-81b1-e3939858830d" name="Default" comment="fixed a bug with threads, it should be ready for the wifi code next">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wifi/wifi.ino" />
+      <change type="DELETED" beforePath="C:\Users\wing2048\Documents\Git Repositories\IoT\wifi.ino" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grapher.py" afterPath="$PROJECT_DIR$/grapher.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -17,7 +19,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/IoT$grapher.coverage" NAME="grapher Coverage Results" MODIFIED="1445462738327" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/IoT$grapher.coverage" NAME="grapher Coverage Results" MODIFIED="1445728858863" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/IoT$tk_test.coverage" NAME="tk_test Coverage Results" MODIFIED="1445227396622" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/IoT$pyserial_tst.coverage" NAME="pyserial_tst Coverage Results" MODIFIED="1444360591047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -46,17 +48,16 @@
       <file leaf-file-name="grapher.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/grapher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44262296" vertical-offset="2184" max-vertical-offset="2550">
-              <caret line="192" column="9" selection-start-line="192" selection-start-column="9" selection-end-line="192" selection-end-column="9" />
+            <state vertical-scroll-proportion="3.090164" vertical-offset="467" max-vertical-offset="2788">
+              <caret line="94" column="27" selection-start-line="94" selection-start-column="27" selection-end-line="94" selection-end-column="27" />
               <folding>
                 <element signature="e#24#45#0" expanded="true" />
-                <element signature="e#3027#3071#0" expanded="false" />
-                <element signature="e#3102#3434#0" expanded="false" />
-                <element signature="e#3458#3517#0" expanded="false" />
-                <element signature="e#3576#4432#0" expanded="false" />
-                <element signature="e#4461#4726#0" expanded="false" />
-                <element signature="e#4754#4906#0" expanded="false" />
-                <element signature="e#4940#5013#0" expanded="false" />
+                <element signature="e#3430#3474#0" expanded="false" />
+                <element signature="e#3505#3837#0" expanded="false" />
+                <element signature="e#3861#3920#0" expanded="false" />
+                <element signature="e#3979#4835#0" expanded="false" />
+                <element signature="e#4864#5129#0" expanded="false" />
+                <element signature="e#5343#5416#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -125,6 +126,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -143,9 +145,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IoT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IoT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wifi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -507,13 +522,13 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34768212" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34660032" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34768212" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34660032" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17678301" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17905918" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -598,17 +613,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grapher.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2550">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#45#0" expanded="true" />
+            <element signature="e#3430#3474#0" expanded="false" />
+            <element signature="e#3505#3837#0" expanded="false" />
+            <element signature="e#3861#3920#0" expanded="false" />
+            <element signature="e#3979#4835#0" expanded="false" />
+            <element signature="e#4864#5129#0" expanded="false" />
+            <element signature="e#5343#5416#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data.db">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="61115" max-vertical-offset="262854">
+          <caret line="3595" column="23" selection-start-line="3595" selection-start-column="23" selection-end-line="3595" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changelog.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grapher.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2227">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#24#45#0" expanded="true" />
-            <element signature="e#3027#3071#0" expanded="false" />
-            <element signature="e#3102#3434#0" expanded="false" />
-            <element signature="e#3458#3517#0" expanded="false" />
-            <element signature="e#3576#4432#0" expanded="false" />
-            <element signature="e#4461#4726#0" expanded="false" />
-            <element signature="e#4754#4906#0" expanded="false" />
-            <element signature="e#4940#5013#0" expanded="false" />
+            <element signature="e#3430#3474#0" expanded="false" />
+            <element signature="e#3505#3837#0" expanded="false" />
+            <element signature="e#3861#3920#0" expanded="false" />
+            <element signature="e#3979#4835#0" expanded="false" />
+            <element signature="e#4864#5129#0" expanded="false" />
+            <element signature="e#5343#5416#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -635,13 +681,12 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#24#45#0" expanded="true" />
-            <element signature="e#3027#3071#0" expanded="false" />
-            <element signature="e#3102#3434#0" expanded="false" />
-            <element signature="e#3458#3517#0" expanded="false" />
-            <element signature="e#3576#4432#0" expanded="false" />
-            <element signature="e#4461#4726#0" expanded="false" />
-            <element signature="e#4754#4906#0" expanded="false" />
-            <element signature="e#4940#5013#0" expanded="false" />
+            <element signature="e#3430#3474#0" expanded="false" />
+            <element signature="e#3505#3837#0" expanded="false" />
+            <element signature="e#3861#3920#0" expanded="false" />
+            <element signature="e#3979#4835#0" expanded="false" />
+            <element signature="e#4864#5129#0" expanded="false" />
+            <element signature="e#5343#5416#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -668,13 +713,12 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#24#45#0" expanded="true" />
-            <element signature="e#3027#3071#0" expanded="false" />
-            <element signature="e#3102#3434#0" expanded="false" />
-            <element signature="e#3458#3517#0" expanded="false" />
-            <element signature="e#3576#4432#0" expanded="false" />
-            <element signature="e#4461#4726#0" expanded="false" />
-            <element signature="e#4754#4906#0" expanded="false" />
-            <element signature="e#4940#5013#0" expanded="false" />
+            <element signature="e#3430#3474#0" expanded="false" />
+            <element signature="e#3505#3837#0" expanded="false" />
+            <element signature="e#3861#3920#0" expanded="false" />
+            <element signature="e#3979#4835#0" expanded="false" />
+            <element signature="e#4864#5129#0" expanded="false" />
+            <element signature="e#5343#5416#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -744,17 +788,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grapher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44262296" vertical-offset="2184" max-vertical-offset="2550">
-          <caret line="192" column="9" selection-start-line="192" selection-start-column="9" selection-end-line="192" selection-end-column="9" />
+        <state vertical-scroll-proportion="3.090164" vertical-offset="467" max-vertical-offset="2788">
+          <caret line="94" column="27" selection-start-line="94" selection-start-column="27" selection-end-line="94" selection-end-column="27" />
           <folding>
             <element signature="e#24#45#0" expanded="true" />
-            <element signature="e#3027#3071#0" expanded="false" />
-            <element signature="e#3102#3434#0" expanded="false" />
-            <element signature="e#3458#3517#0" expanded="false" />
-            <element signature="e#3576#4432#0" expanded="false" />
-            <element signature="e#4461#4726#0" expanded="false" />
-            <element signature="e#4754#4906#0" expanded="false" />
-            <element signature="e#4940#5013#0" expanded="false" />
+            <element signature="e#3430#3474#0" expanded="false" />
+            <element signature="e#3505#3837#0" expanded="false" />
+            <element signature="e#3861#3920#0" expanded="false" />
+            <element signature="e#3979#4835#0" expanded="false" />
+            <element signature="e#4864#5129#0" expanded="false" />
+            <element signature="e#5343#5416#0" expanded="false" />
           </folding>
         </state>
       </provider>

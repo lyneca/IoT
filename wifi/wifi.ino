@@ -13,7 +13,8 @@
 
 #include <SoftwareSerial.h>
 SoftwareSerial ESPserial(2, 3); // RX | TX
-
+char buf[12]; // "-2147483648\0"
+String inData = "";
 void setup() {
     Serial.begin(115200);     // communication with the host computer
     while (!Serial)   { ; }
@@ -35,52 +36,60 @@ void setup() {
     Serial.println("");
     Serial.println("Remember to to set Both NL & CR in the serial monitor.");
     Serial.println("Ready");
-    cmd("AT+CWMODE=1");
+    ESPserial.println("AT+CWMODE=1");
     waitFor("OK");
-    cmd("AT+CWDHCP=1,1");
+    ESPserial.println("AT+CWDHCP=1,1");
     waitFor("OK");
     Serial.println("Connecting...");
-    cmd("AT+CWJAP=\"Lynx\",\"11111111\"");
+    ESPserial.println("AT+CWJAP=\"NetGenie\",\"FTSU27MC\"");
     waitFor("OK");
     Serial.println("Connected!");
-    cmd("AT+CIPMUX=1");
+    ESPserial.println("AT+CIPMUX=1");
     waitFor("OK");
     Serial.println("Starting server...");
-    cmd("AT+CIPSERVER=1,80");
+    ESPserial.println("AT+CIPSERVER=1,8080");
     waitFor("OK");
     Serial.println("Server up!");
-    Serial.println("Sending data...");
-    while (1) {
-      cmd("AT+CIPSEND=0,8");
-      if (ESPserial.find(">")) {
-        Serial.println("Connection failed, retrying...");
-        break;
-      }
-    }
-    cmd("00000000");
-    waitFor("SEND OK");
-    cmd("AT+CIPCLOSE=0");
-    waitFor("OK");
 }
 
 void loop() {
-    // listen for communication from the ESP8266 and then write it to the serial monitor
-    if (ESPserial.available()) {
-      Serial.write(ESPserial.read());
-    }
     // listen for user input and send it to the ESP8266
-    if (Serial.available()) {
-      ESPserial.write(Serial.read());
+    while (Serial.available() > 0) {
+      char received = Serial.read();
+      inData += received;
+      if (received == '\n') {
+        
+        Serial.println("Sending data...");
+        String str = "AT+CIPSEND=0," + String(inData.length());
+        while (1) {
+          ESPserial.println(str);
+          if (!ESPserial.find(">")) {
+            Serial.println("Connection failed, retrying...");
+          } else {
+            Serial.println("Connection success!");
+            break;
+          }
+        }
+        ESPserial.println(inData);
+        waitFor("SEND OK");
+        str = "Sent " + String(inData.length()) + " characters.";
+        Serial.println(str);
+        ESPserial.println("AT+CIPCLOSE=0");
+        waitFor("OK");
+        Serial.println("Connection closed.");
+        inData = "";
+      }
     }
 }
 
-void cmd(char x[]) {
-  String temp = (String) x + "\r\n";
-  for (int i = 0; i < temp.length() + 1; i++) {
-//    Serial.write(temp[i]);
-    ESPserial.write(temp[i]);
-  }
-}
+//void cmd(char x[]) {
+//  Serial.println(x);
+//  String temp = (String) x + "\r\n";
+//  for (int i = 0; i < temp.length() + 1; i++) {
+////    Serial.write(temp[i]);
+//    ESPserial.write(temp[i]);
+//  }
+//}
 
 void waitFor(char x[]) {
   while (1) {

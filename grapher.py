@@ -4,6 +4,7 @@ import threading
 import random
 
 import serial
+import socket
 
 
 debug = True
@@ -30,7 +31,8 @@ root.configure(background='black')
 
 
 class Sensor:
-    def __init__(self, port, x, y, t='', dummy=fake_data):
+    def __init__(self, x, y, address, port, t='', dummy=fake_data, is_serial=False):
+        self.is_serial = is_serial
         self.frame = Frame(root, width=frame_width, height=frame_height)
         self.frame.grid(column=x, row=y)
         self.temp = Canvas(self.frame, width=graph_width * 2 + 4, height=graph_height, bg='black')
@@ -44,12 +46,18 @@ class Sensor:
 
         self.is_dummy = dummy
 
+        self.port = port
+        self.address = address
+
         self.m_list = []
         self.t_points = []
         self.l_points = []
         self.s_points = []
         if not dummy:
-            self.serial = serial.Serial(port, 9600)
+            if self.is_serial:
+                self.serial = serial.Serial(self.port, 9600)
+            else:
+                self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.thread = threading.Thread(target=self.read)
 
     def read(self):
@@ -57,11 +65,17 @@ class Sensor:
         if self.is_dummy:
             self.m_list.append(Measurement(1, random.randint(300, 400), random.randint(15, 20), random.randint(30, 60)))
         else:
-            while True:
-                read = self.serial.read()
-                if read == b'\r':
-                    break
-                temp_list.append(read.decode())
+            if self.is_serial:
+                while True:
+                    read = self.serial.read()
+                    if read == b'\r':
+                        break
+                    temp_list.append(read.decode())
+            else:
+                self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                self.socket.connect((self.address, self.port))
+                recvd = self.socket.recv(100)
+                temp_list.append(recvd.decode())
             self.m_list.append(Measurement(*''.join(temp_list).strip().split()))
         self.t_points = []
         self.l_points = []
@@ -69,7 +83,7 @@ class Sensor:
         for m in self.m_list:
             self.l_points.append(map(m.light, 0, 1000, 0, graph_height / grid_spacing_y - 3))
             self.t_points.append(map(m.temp, 0, 45, 0, graph_height / grid_spacing_y - 3))
-            self.s_points.append(map(m.sound, 0, 100, 0, graph_height / grid_spacing_y - 3))
+            self.s_points.append(map(m.sound, 0, 600, 0, graph_height / grid_spacing_y - 3))
             if len(self.t_points) > graph_width * 2 / grid_spacing_x - 1:
                 self.t_points.pop(0)
             if len(self.l_points) > graph_width / grid_spacing_x - 1:
@@ -84,12 +98,7 @@ class Sensor:
 
 
 sensors = [
-    # Sensor('COM1', 0, 0, "Computer Room 2"),
-    # Sensor('COM2', 1, 0, "Office"),
-    # Sensor('COM3', 2, 0, "A16"),
-    Sensor('COM4', 0, 1, "MMC", False),
-    Sensor('COM5', 1, 1, "A1", False),
-    # Sensor('COM6', 2, 1, "B3"),
+    Sensor(0, 0, "10.2.1.57", 8080, "Luke's Room", False),
 ]
 
 
