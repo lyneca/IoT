@@ -28,10 +28,12 @@ time_magnitude = 100
 root = Tk()
 root.wm_title('Readings from sensors')
 root.configure(background='black')
+action_bar = Frame(root)
 
 
 class Sensor:
     def __init__(self, x, y, address, port, t='', dummy=fake_data, is_serial=False):
+        y += 1
         self.is_serial = is_serial
         self.frame = Frame(root, width=frame_width, height=frame_height)
         self.frame.grid(column=x, row=y)
@@ -98,8 +100,15 @@ class Sensor:
 
 
 sensors = [
-    Sensor(0, 0, "10.2.1.57", 8080, "Luke's Room", False),
+    Sensor(0, 0, "10.2.1.57", 8080, "Alcyone", False),
+    Sensor(1, 0, "10.2.1.57", 8080, "Atlas"),
+    Sensor(2, 0, "10.2.1.57", 8080, "Asterope"),
+    Sensor(0, 1, "10.2.1.57", 8080, "Celaeno"),
+    Sensor(1, 1, "10.2.1.57", 8080, "Maia"),
+    Sensor(2, 1, "10.2.1.57", 8080, "Taygeta"),
 ]
+
+action_bar.grid(column=0, row=0, columnspan=root.grid_size()[0])
 
 
 def map(v, fl, fh, tl, th):
@@ -124,7 +133,7 @@ def get_grid(l):
 def redraw(c, point_list, inc_val, t_start, title):
     c.delete(ALL)
     y = 0
-    c.create_text(graph_width // 2, 20, text=title, font=('Courier New', 10), fill="#FFFFFF")
+    c.create_text(c.winfo_width() // 2, 20, text=title, font=('Courier New', 10), fill="#FFFFFF")
     i = 0
     for y in range(graph_height - graph_y_offset, graph_y_offset, -grid_spacing_y):
         c.create_line(graph_x_offset, y, graph_x_offset - 5, y, fill="blue")
@@ -140,7 +149,7 @@ def redraw(c, point_list, inc_val, t_start, title):
     c.create_text(
         c.winfo_width() // 2,
         graph_height - 10,
-        text='%s Seconds' % (t_start / 10),
+        text='%s Measurements' % t_start,
         font=('Courier New', 10),
         fill="#FFFFFF"
     )
