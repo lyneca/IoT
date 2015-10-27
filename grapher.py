@@ -1,3 +1,5 @@
+import math
+
 __author__ = 'wing2048'
 from tkinter import *
 import threading
@@ -37,14 +39,16 @@ class Sensor:
         self.is_serial = is_serial
         self.frame = Frame(root, width=frame_width, height=frame_height)
         self.frame.grid(column=x, row=y)
-        self.temp = Canvas(self.frame, width=graph_width * 2 + 4, height=graph_height, bg='black')
+        self.temp = Canvas(self.frame, width=graph_width, height=graph_height, bg='black')
         self.light = Canvas(self.frame, width=graph_width, height=graph_height, bg='black')
         self.sound = Canvas(self.frame, width=graph_width, height=graph_height, bg='black')
+        # self.overview = Canvas(self.frame, width=graph_width, height=graph_height, bg='black')
         self.title = Label(self.frame, text=t)
         self.title.grid(row=0, columnspan=2)
         self.light.grid(row=1, column=0)
         self.sound.grid(row=1, column=1)
         self.temp.grid(row=2, columnspan=2)
+        # self.overview.grid(row=2, column=1)
 
         self.is_dummy = dummy
 
@@ -95,10 +99,23 @@ class Sensor:
         root.after(1000, self.start_thread)
 
     def start_update(self):
-        thread = threading.Thread(target=self.update())
+        thread = threading.Thread(target=self.update)
         thread.start()
 
     def update(self):
+        for id in self.temp.find_withtag('point'):
+            try:
+
+                x1, y1, x2, y2 = self.temp.coords(id)
+                mx, my = self.temp.winfo_pointerxy()
+                # my = self.temp.canvasy(my)
+                print(mx, self.temp.canvasx(mx))
+                # print(x1 - 10, mx, x2 + 10)
+                # print(y1 - 10, my, y2 + 10)
+                if x1 - 10 < mx < x2 + 10 and y1 - 10 < my < x2 + 10:
+                    self.temp.create_text(mx, my + 8, text='1', font='Courier New', fill='white')
+            except ValueError:
+                pass
         root.after(1, self.start_update)
 
     def start_thread(self):
@@ -184,7 +201,7 @@ sound_compare = CompareGraph(info_frame.frame, 5, "Sound", 3)
 # School 10.26.141.192
 
 sensors = [
-    Sensor(root, 0, 0, "10.26.141.192", 8080, "1: Alcyone"),
+    Sensor(root, 0, 0, "10.26.141.192", 8080, "1: Alcyone", False),
     Sensor(root, 1, 0, "10.2.1.57", 8080, "2: Atlas"),
     Sensor(root, 2, 0, "10.2.1.57", 8080, "3: Asterope"),
     Sensor(root, 0, 1, "10.2.1.57", 8080, "4: Celaeno"),
@@ -214,6 +231,66 @@ def add_point(c, x, y):
 def get_grid(l):
     return (graph_height - graph_y_offset) - l * grid_spacing_y
 
+
+def draw_overview(g):
+    g.overview.delete(ALL)
+    g.overview.create_text(g.overview.winfo_width() // 2, 20, text='Triangular', font=('Courier New', 10), fill="#FFFFFF")
+    if len(g.m_list) == 0:
+        return
+    temp_point = (
+        g.overview.winfo_width() // 2 + map(g.m_list[-1].temp, 0, 45, 0, 60 * math.sqrt(3) / 2),
+        g.overview.winfo_height() // 2 + map(g.m_list[-1].temp, 0, 45, 0, 60) / 2,
+    )
+    light_point = (
+        g.overview.winfo_width() // 2 - map(g.m_list[-1].light, 0, 1000, 0, 60) * math.sqrt(3) / 2,
+        g.overview.winfo_height() // 2 + map(g.m_list[-1].sound, 0, 1000, 0, 60) / 2,
+    )
+    sound_point = (
+        g.overview.winfo_width() // 2,
+        g.overview.winfo_height() // 2 - round(map(g.m_list[-1].temp, 0, 60, 0, 60)),
+    )
+    center = [graph_width // 2, graph_height // 2]
+    points = [
+        temp_point,
+        light_point,
+        sound_point
+    ]
+    for point in points:
+        g.overview.create_oval(
+            point[0] - point_size,
+            point[1] - point_size,
+            point[0] + point_size,
+            point[1] + point_size,
+            fill='green',
+            outline='green'
+        )
+    g.overview.create_polygon(*(temp_point + light_point + sound_point), fill="#004400", outline="#00FF00")
+    g.overview.create_oval(
+        graph_width // 2 - point_size,
+        graph_height // 2 - point_size,
+        graph_width // 2 + point_size,
+        graph_height // 2 + point_size,
+        fill='green',
+        outline='green'
+    )
+    for point in points:
+        g.overview.create_line(
+            graph_width // 2,
+            graph_height // 2,
+            point[0],
+            point[1],
+            fill='green'
+        )
+    distances = [
+        [0, -100],
+        [50, math.sqrt(3) / 2 * 100],
+        [-50, math.sqrt(3) / 2 * 100],
+    ]
+    for distance in distances:
+        distance[0] += center[0]
+        distance[1] += center[1]
+    # for distance in distances:
+    #     g.overview.create_line(*(center + distance), fill='#0000FF', dash=True)
 
 def redraw(c, point_list, inc_val, t_start, title):
     c.delete(ALL)
@@ -299,11 +376,15 @@ def update():
             len(sensor.m_list),
             'Sound level: ' + (str(sensor.m_list[-1].sound) if len(sensor.m_list) > 0 else '0')
         )
+        # draw_overview(
+        #     sensor
+        # )
     root.after(1000, start_update_thread)
 
 
 for sensor in sensors:
     if not sensor.thread.is_alive():
         sensor.start_thread()
+        # sensor.start_update()
 root.after(1, start_update_thread)
 root.mainloop()
