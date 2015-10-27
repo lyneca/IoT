@@ -29,10 +29,11 @@ void setup() {
     if ( ESPserial.available() )   {  Serial.write( ESPserial.read() );  }
     ESPserial.println("AT+CWMODE=1");
     waitFor("OK");
-    ESPserial.println("AT+CWDHCP=1,1");
-    waitFor("OK");
+//    ESPserial.println("AT+CWDHCP=1,1");
+//    waitFor("OK");
     Serial.println("Connecting...");
-    ESPserial.println("AT+CWJAP=\"NetGenie\",\"FTSU27MC\"");
+//    ESPserial.println("AT+CWJAP=\"NetGenie\",\"FTSU27MC\"");
+    ESPserial.println("AT+CWJAP=\"GHSSECURE\",\"04E1C14429E91670C3BAD755E8\"");
     waitFor("OK");
     Serial.println("Connected!");
     ESPserial.println("AT+CIPMUX=1");
