@@ -30,6 +30,8 @@ time_magnitude = 100
 root = Tk()
 root.wm_title('Readings from sensors')
 root.configure(background='black')
+root.columnconfigure(0, weight=1)
+root.rowconfigure(0, weight=1)
 action_bar = Frame(root)
 
 
@@ -38,16 +40,27 @@ class Sensor:
         y += 1
         self.is_serial = is_serial
         self.frame = Frame(root, width=frame_width, height=frame_height)
-        self.frame.grid(column=x, row=y)
-        self.temp = Canvas(self.frame, width=graph_width, height=graph_height, bg='black')
+        self.frame.grid(column=x, row=y, sticky='nsew')
+        self.frame.columnconfigure(x, weight=1)
+        self.frame.rowconfigure(y, weight=1)
+        self.temp = Canvas(self.frame, width=graph_width * 2 + 4, height=graph_height, bg='black')
         self.light = Canvas(self.frame, width=graph_width, height=graph_height, bg='black')
         self.sound = Canvas(self.frame, width=graph_width, height=graph_height, bg='black')
         # self.overview = Canvas(self.frame, width=graph_width, height=graph_height, bg='black')
         self.title = Label(self.frame, text=t)
-        self.title.grid(row=0, columnspan=2)
-        self.light.grid(row=1, column=0)
-        self.sound.grid(row=1, column=1)
-        self.temp.grid(row=2, columnspan=2)
+        self.title.grid(row=0, columnspan=2, sticky='nsew')
+        self.light.grid(row=1, column=0, sticky='nsew')
+        self.sound.grid(row=1, column=1, sticky='nsew')
+        self.temp.grid(row=2, columnspan=2, sticky='nsew')
+        self.title.columnconfigure(0, weight=1)
+        self.title.rowconfigure(0, weight=1)
+        self.temp.columnconfigure(0, weight=1)
+        self.temp.rowconfigure(2, weight=1)
+        self.light.rowconfigure(1, weight=1)
+        self.light.columnconfigure(0, weight=1)
+        self.sound.rowconfigure(1, weight=1)
+        self.sound.columnconfigure(1, weight=1)
+
         # self.overview.grid(row=2, column=1)
 
         self.is_dummy = dummy
@@ -126,22 +139,24 @@ class Sensor:
 class InfoFrame():
     def __init__(self, root, x, y, dx, dy, t):
         self.frame = Frame(root)
-        self.spacer = Label(self.frame, text='Compare Data')
-        self.title = Label(self.frame, text='WiFi Signal')
-        self.frame.grid(column=x, row=y, columnspan=dx, rowspan=dy)
+        self.spacer = Label(self.frame)
+        self.title = Label(self.frame, text='Compare Data')
+        self.frame.grid(column=x, row=y, columnspan=dx, rowspan=dy, sticky='nsew')
+        self.frame.columnconfigure(x, weight=1)
+        self.frame.rowconfigure(y, weight=1)
         self.title.grid(row=0)
-        self.spacer.grid(row=2)
+        self.spacer.grid(row=3)
 
 
 class CompareGraph():
-    def __init__(self, r, y, t, type):
+    def __init__(self, r, x, y, t, type):
         self.type = type
         self.frame = Frame(r)
         # self.label = Label(self.frame, text=t)
         self.graph = Canvas(self.frame, width=graph_width, height=graph_height, bg='black')
         # self.label.grid(column=0, row=0)
         self.graph.grid(column=0, row=1)
-        self.frame.grid(row=y)
+        self.frame.grid(column=x, row=y)
         self.text = t
 
     def update(self):
@@ -191,11 +206,15 @@ class CompareGraph():
             i += 1
 
 
-info_frame = InfoFrame(root, 3, 1, 1, 2, 'Compare')
-wifi_compare = CompareGraph(info_frame.frame, 1, "WiFi", 0)
-temp_compare = CompareGraph(info_frame.frame, 3, "Temperature", 1)
-light_compare = CompareGraph(info_frame.frame, 4, "Light", 2)
-sound_compare = CompareGraph(info_frame.frame, 5, "Sound", 3)
+info_frame = InfoFrame(root, 3, 1, 2, 2, '')
+temp_compare = CompareGraph(info_frame.frame, 0, 1, "Temperature", 1)
+sound_compare = CompareGraph(info_frame.frame, 0, 2, "Sound", 3)
+light_compare = CompareGraph(info_frame.frame, 1, 1, "Light", 2)
+press_compare = CompareGraph(info_frame.frame, 1, 2, "Pressure", 5)
+humid_compare = CompareGraph(info_frame.frame, 0, 4, "Humidity", 4)
+placeholder_1 = CompareGraph(info_frame.frame, 0, 5, "", 0)
+placeholder_2 = CompareGraph(info_frame.frame, 1, 4, "", 0)
+placeholder_3 = CompareGraph(info_frame.frame, 1, 5, "", 0)
 
 # Home 10.2.1.57
 # School 10.26.141.192
@@ -349,10 +368,11 @@ def start_update_thread():
 
 
 def update():
-    wifi_compare.update()
     temp_compare.update()
     light_compare.update()
     sound_compare.update()
+    humid_compare.update()
+    press_compare.update()
 
     for sensor in sensors:
         redraw(
