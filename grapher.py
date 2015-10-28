@@ -30,19 +30,60 @@ time_magnitude = 100
 root = Tk()
 root.wm_title('Readings from sensors')
 root.configure(background='black')
-root.columnconfigure(0, weight=1)
-root.rowconfigure(0, weight=1)
-action_bar = Frame(root)
+# action_bar = Frame(root)
+
+
+class VerticalScrolledFrame(Frame):
+    def __init__(self, parent, *args, **kw):
+        Frame.__init__(self, parent, *args, **kw)
+
+        # create a canvas object and a vertical scrollbar for scrolling it
+        vscrollbar = Scrollbar(self, orient=VERTICAL)
+        vscrollbar.pack(fill=Y, side=RIGHT, expand=FALSE)
+        canvas = Canvas(self, bd=0, highlightthickness=0, yscrollcommand=vscrollbar.set)
+        canvas.pack(side=LEFT, fill=BOTH, expand=TRUE)
+        vscrollbar.config(command=canvas.yview)
+        # reset the view
+        canvas.xview_moveto(0)
+        canvas.yview_moveto(0)
+
+        # create a frame inside the canvas which will be scrolled with it
+        self.interior = interior = Frame(canvas)
+        interior_id = canvas.create_window(0, 0, window=interior, anchor=NW)
+
+        # track changes to the canvas and frame width and sync them,
+        # also updating the scrollbar
+        def _configure_interior(event):
+            # update the scrollbars to match the size of the inner frame
+            size = (interior.winfo_reqwidth(), interior.winfo_reqheight())
+            canvas.config(scrollregion="0 0 %s %s" % size)
+            if interior.winfo_reqwidth() != canvas.winfo_width():
+                # update the canvas's width to fit the inner frame
+                canvas.config(width=interior.winfo_reqwidth(), height=frame_height * 2)
+
+        interior.bind('<Configure>', _configure_interior)
+
+        def _configure_canvas(event):
+            if interior.winfo_reqwidth() != canvas.winfo_width():
+                # update the inner frame's width to fill the canvas
+                canvas.itemconfigure(interior_id, width=canvas.winfo_width())
+
+        canvas.bind('<Configure>', _configure_canvas)
+
+        return
+
+
+root_frame = VerticalScrolledFrame(root, height=frame_height * 2)
+root_frame.interior.configure(height=frame_height * 4)
+root_frame.pack()
 
 
 class Sensor:
-    def __init__(self, root, x, y, address, port, t='', dummy=fake_data, is_serial=False):
+    def __init__(self, x, y, address, port, t='', dummy=fake_data, is_serial=False):
         y += 1
         self.is_serial = is_serial
-        self.frame = Frame(root, width=frame_width, height=frame_height)
+        self.frame = Frame(root_frame.interior, width=frame_width, height=frame_height)
         self.frame.grid(column=x, row=y, sticky='nsew')
-        self.frame.columnconfigure(x, weight=1)
-        self.frame.rowconfigure(y, weight=1)
         self.temp = Canvas(self.frame, width=graph_width * 2 + 4, height=graph_height, bg='black')
         self.light = Canvas(self.frame, width=graph_width, height=graph_height, bg='black')
         self.sound = Canvas(self.frame, width=graph_width, height=graph_height, bg='black')
@@ -54,14 +95,8 @@ class Sensor:
         self.light.grid(row=1, column=0, sticky='nsew')
         self.sound.grid(row=1, column=1, sticky='nsew')
         self.temp.grid(row=2, columnspan=2, sticky='nsew')
-        self.title.columnconfigure(0, weight=1)
-        self.title.rowconfigure(0, weight=1)
-        self.temp.columnconfigure(0, weight=1)
-        self.temp.rowconfigure(2, weight=1)
-        self.light.rowconfigure(1, weight=1)
-        self.light.columnconfigure(0, weight=1)
-        self.sound.rowconfigure(1, weight=1)
-        self.sound.columnconfigure(1, weight=1)
+        self.humid.grid(row=3, column=0, sticky='nsew')
+        self.press.grid(row=3, column=1, sticky='nsew')
 
         # self.overview.grid(row=2, column=1)
 
@@ -74,6 +109,8 @@ class Sensor:
         self.t_points = []
         self.l_points = []
         self.s_points = []
+        self.h_points = []
+        self.p_points = []
         if not dummy:
             if self.is_serial:
                 self.serial = serial.Serial(self.port, 9600)
@@ -84,7 +121,14 @@ class Sensor:
     def read(self):
         temp_list = []
         if self.is_dummy:
-            self.m_list.append(Measurement(1, random.randint(300, 400), random.randint(15, 20), random.randint(250, 350)))
+            self.m_list.append(Measurement(
+                1,
+                random.randint(300, 400),
+                random.randint(15, 20),
+                random.randint(250, 350),
+                random.randint(10, 20),
+                random.randint(1000, 1500),
+            ))
         else:
             if self.is_serial:
                 while True:
@@ -101,16 +145,24 @@ class Sensor:
         self.t_points = []
         self.l_points = []
         self.s_points = []
+        self.h_points = []
+        self.p_points = []
         for m in self.m_list:
             self.l_points.append(map(m.light, 0, 1000, 0, graph_height / grid_spacing_y - 3))
             self.t_points.append(map(m.temp, 0, 45, 0, graph_height / grid_spacing_y - 3))
             self.s_points.append(map(m.sound, 0, 600, 0, graph_height / grid_spacing_y - 3))
+            self.h_points.append(map(m.humid, 0, 60, 0, graph_height / grid_spacing_y - 3))
+            self.p_points.append(map(m.press, 0, 2000, 0, graph_height / grid_spacing_y - 3))
             if len(self.t_points) > graph_width * 2 / grid_spacing_x - 1:
                 self.t_points.pop(0)
             if len(self.l_points) > graph_width / grid_spacing_x - 1:
                 self.l_points.pop(0)
             if len(self.s_points) > graph_width / grid_spacing_x - 1:
                 self.s_points.pop(0)
+            if len(self.h_points) > graph_width / grid_spacing_x - 1:
+                self.h_points.pop(0)
+            if len(self.p_points) > graph_width / grid_spacing_x - 1:
+                self.p_points.pop(0)
         root.after(1000, self.start_thread)
 
     def start_update(self):
@@ -183,6 +235,10 @@ class CompareGraph():
                     point = map(sensor.m_list[-1].light, 0, 1000, 0, graph_height - 32)
                 elif self.type == 3:
                     point = map(sensor.m_list[-1].sound, 0, 600, 0, graph_height - 32)
+                elif self.type == 4:
+                    point = map(sensor.m_list[-1].press, 0, 60, 0, graph_height - 32)
+                elif self.type == 5:
+                    point = map(sensor.m_list[-1].humid, 0, 2000, 0, graph_height - 32)
             self.graph.create_text(
                 graph_width // 2,
                 16,
@@ -207,30 +263,35 @@ class CompareGraph():
             )
             i += 1
 
-
-info_frame = InfoFrame(root, 3, 1, 2, 2, '')
-temp_compare = CompareGraph(info_frame.frame, 0, 1, "Temperature", 1)
-sound_compare = CompareGraph(info_frame.frame, 0, 2, "Sound", 3)
-light_compare = CompareGraph(info_frame.frame, 1, 1, "Light", 2)
-press_compare = CompareGraph(info_frame.frame, 1, 2, "Pressure", 5)
-humid_compare = CompareGraph(info_frame.frame, 0, 4, "Humidity", 4)
-placeholder_1 = CompareGraph(info_frame.frame, 0, 5, "", 0)
-placeholder_2 = CompareGraph(info_frame.frame, 1, 4, "", 0)
-placeholder_3 = CompareGraph(info_frame.frame, 1, 5, "", 0)
-
 # Home 10.2.1.57
 # School 10.26.141.192
-
 sensors = [
-    Sensor(root, 0, 0, "10.26.141.192", 8080, "1: Alcyone"),
-    Sensor(root, 1, 0, "10.2.1.57", 8080, "2: Atlas"),
-    Sensor(root, 2, 0, "10.2.1.57", 8080, "3: Asterope"),
-    Sensor(root, 0, 1, "10.2.1.57", 8080, "4: Celaeno"),
-    Sensor(root, 1, 1, "10.2.1.57", 8080, "5: Maia"),
-    Sensor(root, 2, 1, "10.2.1.57", 8080, "6: Taygeta"),
+    Sensor(0, 0, "10.26.141.192", 8080, "1: Alcyone"),
+    Sensor(1, 0, "10.2.1.57", 8080, "2: Atlas"),
+    Sensor(2, 0, "10.2.1.57", 8080, "3: Asterope"),
+    Sensor(0, 1, "10.2.1.57", 8080, "4: Celaeno"),
+    Sensor(1, 1, "10.2.1.57", 8080, "5: Maia"),
+    Sensor(2, 1, "10.2.1.57", 8080, "6: Taygeta"),
 ]
 
-action_bar.grid(column=0, row=0, columnspan=root.grid_size()[0])
+# info_frame = InfoFrame(root_frame.interior, 0, 3, 2, 2, '')
+compare_frame_1 = Frame(root_frame.interior)
+compare_frame_2 = Frame(root_frame.interior)
+compare_frame_3 = Frame(root_frame.interior)
+compare_frame_1.grid(column=0, row=4)
+compare_frame_2.grid(column=1, row=4)
+compare_frame_3.grid(column=2, row=4)
+temp_compare = CompareGraph(compare_frame_1, 0, 0, "Temperature", 1)
+sound_compare = CompareGraph(compare_frame_1, 1, 0, "Sound", 3)
+light_compare = CompareGraph(compare_frame_2, 0, 0, "Light", 2)
+press_compare = CompareGraph(compare_frame_2, 1, 0, "Pressure", 4)
+humid_compare = CompareGraph(compare_frame_3, 0, 0, "Humidity", 5)
+place_compare = CompareGraph(compare_frame_3, 1, 0, "", 0)
+
+
+
+
+# action_bar.grid(column=0, row=0, columnspan=root_frame.interior.grid_size()[0])
 
 
 def map(v, fl, fh, tl, th):
@@ -255,7 +316,8 @@ def get_grid(l):
 
 def draw_overview(g):
     g.overview.delete(ALL)
-    g.overview.create_text(g.overview.winfo_width() // 2, 20, text='Triangular', font=('Courier New', 10), fill="#FFFFFF")
+    g.overview.create_text(g.overview.winfo_width() // 2, 20, text='Triangular', font=('Courier New', 10),
+                           fill="#FFFFFF")
     if len(g.m_list) == 0:
         return
     temp_point = (
@@ -270,11 +332,21 @@ def draw_overview(g):
         g.overview.winfo_width() // 2,
         g.overview.winfo_height() // 2 - round(map(g.m_list[-1].temp, 0, 60, 0, 60)),
     )
+    humid_point = (
+        g.overview.winfo_width() // 2,
+        g.overview.winfo_height() // 2 - round(map(g.m_list[-1].humid, 0, 60, 0, 60)),
+    )
+    press_point = (
+        g.overview.winfo_width() // 2,
+        g.overview.winfo_height() // 2 - round(map(g.m_list[-1].press, 0, 2000, 0, 60)),
+    )
     center = [graph_width // 2, graph_height // 2]
     points = [
         temp_point,
         light_point,
-        sound_point
+        sound_point,
+        humid_point,
+        press_point,
     ]
     for point in points:
         g.overview.create_oval(
@@ -310,8 +382,9 @@ def draw_overview(g):
     for distance in distances:
         distance[0] += center[0]
         distance[1] += center[1]
-    # for distance in distances:
-    #     g.overview.create_line(*(center + distance), fill='#0000FF', dash=True)
+        # for distance in distances:
+        # g.overview.create_line(*(center + distance), fill='#0000FF', dash=True)
+
 
 def redraw(c, point_list, inc_val, t_start, title):
     c.delete(ALL)
@@ -357,11 +430,13 @@ def draw_lines(l, c):
 
 
 class Measurement():
-    def __init__(self, t, l, c, s):
+    def __init__(self, t, l, c, s, h, p):
         self.time = int(t) / 1000
         self.temp = float(c)
         self.light = int(l)
         self.sound = float(s)
+        self.humid = float(h)
+        self.press = float(p)
 
 
 def start_update_thread():
@@ -398,8 +473,22 @@ def update():
             len(sensor.m_list),
             'Sound level: ' + (str(sensor.m_list[-1].sound) if len(sensor.m_list) > 0 else '0')
         )
+        redraw(
+            sensor.humid,
+            sensor.h_points,
+            20,
+            len(sensor.m_list),
+            'Humidity level: ' + (str(sensor.m_list[-1].sound) if len(sensor.m_list) > 0 else '0')
+        )
+        redraw(
+            sensor.press,
+            sensor.p_points,
+            20,
+            len(sensor.m_list),
+            'Humidity level: ' + (str(sensor.m_list[-1].sound) if len(sensor.m_list) > 0 else '0')
+        )
         # draw_overview(
-        #     sensor
+        # sensor
         # )
     root.after(1000, start_update_thread)
 
