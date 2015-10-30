@@ -236,9 +236,9 @@ class CompareGraph():
                 elif self.type == 3:
                     point = map(sensor.m_list[-1].sound, 0, 600, 0, graph_height - 32)
                 elif self.type == 4:
-                    point = map(sensor.m_list[-1].press, 0, 60, 0, graph_height - 32)
+                    point = map(sensor.m_list[-1].humid, 0, 60, 0, graph_height - 32)
                 elif self.type == 5:
-                    point = map(sensor.m_list[-1].humid, 0, 2000, 0, graph_height - 32)
+                    point = map(sensor.m_list[-1].press, 0, 2000, 0, graph_height - 32)
             self.graph.create_text(
                 graph_width // 2,
                 16,
@@ -266,21 +266,21 @@ class CompareGraph():
 # Home 10.2.1.57
 # School 10.26.141.192
 sensors = [
-    Sensor(0, 0, "10.26.141.192", 8080, "1: Alcyone"),
-    Sensor(1, 0, "10.2.1.57", 8080, "2: Atlas"),
-    Sensor(2, 0, "10.2.1.57", 8080, "3: Asterope"),
-    Sensor(0, 1, "10.2.1.57", 8080, "4: Celaeno"),
-    Sensor(1, 1, "10.2.1.57", 8080, "5: Maia"),
-    Sensor(2, 1, "10.2.1.57", 8080, "6: Taygeta"),
+    Sensor(0, 1, "10.26.141.192", 8080, "1: Alcyone"),
+    Sensor(1, 1, "10.2.1.57", 8080, "2: Atlas"),
+    Sensor(2, 1, "10.2.1.57", 8080, "3: Asterope"),
+    Sensor(0, 2, "10.2.1.57", 8080, "4: Celaeno"),
+    Sensor(1, 2, "10.2.1.57", 8080, "5: Maia"),
+    Sensor(2, 2, "10.2.1.57", 8080, "6: Taygeta"),
 ]
 
 # info_frame = InfoFrame(root_frame.interior, 0, 3, 2, 2, '')
 compare_frame_1 = Frame(root_frame.interior)
 compare_frame_2 = Frame(root_frame.interior)
 compare_frame_3 = Frame(root_frame.interior)
-compare_frame_1.grid(column=0, row=4)
-compare_frame_2.grid(column=1, row=4)
-compare_frame_3.grid(column=2, row=4)
+compare_frame_1.grid(column=0, row=0)
+compare_frame_2.grid(column=1, row=0)
+compare_frame_3.grid(column=2, row=0)
 temp_compare = CompareGraph(compare_frame_1, 0, 0, "Temperature", 1)
 sound_compare = CompareGraph(compare_frame_1, 1, 0, "Sound", 3)
 light_compare = CompareGraph(compare_frame_2, 0, 0, "Light", 2)
@@ -464,28 +464,28 @@ def update():
             sensor.l_points,
             1000 // (graph_height // grid_spacing_y),
             len(sensor.m_list),
-            'Light Level: ' + (str(sensor.m_list[-1].light) if len(sensor.m_list) > 0 else '0')
+            'Light: ' + (str(sensor.m_list[-1].light) if len(sensor.m_list) > 0 else '0')
         )
         redraw(
             sensor.sound,
             sensor.s_points,
             20,
             len(sensor.m_list),
-            'Sound level: ' + (str(sensor.m_list[-1].sound) if len(sensor.m_list) > 0 else '0')
+            'Sound: ' + (str(sensor.m_list[-1].sound) if len(sensor.m_list) > 0 else '0')
         )
         redraw(
             sensor.humid,
             sensor.h_points,
             20,
             len(sensor.m_list),
-            'Humidity level: ' + (str(sensor.m_list[-1].sound) if len(sensor.m_list) > 0 else '0')
+            'Humidity: ' + (str(sensor.m_list[-1].humid) if len(sensor.m_list) > 0 else '0')
         )
         redraw(
             sensor.press,
             sensor.p_points,
-            20,
+            2000 // (graph_height // grid_spacing_y),
             len(sensor.m_list),
-            'Humidity level: ' + (str(sensor.m_list[-1].sound) if len(sensor.m_list) > 0 else '0')
+            'Pressure: ' + (str(sensor.m_list[-1].press) if len(sensor.m_list) > 0 else '0')
         )
         # draw_overview(
         # sensor
@@ -498,4 +498,5 @@ for sensor in sensors:
         sensor.start_thread()
         # sensor.start_update()
 root.after(1, start_update_thread)
+root.resizable(0, 0)
 root.mainloop()
