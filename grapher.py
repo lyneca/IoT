@@ -9,8 +9,8 @@ import socket
 import serial
 
 
-debug = True
-fake_data = True
+debug = False
+fake_data = False
 
 point_size = 1.5
 graph_x_offset = 48
@@ -151,7 +151,7 @@ class Sensor:
             self.l_points.append(map(m.light, 0, 1000, 0, graph_height / grid_spacing_y - 3))
             self.t_points.append(map(m.temp, 0, 45, 0, graph_height / grid_spacing_y - 3))
             self.s_points.append(map(m.sound, 0, 600, 0, graph_height / grid_spacing_y - 3))
-            self.h_points.append(map(m.humid, 0, 60, 0, graph_height / grid_spacing_y - 3))
+            self.h_points.append(map(m.humid, 0, 2000, 0, graph_height / grid_spacing_y - 3))
             self.p_points.append(map(m.press, 0, 2000, 0, graph_height / grid_spacing_y - 3))
             if len(self.t_points) > graph_width * 2 / grid_spacing_x - 1:
                 self.t_points.pop(0)
@@ -224,7 +224,7 @@ class CompareGraph():
                 elif self.type == 3:
                     point = map(sensor.m_list[-1].sound, 0, 600, 0, graph_height - 32)
                 elif self.type == 4:
-                    point = map(sensor.m_list[-1].humid, 0, 60, 0, graph_height - 32)
+                    point = map(sensor.m_list[-1].humid, 0, 2000, 0, graph_height - 32)
                 elif self.type == 5:
                     point = map(sensor.m_list[-1].press, 0, 2000, 0, graph_height - 32)
             self.graph.create_text(
@@ -247,12 +247,12 @@ class CompareGraph():
 # Home 10.2.1.57
 # School 10.26.141.192
 sensors = [
-    Sensor(0, 1, "10.26.141.192", 8080, "1: Alcyone"),
-    Sensor(1, 1, "10.2.1.57", 8080, "2: Atlas"),
-    Sensor(2, 1, "10.2.1.57", 8080, "3: Asterope"),
-    Sensor(0, 2, "10.2.1.57", 8080, "4: Celaeno"),
-    Sensor(1, 2, "10.2.1.57", 8080, "5: Maia"),
-    Sensor(2, 2, "10.2.1.57", 8080, "6: Taygeta"),
+    Sensor(0, 1, "10.2.1.57", 8080, "1: Alcyone"),
+    Sensor(1, 1, "0.0.0.0", 8080, "2: Atlas"),
+    Sensor(2, 1, "0.0.0.0", 8080, "3: Asterope"),
+    Sensor(0, 2, "0.0.0.0", 8080, "4: Celaeno"),
+    Sensor(1, 2, "0.0.0.0", 8080, "5: Maia"),
+    Sensor(2, 2, "0.0.0.0", 8080, "6: Taygeta"),
 ]
 
 # info_frame = InfoFrame(root_frame.interior, 0, 3, 2, 2, '')
@@ -265,8 +265,8 @@ compare_frame_3.grid(column=2, row=0)
 temp_compare = CompareGraph(compare_frame_1, 0, 0, "Temperature", 1)
 sound_compare = CompareGraph(compare_frame_1, 1, 0, "Sound", 3)
 light_compare = CompareGraph(compare_frame_2, 0, 0, "Light", 2)
-press_compare = CompareGraph(compare_frame_2, 1, 0, "Pressure", 4)
-humid_compare = CompareGraph(compare_frame_3, 0, 0, "Humidity", 5)
+humid_compare = CompareGraph(compare_frame_2, 1, 0, "Humidity", 4)
+press_compare = CompareGraph(compare_frame_3, 0, 0, "Pressure", 5)
 place_compare = CompareGraph(compare_frame_3, 1, 0, "", 0)
 
 
@@ -334,13 +334,13 @@ def draw_lines(l, c):
 
 
 class Measurement():
-    def __init__(self, t, l, c, s, h, p):
+    def __init__(self, t, l, c, s, p, h):
         self.time = int(t) / 1000
         self.temp = float(c)
         self.light = int(l)
         self.sound = float(s)
-        self.humid = float(h)
         self.press = float(p)
+        self.humid = float(h)
 
 
 def start_update_thread():

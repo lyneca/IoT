@@ -1,0 +1,43 @@
+BEGIN ReadDataFromSensor(measurement_history)
+    temp_list = an array
+    IF connected via serial
+        character = a single char
+        WHILE character is not a newline (newline terminates a measurement)
+            read from serial into character
+            append character to temp_list
+        ENDWHILE
+    ELSE IF connected via network
+        receive 100 characters of data (more than will ever be needed) into temp_list
+    ENDIF
+    append the data compiled into Measurement objects into measurement_history
+    RETURN measurement_history
+END ReadDataFromSensor
+
+BEGIN UpdateOverviewGraph(sensor_list, data_to_graph, graph_title)
+    delete all objects on graph
+    create the blue baseline
+    create the graph title using graph_title
+    FOR sensor_num = 0 TO length of sensor_list
+        sensor = sensor_list[sensor_num]
+        CASEWHERE data_to_graph is
+            temperature: map according to min/max temperature values
+            light: map according to min/max light values
+            sound: map according to min/max sound values
+            pressure: map according to min/max pressure values
+            humidity: map according to min/max humidity values
+        ENDCASE
+        create the sensor id text
+        draw the sensor level rectangle
+    NEXT sensor_num
+END UpdateOverviewGraph
+
+BEGIN DrawSensorGraph(point_list, increment, title)
+    delete all objects on graph
+    create title text
+    create graph axis
+    create graph ticks
+    create # of measurements text
+    FOR point_number = 0 TO length of point_list
+        create a point on the graph using point_list[point_number]
+    NEXT point_number
+END DrawSensorGraph
