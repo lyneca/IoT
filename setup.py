@@ -1,7 +1,7 @@
 from distutils.core import setup
 import py2exe
 setup(
-    console=['grapher.py'],
+    console=['new_grapher.py'],
     name='IoT',
     version='',
     packages=[''],

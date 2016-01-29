@@ -1,0 +1,94 @@
+import threading
+import socket
+import os
+import time
+
+os.system("mode con: cols=70 lines=7")
+
+
+class Sensor:
+    def __init__(self, addr, port, name):
+        self.name = name
+        self.thread = threading.Thread(target=self.read)
+        self.socket = self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.address = addr
+        self.port = port
+        self.last_measurement = ''
+
+    def read(self):
+        self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.socket.connect((self.address, self.port))
+        recvd = self.socket.recv(100)
+        self.last_measurement = recvd.decode()
+        return recvd.decode()
+
+    def start_thread(self):
+        self.thread = threading.Thread(target=self.read)
+        self.thread.start()
+
+    def __str__(self):
+        return self.name
+
+
+sensors = [
+    # Sensor("10.2.1.17", 8080, "Alcyone"),
+    # Sensor("10.2.1.51", 8080, "Atlas"),
+	Sensor("10.26.142.9", 8080, "Atlas"),
+    # Sensor("10.2.1.54", 8080, "Asterope"),
+    # Sensor("10.2.1.57", 8080, "Celaeno"),
+    # Sensor("10.2.1.59", 8080, "Maia"),
+    # Sensor("0.0.0.0", 8080, "Taygeta"),
+]
+
+if not os.path.isdir('sensorlogs'):
+    os.mkdir('sensorlogs')
+    for sensor in sensors:
+        with open('sensorlogs/' + sensor.name + '.csv', 'x') as f:
+            f.write('temp,light,sound,pressure,humidity\n')
+
+
+def pad(s, n):
+    return str((n - len(s)) * ' ') + s
+
+
+def print_all_data():
+    print("       Name       Temp      Light      Sound   Pressure   Humidity")
+    i = 0
+    for s in sensors:
+        print(pad(str(s), 10), end=': ')
+        for m in s.last_measurement.split():
+            print(pad(m, 10), end=' ')
+        if i == current_sensor:
+            print('<')
+        else:
+            print()
+        i += 1
+
+
+def clear():
+    os.system('cls')
+
+
+def convert_temp(t):
+    return ((((t * 5000.0) / 1024.0) - 600.0) / 10.0) / 2
+
+
+def convert_sound(s):
+    return s - 247
+
+
+# sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# sock.connect(('10.2.1.54', 8080))
+# recvd = sock.recv(100)
+# print(recvd.decode())
+current_sensor = 0
+while True:
+    for sensor in sensors:
+        sensor.read()
+        clear()
+        print_all_data()
+        with open('sensorlogs/' + sensor.name + '.csv', 'a') as file:
+            file.write(','.join(sensor.last_measurement.split()) + '\n')
+        current_sensor += 1
+        current_sensor %= 5
+        time.sleep(0.5)
