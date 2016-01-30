@@ -1,8 +1,8 @@
 import threading
 import socket
 import os
-import sys
 from datetime import datetime
+
 
 class Sensor:
     def __init__(self, addr, port, name):
@@ -49,15 +49,12 @@ def pad(s, n):
     return str((n - len(s)) * ' ') + s
 
 
-def print_all_data(current_sensor):
-    print("       Name       Temp      Light      Sound   Pressure   Humidity")
+def print_all_data():
     i = 0
     for s in sensors:
         print(pad(str(s), 10), end=': ')
         for m in s.last_measurement.split()[1:]:
             print(pad(m, 10), end=' ')
-        if i == current_sensor:
-            print('<')
         else:
             print()
         i += 1
@@ -77,16 +74,14 @@ def convert_sound(s):
 
 
 def read_loop():
-    current_sensor = 0
     for s in sensors:
         s.read()
         with open('sensorlogs/' + s.name + '.csv', 'a') as file:
             file.write(','.join(s.last_measurement.split()) + '\n')
-        if len(sensors) > 1:
-            current_sensor += 1
-            current_sensor %= len(sensors)
+        print_all_data()
         # time.sleep(0.15)
 
 
+print("       Name       Temp      Light      Sound   Pressure   Humidity")
 while True:
     read_loop()
