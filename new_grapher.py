@@ -1,9 +1,13 @@
 import threading
 import socket
 import os
+import sys
 import time
+from datetime import datetime
 
 os.system("mode con: cols=70 lines=7")
+
+current_sensor = 0
 
 
 class Sensor:
@@ -18,9 +22,9 @@ class Sensor:
     def read(self):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.socket.connect((self.address, self.port))
-        recvd = self.socket.recv(100)
-        self.last_measurement = recvd.decode()
-        return recvd.decode()
+        recv = self.socket.recv(100)
+        self.last_measurement = recv.decode()
+        return recv.decode()
 
     def start_thread(self):
         self.thread = threading.Thread(target=self.read)
@@ -32,12 +36,12 @@ class Sensor:
 
 sensors = [
     # Sensor("10.2.1.17", 8080, "Alcyone"),
-    # Sensor("10.2.1.51", 8080, "Atlas"),
-	Sensor("10.26.142.9", 8080, "Atlas"),
+    Sensor("10.2.1.51", 8080, "Atlas"),
+    # Sensor("10.26.142.9", 8080, "Atlas"),
     # Sensor("10.2.1.54", 8080, "Asterope"),
     # Sensor("10.2.1.57", 8080, "Celaeno"),
     # Sensor("10.2.1.59", 8080, "Maia"),
-    # Sensor("0.0.0.0", 8080, "Taygeta"),
+    # Sensor("0.0.0.0", 8080, "Taygeta"),  # :(
 ]
 
 if not os.path.isdir('sensorlogs'):
@@ -77,18 +81,25 @@ def convert_sound(s):
     return s - 247
 
 
+def read_loop():
+    global current_sensor
+    for s in sensors:
+        sys.stdout.flush()
+        s.read()
+        with open('sensorlogs/' + s.name + '.csv', 'a') as file:
+            file.write(','.join(s.last_measurement.split()) + '\n')
+        if len(sensors) > 1:
+            current_sensor += 1
+            current_sensor %= len(sensors)
+    clear()
+    print_all_data()
+    # time.sleep(0.15)
+
 # sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # sock.connect(('10.2.1.54', 8080))
 # recvd = sock.recv(100)
 # print(recvd.decode())
-current_sensor = 0
 while True:
-    for sensor in sensors:
-        sensor.read()
-        clear()
-        print_all_data()
-        with open('sensorlogs/' + sensor.name + '.csv', 'a') as file:
-            file.write(','.join(sensor.last_measurement.split()) + '\n')
-        current_sensor += 1
-        current_sensor %= 5
-        time.sleep(0.5)
+    before = datetime.now()
+    read_loop()
+    print(datetime.now() - before)

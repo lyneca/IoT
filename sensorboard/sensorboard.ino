@@ -44,19 +44,20 @@ void setup() {
   }
   ESPserial.begin(38400);
   ESPserial.println("AT+CWMODE=1");
-  waitFor("OK");
-  Serial.println("Connecting...");
+//  waitFor("OK");
+//  Serial.println("Connecting...");
 //  ESPserial.println("AT+CWJAP=\"LorandKath\",\"bosezu81\"");
-//  ESPserial.println("AT+CWJAP=\"NetGenie\",\"FTSU27MC\"");
-  ESPserial.println("AT+CWJAP=\"GHSSECURE\",\"04E1C14429E91670C3BAD755E8\"");
-  waitFor("OK");
-  Serial.println("Connected!");
+//  ESPserial.println("AT+CWJAP=\"GHSSECURE\",\"04E1C14429E91670C3BAD755E8\"");
+  ESPserial.println("AT+CWJAP=\"NetGenie\",\"FTSU27MC\"");
+
+//  waitFor("OK");
+//  Serial.println("Connected!");
   ESPserial.println("AT+CIPMUX=1");
-  waitFor("OK");
-  Serial.println("Starting server...");
+//  waitFor("OK");
+//  Serial.println("Starting server...");
   ESPserial.println("AT+CIPSERVER=1,8080");
-  waitFor("OK");
-  Serial.println("Server up!");
+//  waitFor("OK");
+//  Serial.println("Server up!");
   ESPserial.println("AT+CIPSTA?");
   digitalWrite(GLED, HIGH);
   digitalWrite(BLED, LOW);
@@ -66,12 +67,13 @@ void setup() {
 void loop() {
   String str = "AT+CIPSEND=0," + String(sendString.length());
   digitalWrite(RLED, HIGH);
+  ESPserial.println(str);
   while (1) {
-    ESPserial.println(str);
     if (!ESPserial.find(">")) {
-      Serial.println("Connection failed, retrying...");
+//      Serial.println("Connection failed, retrying...");
+      ESPserial.println(str);
     } else {
-      Serial.println("Connection success!");
+//      Serial.println("Connection success!");
       digitalWrite(RLED, LOW);
       break;
     }
@@ -79,12 +81,10 @@ void loop() {
   sendString = getMeasurements();
   digitalWrite(BLED, HIGH);
   ESPserial.println(sendString);
-  waitFor("SEND OK");
+//  waitFor("SEND OK");
   str = "Sent " + String(sendString.length()) + " characters.";
-  Serial.println(str);
   ESPserial.println("AT+CIPCLOSE=0");
-  waitFor("OK");
-  Serial.println("Connection closed.");
+//  waitFor("OK");
   digitalWrite(BLED, LOW);
 }
 

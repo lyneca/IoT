@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list id="38e8681b-fe5c-495c-81b1-e3939858830d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list id="38e8681b-fe5c-495c-81b1-e3939858830d" name="Default" comment="" />
     <list default="true" id="9bd72790-2d68-4188-b744-a5f8fa0f1351" name="Changelist" comment="removed redundant code">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/new_grapher.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kivy_grapher.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/IoT.iml" afterPath="$PROJECT_DIR$/.idea/IoT.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grapher.py" afterPath="$PROJECT_DIR$/grapher.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/new_grapher.py" afterPath="$PROJECT_DIR$/new_grapher.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sensorboard/sensorboard.ino" afterPath="$PROJECT_DIR$/sensorboard/sensorboard.ino" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sensorlogs/Atlas.csv" afterPath="$PROJECT_DIR$/sensorlogs/Atlas.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
     </list>
     <ignored path="IoT.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,9 +25,11 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/IoT$kivy_grapher.coverage" NAME="kivy_grapher Coverage Results" MODIFIED="1454131928579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/IoT$tk_test.coverage" NAME="tk_test Coverage Results" MODIFIED="1445227396622" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/IoT$X_Ray_Saves_the_Day_v_7.coverage" NAME="X-Ray Saves the Day v.7 Coverage Results" MODIFIED="1445991090577" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="E:/Squirrel eat Squirrel" />
     <SUITE FILE_PATH="coverage/IoT$setup.coverage" NAME="setup Coverage Results" MODIFIED="1446169597142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/IoT$new_grapher.coverage" NAME="new_grapher Coverage Results" MODIFIED="1454143025193" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/IoT$pyserial_tst.coverage" NAME="pyserial_tst Coverage Results" MODIFIED="1444360591047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/IoT$grapher.coverage" NAME="grapher Coverage Results" MODIFIED="1453104779973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -49,27 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="grapher.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grapher.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="252" column="30" selection-start-line="252" selection-start-column="30" selection-end-line="252" selection-end-column="30" />
-              <folding>
-                <element signature="e#552#2267#0" expanded="false" />
-                <element signature="e#2518#4222#0" expanded="false" />
-                <element signature="e#6962#9346#0" expanded="false" />
-                <element signature="e#10917#10976#0" expanded="false" />
-                <element signature="e#11962#12227#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="new_grapher.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/new_grapher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37328768">
-              <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.43048128">
+              <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -101,10 +88,8 @@
         <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
+              <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -150,6 +135,7 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/pseudocode.txt" />
         <option value="$PROJECT_DIR$/grapher.py" />
+        <option value="$PROJECT_DIR$/kivy_grapher.py" />
         <option value="$PROJECT_DIR$/new_grapher.py" />
       </list>
     </option>
@@ -176,7 +162,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -189,7 +175,30 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IoT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IoT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IoT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -219,49 +228,7 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
-  <component name="RunManager" selected="Python.grapher">
-    <configuration default="false" name="tk_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="IoT" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tk_test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <RunnerSettings RunnerId="PyDebugRunner" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PyDebugRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="pyserial_tst" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="IoT" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pyserial_tst.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.new_grapher">
     <configuration default="false" name="grapher" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -284,26 +251,6 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="X-Ray Saves the Day v.7" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="E:/Squirrel eat Squirrel" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="IoT" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="E:/Squirrel eat Squirrel/X-Ray Saves the Day v.7.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
     <configuration default="false" name="setup" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -322,6 +269,42 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="kivy_grapher" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="IoT" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/kivy_grapher.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="new_grapher" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="IoT" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/new_grapher.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
@@ -399,6 +382,12 @@
       <tasks />
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
       <envs />
       <method />
     </configuration>
@@ -512,20 +501,18 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.tk_test" />
-      <item index="1" class="java.lang.String" itemvalue="Python.pyserial_tst" />
-      <item index="2" class="java.lang.String" itemvalue="Python.grapher" />
-      <item index="3" class="java.lang.String" itemvalue="Python.X-Ray Saves the Day v.7" />
-      <item index="4" class="java.lang.String" itemvalue="Python.setup" />
+    <list size="4">
+      <item index="0" class="java.lang.String" itemvalue="Python.grapher" />
+      <item index="1" class="java.lang.String" itemvalue="Python.setup" />
+      <item index="2" class="java.lang.String" itemvalue="Python.kivy_grapher" />
+      <item index="3" class="java.lang.String" itemvalue="Python.new_grapher" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.grapher" />
-        <item index="1" class="java.lang.String" itemvalue="Python.setup" />
-        <item index="2" class="java.lang.String" itemvalue="Python.X-Ray Saves the Day v.7" />
-        <item index="3" class="java.lang.String" itemvalue="Python.tk_test" />
-        <item index="4" class="java.lang.String" itemvalue="Python.pyserial_tst" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Python.new_grapher" />
+        <item index="1" class="java.lang.String" itemvalue="Python.kivy_grapher" />
+        <item index="2" class="java.lang.String" itemvalue="Python.grapher" />
+        <item index="3" class="java.lang.String" itemvalue="Python.setup" />
       </list>
     </recent_temporary>
   </component>
@@ -671,15 +658,17 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42857143" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42813918" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3422713" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34094617" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3420622" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39869282" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32626426" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -687,11 +676,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34313726" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39869282" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -761,16 +748,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data.db">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -792,11 +769,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#552#2267#0" expanded="false" />
-            <element signature="e#2518#4222#0" expanded="false" />
-            <element signature="e#6962#9346#0" expanded="false" />
-            <element signature="e#10917#10976#0" expanded="false" />
-            <element signature="e#11962#12227#0" expanded="false" />
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#526#2241#0" expanded="false" />
+            <element signature="e#2492#4196#0" expanded="false" />
+            <element signature="e#6912#9212#0" expanded="false" />
+            <element signature="e#10755#10814#0" expanded="false" />
+            <element signature="e#11760#12025#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -813,9 +791,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -840,11 +816,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#552#2267#0" expanded="false" />
-            <element signature="e#2518#4222#0" expanded="false" />
-            <element signature="e#6962#9346#0" expanded="false" />
-            <element signature="e#10917#10976#0" expanded="false" />
-            <element signature="e#11962#12227#0" expanded="false" />
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#526#2241#0" expanded="false" />
+            <element signature="e#2492#4196#0" expanded="false" />
+            <element signature="e#6912#9212#0" expanded="false" />
+            <element signature="e#10755#10814#0" expanded="false" />
+            <element signature="e#11760#12025#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -853,9 +830,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -880,11 +855,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="49" column="18" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
           <folding>
-            <element signature="e#552#2267#0" expanded="false" />
-            <element signature="e#2518#4222#0" expanded="false" />
-            <element signature="e#6962#9346#0" expanded="false" />
-            <element signature="e#10917#10976#0" expanded="false" />
-            <element signature="e#11962#12227#0" expanded="false" />
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#526#2241#0" expanded="false" />
+            <element signature="e#2492#4196#0" expanded="false" />
+            <element signature="e#6912#9212#0" expanded="false" />
+            <element signature="e#10755#10814#0" expanded="false" />
+            <element signature="e#11760#12025#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -910,11 +886,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#552#2267#0" expanded="false" />
-            <element signature="e#2518#4222#0" expanded="false" />
-            <element signature="e#6962#9346#0" expanded="false" />
-            <element signature="e#10917#10976#0" expanded="false" />
-            <element signature="e#11962#12227#0" expanded="false" />
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#526#2241#0" expanded="false" />
+            <element signature="e#2492#4196#0" expanded="false" />
+            <element signature="e#6912#9212#0" expanded="false" />
+            <element signature="e#10755#10814#0" expanded="false" />
+            <element signature="e#11760#12025#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -940,11 +917,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#552#2267#0" expanded="false" />
-            <element signature="e#2518#4222#0" expanded="false" />
-            <element signature="e#6962#9346#0" expanded="false" />
-            <element signature="e#10917#10976#0" expanded="false" />
-            <element signature="e#11962#12227#0" expanded="false" />
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#526#2241#0" expanded="false" />
+            <element signature="e#2492#4196#0" expanded="false" />
+            <element signature="e#6912#9212#0" expanded="false" />
+            <element signature="e#10755#10814#0" expanded="false" />
+            <element signature="e#11760#12025#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -970,11 +948,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#552#2267#0" expanded="false" />
-            <element signature="e#2518#4222#0" expanded="false" />
-            <element signature="e#6962#9346#0" expanded="false" />
-            <element signature="e#10917#10976#0" expanded="false" />
-            <element signature="e#11962#12227#0" expanded="false" />
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#526#2241#0" expanded="false" />
+            <element signature="e#2492#4196#0" expanded="false" />
+            <element signature="e#6912#9212#0" expanded="false" />
+            <element signature="e#10755#10814#0" expanded="false" />
+            <element signature="e#11760#12025#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1000,11 +979,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#552#2267#0" expanded="false" />
-            <element signature="e#2518#4222#0" expanded="false" />
-            <element signature="e#6962#9346#0" expanded="false" />
-            <element signature="e#10917#10976#0" expanded="false" />
-            <element signature="e#11962#12227#0" expanded="false" />
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#526#2241#0" expanded="false" />
+            <element signature="e#2492#4196#0" expanded="false" />
+            <element signature="e#6912#9212#0" expanded="false" />
+            <element signature="e#10755#10814#0" expanded="false" />
+            <element signature="e#11760#12025#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1030,11 +1010,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#552#2267#0" expanded="false" />
-            <element signature="e#2518#4222#0" expanded="false" />
-            <element signature="e#6962#9346#0" expanded="false" />
-            <element signature="e#10917#10976#0" expanded="false" />
-            <element signature="e#11962#12227#0" expanded="false" />
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#526#2241#0" expanded="false" />
+            <element signature="e#2492#4196#0" expanded="false" />
+            <element signature="e#6912#9212#0" expanded="false" />
+            <element signature="e#10755#10814#0" expanded="false" />
+            <element signature="e#11760#12025#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1060,11 +1041,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#552#2267#0" expanded="false" />
-            <element signature="e#2518#4222#0" expanded="false" />
-            <element signature="e#6962#9346#0" expanded="false" />
-            <element signature="e#10917#10976#0" expanded="false" />
-            <element signature="e#11962#12227#0" expanded="false" />
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#526#2241#0" expanded="false" />
+            <element signature="e#2492#4196#0" expanded="false" />
+            <element signature="e#6912#9212#0" expanded="false" />
+            <element signature="e#10755#10814#0" expanded="false" />
+            <element signature="e#11760#12025#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1090,11 +1072,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#552#2267#0" expanded="false" />
-            <element signature="e#2518#4222#0" expanded="false" />
-            <element signature="e#6962#9346#0" expanded="false" />
-            <element signature="e#10917#10976#0" expanded="false" />
-            <element signature="e#11962#12227#0" expanded="false" />
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#526#2241#0" expanded="false" />
+            <element signature="e#2492#4196#0" expanded="false" />
+            <element signature="e#6912#9212#0" expanded="false" />
+            <element signature="e#10755#10814#0" expanded="false" />
+            <element signature="e#11760#12025#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1120,11 +1103,12 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#552#2267#0" expanded="false" />
-            <element signature="e#2518#4222#0" expanded="false" />
-            <element signature="e#6962#9346#0" expanded="false" />
-            <element signature="e#10917#10976#0" expanded="false" />
-            <element signature="e#11962#12227#0" expanded="false" />
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#526#2241#0" expanded="false" />
+            <element signature="e#2492#4196#0" expanded="false" />
+            <element signature="e#6912#9212#0" expanded="false" />
+            <element signature="e#10755#10814#0" expanded="false" />
+            <element signature="e#11760#12025#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1183,16 +1167,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1228,21 +1202,40 @@
     <entry file="file://$PROJECT_DIR$/grapher.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="252" column="30" selection-start-line="252" selection-start-column="30" selection-end-line="252" selection-end-column="30" />
+          <caret line="143" column="11" selection-start-line="143" selection-start-column="11" selection-end-line="143" selection-end-column="11" />
           <folding>
-            <element signature="e#552#2267#0" expanded="false" />
-            <element signature="e#2518#4222#0" expanded="false" />
-            <element signature="e#6962#9346#0" expanded="false" />
-            <element signature="e#10917#10976#0" expanded="false" />
-            <element signature="e#11962#12227#0" expanded="false" />
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#526#2241#0" expanded="false" />
+            <element signature="e#2492#4196#0" expanded="false" />
+            <element signature="e#6912#9212#0" expanded="false" />
+            <element signature="e#10755#10814#0" expanded="false" />
+            <element signature="e#11760#12025#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kivy_grapher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.77272725">
+          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/new_grapher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37328768">
-          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.43048128">
+          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
