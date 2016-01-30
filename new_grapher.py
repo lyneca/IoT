@@ -73,6 +73,7 @@ def clear():
     os.system('cls')
 
 
+# TODO: Make more of these and use them
 def convert_temp(t):
     return ((((t * 5000.0) / 1024.0) - 600.0) / 10.0) / 2
 
@@ -94,6 +95,7 @@ def read_loop():
     clear()
     print_all_data()
     # time.sleep(0.15)
+
 
 # sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # sock.connect(('10.2.1.54', 8080))
