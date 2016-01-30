@@ -30,11 +30,11 @@ class Sensor:
 
 
 sensors = [
-    # Sensor("10.2.1.17", 8080, "Alcyone"),
+    Sensor("10.2.1.17", 8080, "Alcyone"),
     Sensor("10.2.1.51", 8080, "Atlas"),
     # Sensor("10.26.142.9", 8080, "Atlas"),
-    # Sensor("10.2.1.54", 8080, "Asterope"),
-    # Sensor("10.2.1.57", 8080, "Celaeno"),
+    Sensor("10.2.1.54", 8080, "Asterope"),
+    Sensor("10.2.1.57", 8080, "Celaeno"),
     Sensor("10.2.1.59", 8080, "Maia"),
     # Sensor("0.0.0.0", 8080, "Taygeta"),  # :(
 ]
