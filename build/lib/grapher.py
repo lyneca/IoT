@@ -1,11 +1,8 @@
 import math
-
-__author__ = 'wing2048'
-from tkinter import *
 import threading
 import random
 import socket
-
+from tkinter import *
 import serial
 
 debug = False
@@ -123,12 +120,12 @@ class Sensor:
         temp_list = []
         if self.is_dummy:
             self.m_list.append(Measurement(
-                    1,
-                    random.randint(300, 400),
-                    random.randint(15, 20),
-                    random.randint(250, 350),
-                    random.randint(10, 20),
-                    random.randint(1000, 1500),
+                1,
+                random.randint(300, 400),
+                random.randint(15, 20),
+                random.randint(250, 350),
+                random.randint(10, 20),
+                random.randint(1000, 1500),
             ))
         else:
             if self.is_serial:
@@ -197,18 +194,18 @@ class CompareGraph():
     def update(self):
         self.graph.delete(ALL)
         self.graph.create_line(
-                16,
-                graph_height - 16,
-                graph_width - 16,
-                graph_height - 16,
-                fill='blue'
+            16,
+            graph_height - 16,
+            graph_width - 16,
+            graph_height - 16,
+            fill='blue'
         )
         self.graph.create_text(
-                graph_width // 2,
-                16,
-                text=self.text,
-                font=('Courier New', 10),
-                fill="#FFFFFF"
+            graph_width // 2,
+            16,
+            text=self.text,
+            font=('Courier New', 10),
+            fill="#FFFFFF"
         )
         i = 0
         for sensor in sensors:
@@ -228,19 +225,19 @@ class CompareGraph():
                 elif self.type == 5:
                     point = map(sensor.m_list[-1].press, 0, 2000, 0, graph_height - 32)
             self.graph.create_text(
-                    16 + i * ((graph_width - 32) / len(sensors)) + ((graph_width - 32) / len(sensors)) // 2,
-                    graph_height - 8,
-                    text=str(i),
-                    font=('Courier New', 10),
-                    fill="#00FF00"
+                16 + i * ((graph_width - 32) / len(sensors)) + ((graph_width - 32) / len(sensors)) // 2,
+                graph_height - 8,
+                text=str(i),
+                font=('Courier New', 10),
+                fill="#00FF00"
             )
             self.graph.create_rectangle(
-                    16 + i * ((graph_width - 32) / len(sensors)),
-                    graph_height - 16,
-                    16 + i * ((graph_width - 32) / len(sensors)) + ((graph_width - 32) / len(sensors)),
-                    graph_height - 16 - point,
-                    fill="#003300",
-                    outline="#00FF00"
+                16 + i * ((graph_width - 32) / len(sensors)),
+                graph_height - 16,
+                16 + i * ((graph_width - 32) / len(sensors)) + ((graph_width - 32) / len(sensors)),
+                graph_height - 16 - point,
+                fill="#003300",
+                outline="#00FF00"
             )
             i += 1
 
@@ -277,13 +274,13 @@ def map(v, fl, fh, tl, th):
 
 def add_point(c, x, y):
     c.create_oval(
-            x * grid_spacing_x + graph_x_offset - point_size,
-            (graph_height - graph_y_offset) - (y * grid_spacing_y - point_size),
-            x * grid_spacing_x + graph_x_offset + point_size,
-            (graph_height - graph_y_offset) - (y * grid_spacing_y + point_size),
-            fill="red",
-            outline="red",
-            tags='point'
+        x * grid_spacing_x + graph_x_offset - point_size,
+        (graph_height - graph_y_offset) - (y * grid_spacing_y - point_size),
+        x * grid_spacing_x + graph_x_offset + point_size,
+        (graph_height - graph_y_offset) - (y * grid_spacing_y + point_size),
+        fill="red",
+        outline="red",
+        tags='point'
     )
 
 
@@ -301,18 +298,18 @@ def redraw(c, point_list, inc_val, t_start, title):
         c.create_text(graph_x_offset - 10, y, text=i, font=('Courier New', 10), fill='#00FF00', anchor=E)
         i += inc_val
     c.create_line(
-            graph_x_offset,
-            graph_height - graph_y_offset,
-            graph_x_offset,
-            y,
-            fill="blue"
+        graph_x_offset,
+        graph_height - graph_y_offset,
+        graph_x_offset,
+        y,
+        fill="blue"
     )
     c.create_text(
-            c.winfo_width() // 2,
-            graph_height - 10,
-            text='%s Measurements' % t_start,
-            font=('Courier New', 10),
-            fill="#FFFFFF"
+        c.winfo_width() // 2,
+        graph_height - 10,
+        text='%s Measurements' % t_start,
+        font=('Courier New', 10),
+        fill="#FFFFFF"
     )
     i = 0
     for point in point_list:
@@ -358,39 +355,39 @@ def update():
 
     for sensor in sensors:
         redraw(
-                sensor.temp,
-                sensor.t_points,
-                10,
-                len(sensor.m_list),
-                'Temperature: ' + (str(sensor.m_list[-1].temp) if len(sensor.m_list) > 0 else '0')
+            sensor.temp,
+            sensor.t_points,
+            10,
+            len(sensor.m_list),
+            'Temperature: ' + (str(sensor.m_list[-1].temp) if len(sensor.m_list) > 0 else '0')
         )
         redraw(
-                sensor.light,
-                sensor.l_points,
-                1000 // (graph_height // grid_spacing_y),
-                len(sensor.m_list),
-                'Light: ' + (str(sensor.m_list[-1].light) if len(sensor.m_list) > 0 else '0')
+            sensor.light,
+            sensor.l_points,
+            1000 // (graph_height // grid_spacing_y),
+            len(sensor.m_list),
+            'Light: ' + (str(sensor.m_list[-1].light) if len(sensor.m_list) > 0 else '0')
         )
         redraw(
-                sensor.sound,
-                sensor.s_points,
-                20,
-                len(sensor.m_list),
-                'Sound: ' + (str(sensor.m_list[-1].sound) if len(sensor.m_list) > 0 else '0')
+            sensor.sound,
+            sensor.s_points,
+            20,
+            len(sensor.m_list),
+            'Sound: ' + (str(sensor.m_list[-1].sound) if len(sensor.m_list) > 0 else '0')
         )
         redraw(
-                sensor.humid,
-                sensor.h_points,
-                20,
-                len(sensor.m_list),
-                'Humidity: ' + (str(sensor.m_list[-1].humid) if len(sensor.m_list) > 0 else '0')
+            sensor.humid,
+            sensor.h_points,
+            20,
+            len(sensor.m_list),
+            'Humidity: ' + (str(sensor.m_list[-1].humid) if len(sensor.m_list) > 0 else '0')
         )
         redraw(
-                sensor.press,
-                sensor.p_points,
-                2000 // (graph_height // grid_spacing_y),
-                len(sensor.m_list),
-                'Pressure: ' + (str(sensor.m_list[-1].press) if len(sensor.m_list) > 0 else '0')
+            sensor.press,
+            sensor.p_points,
+            2000 // (graph_height // grid_spacing_y),
+            len(sensor.m_list),
+            'Pressure: ' + (str(sensor.m_list[-1].press) if len(sensor.m_list) > 0 else '0')
         )
         # draw_overview(
         # sensor

@@ -9,5 +9,6 @@ setup(
     license='',
     author='wing2048',
     author_email='lukegithub@gmail.com',
-    description='', requires=['kivy']
+    description='',
+    # requires=['kivy']
 )
