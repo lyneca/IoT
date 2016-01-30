@@ -3,27 +3,9 @@
   <component name="ChangeListManager">
     <list id="38e8681b-fe5c-495c-81b1-e3939858830d" name="Default" comment="" />
     <list default="true" id="9bd72790-2d68-4188-b744-a5f8fa0f1351" name="Changelist" comment="updated readme and removed redundant and annoying files">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IoT_Project_Planning.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/changelog.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data.db" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/calibration/Alcyone.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/calibration/Asterope.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/calibration/Atlas.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/calibration/Celaeno.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/calibration/Maia.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sensorlogs_/Alcyone.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sensorlogs_/Asterope.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sensorlogs_/Atlas.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sensorlogs_/Celaeno.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sensorlogs_/Maia.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sensorlogs__/Alcyone.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sensorlogs__/Asterope.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sensorlogs__/Atlas.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sensorlogs__/Celaeno.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sensorlogs__/Maia.csv" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/new_grapher.py" afterPath="$PROJECT_DIR$/new_grapher.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sensorboard/sensorboard.ino" afterPath="$PROJECT_DIR$/sensorboard/sensorboard.ino" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sensorlogs/Atlas.csv" afterPath="$PROJECT_DIR$/sensorlogs/Atlas.csv" />
     </list>
     <ignored path="IoT.iws" />
@@ -55,11 +37,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="new_grapher.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="new_grapher.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/new_grapher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.4950495">
+              <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -67,7 +49,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider editor-type-id="MultiMarkdownFxPreviewEditor">
             <state />
@@ -125,8 +107,8 @@
         <option value="$PROJECT_DIR$/grapher.py" />
         <option value="$PROJECT_DIR$/kivy_grapher.py" />
         <option value="$PROJECT_DIR$/setup.py" />
-        <option value="$PROJECT_DIR$/new_grapher.py" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/new_grapher.py" />
       </list>
     </option>
   </component>
@@ -632,7 +614,13 @@
       <option name="project" value="LOCAL" />
       <updated>1454147187938</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="updated readme and removed redundant and annoying files">
+      <created>1454151064821</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1454151064821</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <option name="trackContextForNewChangelist" value="true" />
     <servers />
   </component>
@@ -662,16 +650,16 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43494704" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3422713" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34094617" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32626426" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -735,7 +723,8 @@
     <MESSAGE value="removed redundant code" />
     <MESSAGE value="sped up the read cycle by about 800ms and got about 7s off the board WiFi connect sequence" />
     <MESSAGE value="added a Kivy stub for the (eventual) GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a Kivy stub for the (eventual) GUI" />
+    <MESSAGE value="updated readme and removed redundant and annoying files" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated readme and removed redundant and annoying files" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -747,7 +736,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="12" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -945,16 +934,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/new_grapher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pseudocode.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6157805">
@@ -980,6 +959,16 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/new_grapher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4950495">
+          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

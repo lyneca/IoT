@@ -44,21 +44,20 @@ void setup() {
   }
   ESPserial.begin(38400);
   ESPserial.println("AT+CWMODE=1");
-//  waitFor("OK");
+  waitFor("OK");
 //  Serial.println("Connecting...");
 //  ESPserial.println("AT+CWJAP=\"LorandKath\",\"bosezu81\"");
 //  ESPserial.println("AT+CWJAP=\"GHSSECURE\",\"04E1C14429E91670C3BAD755E8\"");
   ESPserial.println("AT+CWJAP=\"NetGenie\",\"FTSU27MC\"");
 
-//  waitFor("OK");
+  waitFor("OK");
 //  Serial.println("Connected!");
   ESPserial.println("AT+CIPMUX=1");
-//  waitFor("OK");
+  waitFor("OK");
 //  Serial.println("Starting server...");
   ESPserial.println("AT+CIPSERVER=1,8080");
 //  waitFor("OK");
 //  Serial.println("Server up!");
-  ESPserial.println("AT+CIPSTA?");
   digitalWrite(GLED, HIGH);
   digitalWrite(BLED, LOW);
   sendString = getMeasurements();
@@ -81,10 +80,10 @@ void loop() {
   sendString = getMeasurements();
   digitalWrite(BLED, HIGH);
   ESPserial.println(sendString);
-//  waitFor("SEND OK");
+  waitFor("SEND OK");
   str = "Sent " + String(sendString.length()) + " characters.";
   ESPserial.println("AT+CIPCLOSE=0");
-//  waitFor("OK");
+  waitFor("OK");
   digitalWrite(BLED, LOW);
 }
 

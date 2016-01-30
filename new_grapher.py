@@ -2,12 +2,9 @@ import threading
 import socket
 import os
 import sys
-import time
 from datetime import datetime
 
 os.system("mode con: cols=70 lines=7")
-
-current_sensor = 0
 
 
 class Sensor:
@@ -23,7 +20,7 @@ class Sensor:
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.socket.connect((self.address, self.port))
         recv = self.socket.recv(100)
-        self.last_measurement = recv.decode()
+        self.last_measurement = hex(int(datetime.now().timestamp())) + " " + recv.decode()
         return recv.decode()
 
     def start_thread(self):
@@ -40,7 +37,7 @@ sensors = [
     # Sensor("10.26.142.9", 8080, "Atlas"),
     # Sensor("10.2.1.54", 8080, "Asterope"),
     # Sensor("10.2.1.57", 8080, "Celaeno"),
-    # Sensor("10.2.1.59", 8080, "Maia"),
+    Sensor("10.2.1.59", 8080, "Maia"),
     # Sensor("0.0.0.0", 8080, "Taygeta"),  # :(
 ]
 
@@ -48,19 +45,19 @@ if not os.path.isdir('sensorlogs'):
     os.mkdir('sensorlogs')
     for sensor in sensors:
         with open('sensorlogs/' + sensor.name + '.csv', 'x') as f:
-            f.write('temp,light,sound,pressure,humidity\n')
+            f.write('hextimestamp,temp,light,sound,pressure,humidity\n')
 
 
 def pad(s, n):
     return str((n - len(s)) * ' ') + s
 
 
-def print_all_data():
+def print_all_data(current_sensor):
     print("       Name       Temp      Light      Sound   Pressure   Humidity")
     i = 0
     for s in sensors:
         print(pad(str(s), 10), end=': ')
-        for m in s.last_measurement.split():
+        for m in s.last_measurement.split()[1:]:
             print(pad(m, 10), end=' ')
         if i == current_sensor:
             print('<')
@@ -83,7 +80,7 @@ def convert_sound(s):
 
 
 def read_loop():
-    global current_sensor
+    current_sensor = 0
     for s in sensors:
         sys.stdout.flush()
         s.read()
@@ -92,16 +89,10 @@ def read_loop():
         if len(sensors) > 1:
             current_sensor += 1
             current_sensor %= len(sensors)
-    clear()
-    print_all_data()
-    # time.sleep(0.15)
+        clear()
+        print_all_data(current_sensor)
+        # time.sleep(0.15)
 
 
-# sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# sock.connect(('10.2.1.54', 8080))
-# recvd = sock.recv(100)
-# print(recvd.decode())
 while True:
-    before = datetime.now()
     read_loop()
-    print(datetime.now() - before)
