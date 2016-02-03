@@ -1,8 +1,13 @@
-#! /usr/bin/env python3
 import threading
 import socket
 import os
+import sys
+import time
 from datetime import datetime
+
+os.system("mode con: cols=70 lines=7")
+
+location = 1
 
 
 class Sensor:
@@ -30,18 +35,26 @@ class Sensor:
 
 
 sensors = [
-    Sensor("10.2.1.17", 8080, "Alcyone"),
-    Sensor("10.2.1.51", 8080, "Atlas"),
-    # Sensor("10.26.142.9", 8080, "Atlas"),
+    # Sensor("10.2.1.17", 8080, "Alcyone"),
+    # Sensor("10.2.1.51", 8080, "Atlas"),
     # Sensor("10.2.1.54", 8080, "Asterope"),
-    Sensor("10.2.1.57", 8080, "Celaeno"),
-    Sensor("10.2.1.59", 8080, "Maia"),
+    # Sensor("10.2.1.57", 8080, "Celaeno"),
+    # Sensor("10.2.1.59", 8080, "Maia"),
     # Sensor("0.0.0.0", 8080, "Taygeta"),  # :(
 ]
+sensors_ghs = [
+    # Sensor("10.26.142.9", 8080, "Atlas"),
+    Sensor("10.26.141.38", 8080, "Maia"),
+]
+
+if location == 1:
+    sensor_set = sensors_ghs
+else:
+    sensor_set = sensors
 
 if not os.path.isdir('sensorlogs'):
     os.mkdir('sensorlogs')
-    for sensor in sensors:
+    for sensor in sensor_set:
         with open('sensorlogs/' + sensor.name + '.csv', 'x') as f:
             f.write('hextimestamp,temp,light,sound,pressure,humidity\n')
 
@@ -50,12 +63,15 @@ def pad(s, n):
     return str((n - len(s)) * ' ') + s
 
 
-def print_all_data():
+def print_all_data(current_sensor):
+    print("       Name       Temp      Light      Sound   Pressure   Humidity")
     i = 0
-    for s in sensors:
+    for s in sensor_set:
         print(pad(str(s), 10), end=': ')
         for m in s.last_measurement.split()[1:]:
             print(pad(m, 10), end=' ')
+        if i == current_sensor:
+            print('<')
         else:
             print()
         i += 1
@@ -75,14 +91,18 @@ def convert_sound(s):
 
 
 def read_loop():
-    for s in sensors:
+    current_sensor = 0
+    for s in sensor_set:
+        sys.stdout.flush()
         s.read()
         with open('sensorlogs/' + s.name + '.csv', 'a') as file:
             file.write(','.join(s.last_measurement.split()) + '\n')
-        print_all_data()
-        # time.sleep(0.15)
+        if len(sensor_set) > 1:
+            current_sensor += 1
+            current_sensor %= len(sensor_set)
+        if len(sensor_set) == 1:
+            time.sleep(0.15)
 
 
-print("       Name       Temp      Light      Sound   Pressure   Humidity")
 while True:
     read_loop()

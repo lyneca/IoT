@@ -47,8 +47,8 @@ void setup() {
   waitFor("OK");
 //  Serial.println("Connecting...");
 //  ESPserial.println("AT+CWJAP=\"LorandKath\",\"bosezu81\"");
-//  ESPserial.println("AT+CWJAP=\"GHSSECURE\",\"04E1C14429E91670C3BAD755E8\"");
-  ESPserial.println("AT+CWJAP=\"NetGenie\",\"FTSU27MC\"");
+  ESPserial.println("AT+CWJAP=\"GHSSECURE\",\"04E1C14429E91670C3BAD755E8\"");
+//  ESPserial.println("AT+CWJAP=\"NetGenie\",\"FTSU27MC\"");
 
   waitFor("OK");
 //  Serial.println("Connected!");
