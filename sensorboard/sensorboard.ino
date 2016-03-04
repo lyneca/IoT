@@ -1,3 +1,7 @@
+#include <SoftwareSerial.h>
+#include <Wire.h>
+#include "SparkFunMPL3115A2.h"
+
 #define TEMP   A0
 #define LIGHT  A1
 #define SOUND  A2
@@ -6,9 +10,6 @@
 #define OLED 9
 #define RLED 10
 #define BLED 11
-#include <SoftwareSerial.h>
-#include <Wire.h>
-#include "SparkFunMPL3115A2.h"
 
 SoftwareSerial ESPserial(2, 3); // RX | TX
 MPL3115A2 pressure;
@@ -45,19 +46,13 @@ void setup() {
   ESPserial.begin(38400);
   ESPserial.println("AT+CWMODE=1");
   waitFor("OK");
-//  Serial.println("Connecting...");
 //  ESPserial.println("AT+CWJAP=\"LorandKath\",\"bosezu81\"");
   ESPserial.println("AT+CWJAP=\"GHSSECURE\",\"04E1C14429E91670C3BAD755E8\"");
-//  ESPserial.println("AT+CWJAP=\"NetGenie\",\"FTSU27MC\"");
 
   waitFor("OK");
-//  Serial.println("Connected!");
   ESPserial.println("AT+CIPMUX=1");
   waitFor("OK");
-//  Serial.println("Starting server...");
   ESPserial.println("AT+CIPSERVER=1,8080");
-//  waitFor("OK");
-//  Serial.println("Server up!");
   digitalWrite(GLED, HIGH);
   digitalWrite(BLED, LOW);
   sendString = getMeasurements();
@@ -69,10 +64,8 @@ void loop() {
   ESPserial.println(str);
   while (1) {
     if (!ESPserial.find(">")) {
-//      Serial.println("Connection failed, retrying...");
       ESPserial.println(str);
     } else {
-//      Serial.println("Connection success!");
       digitalWrite(RLED, LOW);
       break;
     }

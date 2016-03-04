@@ -1,7 +1,7 @@
-import threading
-import socket
 import os
+import socket
 import sys
+import threading
 import time
 from datetime import datetime
 
@@ -43,8 +43,10 @@ sensors = [
     # Sensor("0.0.0.0", 8080, "Taygeta"),  # :(
 ]
 sensors_ghs = [
-    # Sensor("10.26.142.9", 8080, "Atlas"),
+    Sensor("10.26.142.9", 8080, "Atlas"),
     Sensor("10.26.141.38", 8080, "Maia"),
+    Sensor("10.26.141.109", 8080, "Alcyone"),
+    Sensor("10.26.141.187Z", 8080, "Celaeno"),
 ]
 
 if location == 1:
@@ -81,7 +83,6 @@ def clear():
     os.system('cls')
 
 
-# TODO: Make more of these and use them
 def convert_temp(t):
     return ((((t * 5000.0) / 1024.0) - 600.0) / 10.0) / 2
 
