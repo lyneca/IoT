@@ -1,7 +1,7 @@
 import os
+import platform
 import socket
 import sys
-import platform
 import threading
 import time
 from datetime import datetime
@@ -16,6 +16,7 @@ class Sensor:
     :param name: Name of the board
     :return: Sensor object
     """
+
     def __init__(self, addr, port, name):
         self.name = name
         self.thread = threading.Thread(target=self.read)
@@ -42,9 +43,19 @@ class Sensor:
         """
         self.thread = threading.Thread(target=self.read)
         self.thread.start()
+        return self.thread
 
     def __str__(self):
         return self.name
+
+
+def get_random_integer():
+    """
+    Chosen by fair dice roll. Guaranteed to be random.
+
+    :return: a random integer
+    """
+    return 4
 
 
 def pad(s, n):
@@ -96,6 +107,11 @@ def convert_temp(t):
     :param t: Analog temperature value
     :return: Celsius value
     """
+    # t * 5V operating voltage
+    # / 1024 analog values
+    # - 600 calibration
+    # / 10 for readable temperatures
+    # / 2 because why not
     return ((((t * 5000.0) / 1024.0) - 600.0) / 10.0) / 2
 
 
@@ -131,13 +147,13 @@ def read_loop():
 
 
 if __name__ == "__main__":
-    location = 1
+    location = 0
     sensors = [
-        Sensor("10.2.1.17", 8080, "Alcyone"),
-        Sensor("10.2.1.51", 8080, "Atlas"),
-        Sensor("10.2.1.54", 8080, "Asterope"),
-        Sensor("10.2.1.57", 8080, "Celaeno"),
-        Sensor("10.2.1.59", 8080, "Maia"),
+        Sensor("10.1.1.16", 8080, "Alcyone"),
+        # Sensor("10.2.1.51", 8080, "Atlas"),
+        # Sensor("10.2.1.54", 8080, "Asterope"),
+        # Sensor("10.2.1.57", 8080, "Celaeno"),
+        # Sensor("10.2.1.59", 8080, "Maia"),
         # Sensor("0.0.0.0", 8080, "Taygeta"),  # :(
     ]
     sensors_ghs = [

@@ -3,88 +3,17 @@
   <component name="ChangeListManager">
     <list id="38e8681b-fe5c-495c-81b1-e3939858830d" name="Default" comment="" />
     <list default="true" id="9bd72790-2d68-4188-b744-a5f8fa0f1351" name="Changelist" comment="documentation!">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/doctrees/environment.pickle" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/doctrees/index.doctree" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_static/ajax-loader.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_static/comment-bright.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_static/comment-close.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_static/comment.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_static/down-pressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_static/down.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_static/file.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_static/minus.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_static/plus.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_static/up-pressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_static/up.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/objects.inv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_static/ajax-loader.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_static/comment-bright.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_static/comment-close.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_static/comment.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_static/down-pressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_static/down.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_static/file.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_static/minus.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_static/plus.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_static/up-pressed.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_static/up.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Makefile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/.buildinfo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_modules/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_modules/new_grapher.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_sources/index.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_static/alabaster.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_static/basic.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_static/doctools.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_static/jquery-1.11.1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_static/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_static/pygments.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_static/searchtools.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_static/underscore-1.3.1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_static/underscore.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/_static/websupport.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/genindex.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/py-modindex.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/search.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/html/searchindex.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/.buildinfo" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/IoTSensorboardsdoc.hhc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/IoTSensorboardsdoc.hhk" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/IoTSensorboardsdoc.hhp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/IoTSensorboardsdoc.stp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_modules/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_modules/new_grapher.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_static/alabaster.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_static/basic.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_static/doctools.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_static/jquery-1.11.1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_static/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_static/pygments.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_static/searchtools.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_static/underscore-1.3.1.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_static/underscore.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/_static/websupport.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/genindex.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_build/htmlhelp/py-modindex.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/conf.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/index.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/make.bat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sensorlogs/Alcyone.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sensorlogs/Celaeno.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sensorlogs_/Alcyone.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sensorlogs_/Atlas.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sensorlogs_/Celaeno.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sensorlogs_/Maia.csv" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kivy_grapher.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_build/doctrees/environment.pickle" afterPath="$PROJECT_DIR$/_build/doctrees/environment.pickle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_build/doctrees/index.doctree" afterPath="$PROJECT_DIR$/_build/doctrees/index.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_build/html/objects.inv" afterPath="$PROJECT_DIR$/_build/html/objects.inv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/IoT.iml" afterPath="$PROJECT_DIR$/.idea/IoT.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/linux.py" afterPath="$PROJECT_DIR$/linux.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_build/html/_modules/new_grapher.html" afterPath="$PROJECT_DIR$/_build/html/_modules/new_grapher.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_build/html/genindex.html" afterPath="$PROJECT_DIR$/_build/html/genindex.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_build/html/index.html" afterPath="$PROJECT_DIR$/_build/html/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_build/html/searchindex.js" afterPath="$PROJECT_DIR$/_build/html/searchindex.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/new_grapher.py" afterPath="$PROJECT_DIR$/new_grapher.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sensorboard/sensorboard.ino" afterPath="$PROJECT_DIR$/sensorboard/sensorboard.ino" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sensorlogs/Atlas.csv" afterPath="$PROJECT_DIR$/sensorlogs/Atlas.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sensorlogs/Maia.csv" afterPath="$PROJECT_DIR$/sensorlogs/Maia.csv" />
     </list>
     <ignored path="IoT.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -115,11 +44,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="new_grapher.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="new_grapher.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/new_grapher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6415094">
+              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -137,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sensorboard.ino" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sensorboard.ino" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sensorboard/sensorboard.ino">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37842464">
-              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -232,9 +161,9 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/linux.py" />
         <option value="$PROJECT_DIR$/conf.py" />
-        <option value="$PROJECT_DIR$/new_grapher.py" />
         <option value="$PROJECT_DIR$/index.rst" />
         <option value="$PROJECT_DIR$/sensorboard/sensorboard.ino" />
+        <option value="$PROJECT_DIR$/new_grapher.py" />
       </list>
     </option>
   </component>
@@ -248,6 +177,25 @@
     <option name="y" value="-8" />
     <option name="width" value="1382" />
     <option name="height" value="744" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Python</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Buildout</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -303,7 +251,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="sensorboard" />
+              <option name="myItemId" value="_build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IoT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IoT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_build" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="html" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -337,8 +303,17 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="LayoutCode.rearrangeEntriesPython" value="false" />
     <property name="ignore_missing_gitignore" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="SearchEverywhereHistoryKey" value="read_loop&#9;null&#9;null" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings module-name="IoT" is-module-sdk="true">
+        <option name="myUseModuleSdk" value="true" />
+        <option name="myModuleName" value="IoT" />
+      </console-settings>
+    </option>
   </component>
   <component name="RunManager" selected="Python.new_grapher">
     <configuration default="false" name="grapher" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -808,7 +783,13 @@
       <option name="project" value="LOCAL" />
       <updated>1454458332926</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="documentation!">
+      <created>1457051272937</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1457051272937</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <option name="trackContextForNewChangelist" value="true" />
     <servers />
   </component>
@@ -838,25 +819,25 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16111952" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3422713" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3398693" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34150326" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39869282" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32626426" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34150326" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39869282" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1342,20 +1323,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/new_grapher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sensorboard/SparkFunMPL3115A2.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.0479453">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sensorboard/sensorboard.ino">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -1368,11 +1347,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sensorboard/sensorboard.ino">
+    <entry file="file://$PROJECT_DIR$/new_grapher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37842464">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.6415094">
+          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
