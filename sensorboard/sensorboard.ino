@@ -47,13 +47,13 @@ void setup() {
   ESPserial.println("AT+CWMODE=1");
   waitFor("OK");
 //  ESPserial.println("AT+CWJAP=\"LorandKath\",\"bosezu81\"");
-//  ESPserial.println("AT+CWJAP=\"GHSSECURE\",\"04E1C14429E91670C3BAD755E8\"");
-  ESPserial.println("AT+CWJAP=\"OPTUSDNF0F7F8\",\"Barbal00t\"");
+  ESPserial.println("AT+CWJAP=\"GHSSECURE\",\"04E1C14429E91670C3BAD755E8\"");
+//  ESPserial.println("AT+CWJAP=\"OPTUS_C196AA\",\"Barbal00t\"");
 
   waitFor("OK");
   ESPserial.println("AT+CIPMUX=1");
   waitFor("OK");
-  ESPserial.println("AT+CIPSERVER=1,8080");
+  ESPserial.println("AT+CIPSERVER=1,80");
   digitalWrite(GLED, HIGH);
   digitalWrite(BLED, LOW);
   sendString = getMeasurements();
@@ -101,6 +101,7 @@ String getMeasurements() {
     }
   }
   String ss = String(pressure.readTemp()) + " " + String(analogRead(LIGHT)) + " " + String(lastSoundMax) + " " + String(pressure.readPressure() / 1000) + " " + String(analogRead(HUMIDITY));
+  ss = "HTTP/1.0 200 OK\r\nContent-Type: text/html\r\nContent-Length: " + String(sendString.length()) + "\r\n\r\n" + ss;
   digitalWrite(OLED, LOW);
   return ss;
 }

@@ -1,10 +1,15 @@
 import os
 import platform
-import socket
 import sys
 import threading
 import time
 from datetime import datetime
+
+import requests
+import requests.adapters
+import requests.exceptions
+
+location = 0
 
 
 class Sensor:
@@ -20,10 +25,11 @@ class Sensor:
     def __init__(self, addr, port, name):
         self.name = name
         self.thread = threading.Thread(target=self.read)
-        self.socket = self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.address = addr
         self.port = port
         self.last_measurement = ''
+        self.session = requests.Session()
+        self.session.mount("http://", requests.adapters.HTTPAdapter(max_retries=2))
 
     def read(self):
         """
@@ -31,11 +37,14 @@ class Sensor:
 
         :return: Decoded data.
         """
-        self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.socket.connect((self.address, self.port))
-        recv = self.socket.recv(100)
-        self.last_measurement = hex(int(datetime.now().timestamp())) + " " + recv.decode()
-        return recv.decode()
+        try:
+            r = self.session.get('http://' + self.address + ':' + str(self.port))  # Thank god for requests
+        except requests.exceptions.Timeout:
+            self.last_measurement = hex(int(datetime.now().timestamp())) + \
+                                    " " + 'TIMEOUT TIMEOUT TIMEOUT TIMEOUT TIMEOUT'
+            return 'TIMEOUT'
+        self.last_measurement = hex(int(datetime.now().timestamp())) + " " + r.content.decode()
+        return r.content.decode()
 
     def start_thread(self):
         """
@@ -147,9 +156,8 @@ def read_loop():
 
 
 if __name__ == "__main__":
-    location = 0
     sensors = [
-        Sensor("10.1.1.16", 8080, "Alcyone"),
+        Sensor("192.168.0.18", 80, "Alcyone"),
         # Sensor("10.2.1.51", 8080, "Atlas"),
         # Sensor("10.2.1.54", 8080, "Asterope"),
         # Sensor("10.2.1.57", 8080, "Celaeno"),
