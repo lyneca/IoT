@@ -168,7 +168,7 @@ class Sensor:
         self.thread.start()
 
 
-class InfoFrame():
+class InfoFrame:
     def __init__(self, root, x, y, dx, dy, t):
         self.frame = Frame(root)
         self.spacer = Label(self.frame)
@@ -180,7 +180,7 @@ class InfoFrame():
         self.spacer.grid(row=3)
 
 
-class CompareGraph():
+class CompareGraph:
     def __init__(self, r, x, y, t, type):
         self.type = type
         self.frame = Frame(r)
@@ -331,7 +331,7 @@ def draw_lines(l, c):
         i += 1
 
 
-class Measurement():
+class Measurement:
     def __init__(self, t, l, c, s, p, h):
         self.time = int(t) / 1000
         self.temp = float(c)

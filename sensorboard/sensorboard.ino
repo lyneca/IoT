@@ -47,8 +47,8 @@ void setup() {
   ESPserial.println("AT+CWMODE=1");
   waitFor("OK");
 //  ESPserial.println("AT+CWJAP=\"LorandKath\",\"bosezu81\"");
-  ESPserial.println("AT+CWJAP=\"GHSSECURE\",\"04E1C14429E91670C3BAD755E8\"");
-//  ESPserial.println("AT+CWJAP=\"OPTUS_C196AA\",\"Barbal00t\"");
+//  ESPserial.println("AT+CWJAP=\"GHSSECURE\",\"04E1C14429E91670C3BAD755E8\"");
+  ESPserial.println("AT+CWJAP=\"OPTUS_C196AA\",\"Barbal00t\"");
 
   waitFor("OK");
   ESPserial.println("AT+CIPMUX=1");
