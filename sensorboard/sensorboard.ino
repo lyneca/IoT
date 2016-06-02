@@ -11,7 +11,7 @@
 #define RLED 10
 #define BLED 11
 
-SoftwareSerial ESPserial(2, 3); // RX | TX
+SoftwareSerial ESPSerial(2, 3); // RX | TX
 MPL3115A2 pressure;
 int soundSamples = 5000;
 int lastSoundMax;
@@ -36,24 +36,24 @@ void setup() {
   pressure.setOversampleRate(7); // Set Oversample to the recommended 128
   pressure.enableEventFlags();
   digitalWrite(BLED, HIGH);
-  ESPserial.begin(115200);
-  ESPserial.println("AT+CIOBAUD=38400");
+  ESPSerial.begin(115200);
+  ESPSerial.println("AT+CIOBAUD=38400");
   delay(100);
   Serial.begin(38400);
   while (!Serial)   {
     ;
   }
-  ESPserial.begin(38400);
-  ESPserial.println("AT+CWMODE=1");
+  ESPSerial.begin(38400);
+  ESPSerial.println("AT+CWMODE=1");
   waitFor("OK");
-//  ESPserial.println("AT+CWJAP=\"LorandKath\",\"bosezu81\"");
-//  ESPserial.println("AT+CWJAP=\"GHSSECURE\",\"04E1C14429E91670C3BAD755E8\"");
-  ESPserial.println("AT+CWJAP=\"OPTUS_C196AA\",\"Barbal00t\"");
+//  ESPSerial.println("AT+CWJAP=\"LorandKath\",\"bosezu81\"");
+//  ESPSerial.println("AT+CWJAP=\"GHSSECURE\",\"04E1C14429E91670C3BAD755E8\"");
+  ESPSerial.println("AT+CWJAP=\"OPTUS_C196AA\",\"Barbal00t\"");
 
   waitFor("OK");
-  ESPserial.println("AT+CIPMUX=1");
+  ESPSerial.println("AT+CIPMUX=1");
   waitFor("OK");
-  ESPserial.println("AT+CIPSERVER=1,80");
+  ESPSerial.println("AT+CIPSERVER=1,80");
   digitalWrite(GLED, HIGH);
   digitalWrite(BLED, LOW);
   sendString = getMeasurements();
@@ -62,10 +62,10 @@ void setup() {
 void loop() {
   String str = "AT+CIPSEND=0," + String(sendString.length());
   digitalWrite(RLED, HIGH);
-  ESPserial.println(str);
+  ESPSerial.println(str);
   while (1) {
-    if (!ESPserial.find(">")) {
-      ESPserial.println(str);
+    if (!ESPSerial.find(">")) {
+      ESPSerial.println(str);
     } else {
       digitalWrite(RLED, LOW);
       break;
@@ -73,10 +73,10 @@ void loop() {
   }
   sendString = getMeasurements();
   digitalWrite(BLED, HIGH);
-  ESPserial.println(sendString);
+  ESPSerial.println(sendString);
   waitFor("SEND OK");
   str = "Sent " + String(sendString.length()) + " characters.";
-  ESPserial.println("AT+CIPCLOSE=0");
+  ESPSerial.println("AT+CIPCLOSE=0");
   waitFor("OK");
   digitalWrite(BLED, LOW);
 }
@@ -84,7 +84,7 @@ void loop() {
 void waitFor(char x[]) {
   digitalWrite(RLED, HIGH);
   while (1) {
-    if (ESPserial.find(x)) {
+    if (ESPSerial.find(x)) {
       break;
     }
   }
