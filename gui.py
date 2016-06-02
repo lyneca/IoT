@@ -10,7 +10,6 @@ import requests.adapters
 import requests.exceptions
 
 
-
 def debug(s, l=0):
     """
     Debug print shorthand function
