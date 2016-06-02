@@ -1,10 +1,36 @@
+import time
+
 import threading
 from datetime import datetime
 from tkinter import *
 
+import argparse
 import requests
 import requests.adapters
 import requests.exceptions
+
+
+
+def debug(s, l=0):
+    """
+    Debug print shorthand function
+
+    :param s: print string
+    :param l: error level
+    :return: None
+    """
+    levels = {
+        0: 'INFO ',
+        1: 'OK   ',
+        2: 'WARN ',
+        3: 'ERROR',
+        4: 'FATAL'
+    }
+    if not args.verbose:
+        if l < 3:
+            return
+    print('[' + levels[l] + ']', s)
+
 
 graph_width = 220
 graph_height = 220
@@ -17,6 +43,11 @@ messages_received = 0
 
 
 def count_online():
+    """
+    Counts counts online sensors.
+
+    :return: number of sensors found in register
+    """
     i = 0
     for sensor in sensors:
         if sensor.is_active:
@@ -57,6 +88,8 @@ class Sensor:
         self.session = requests.Session()
         self.session.mount("http://", requests.adapters.HTTPAdapter())
         self.is_active = False
+        self.combined_address = self.address + ':' + str(self.port)
+        debug("Created sensor " + self.name + " at " + self.combined_address, 1)
 
     def read(self):
         """
@@ -69,14 +102,20 @@ class Sensor:
         except requests.exceptions.ConnectionError:
             return
         if len(r.content.decode().split()) != 5:
+            debug(
+                "Invalid data sent by board " +
+                self.name + " at " + self.combined_address +
+                ", probably a network error",
+                3)
             return
         else:
             self.measurements.append(Measurement(hex(int(datetime.now().timestamp())), *r.content.decode().split()))
-            global messages_received
+            global messages_received  # I apologise
             messages_received += 1
             self.is_active = True
         with open('sensorlogs/' + self.name + '.csv', 'a') as file:
             file.write(','.join((str(hex(int(datetime.now().timestamp())) + ' ' + r.content.decode()).split())) + '\n')
+        debug("Received and logged valid data from " + self.name + " at " + self.combined_address)
         return r.content.decode()
 
     def start_thread(self):
@@ -106,6 +145,7 @@ class GraphFrame:
         self.text = t
         self.graph = Canvas(self.frame, width=self.graph_width, height=self.graph_height, bg='black')
         self.graph.grid(row=0)
+        debug("Created graph frame at (%s, %s)" % (x, y))
 
     def update(self):
         self.graph.delete(ALL)
@@ -203,34 +243,41 @@ class InfoFrame:
         root.after(50, self.update)
 
 
-root = Tk()
+if __name__ == '__main__':
+    stime = time.time()
 
-root.resizable(0, 0)
+    parser = argparse.ArgumentParser(description="Monitoring GUI for sensorboards.")
+    parser.add_argument('-v', '--verbose', help='turn on verbose output mode (for debugging)', action='store_true')
+    args = parser.parse_args()
 
-start_time = datetime.now()
+    root = Tk()
 
-sensors = [
-    Sensor("192.168.0.6", 80, "Celaeno", "#FF5555"),
-    Sensor("192.168.0.18", 80, "Alcyone", "#55FF55"),
-    Sensor("192.168.0.19", 80, "Maia", "#5555FF"),
-    Sensor("192.168.0.20", 80, "Atlas", "#FFFF55"),
-]
+    root.resizable(0, 0)
+    print("[OK   ] Created window object")
+    start_time = datetime.now()
+    print("[INFO ] Start time:", start_time.isoformat())
+    sensors = [
+        # Sensor("192.168.0.6", 80, "Celaeno", "#FF5555"),
+        Sensor("192.168.0.15", 80, "Alcyone", "#55FF55"),
+        # Sensor("192.168.0.19", 80, "Maia", "#5555FF"),
+        # Sensor("192.168.0.20", 80, "Atlas", "#FFFF55"),
+    ]
+    print("[OK   ] Created all sensor objects")
+    temp_frame = GraphFrame(root, 0, 0, 2, 1, "Temperature", 10, 1, 8)
+    light_frame = GraphFrame(root, 0, 1, 1, 1, "Light", 200, 2, 4)
+    sound_frame = GraphFrame(root, 2, 0, 2, 1, "Sound", 200, 3, 8)
+    pressure_frame = GraphFrame(root, 1, 1, 1, 1, "Pressure", 100, 4, 4)
+    humidity_frame = GraphFrame(root, 2, 1, 1, 1, "Humidity", 400, 5, 4)
+    info_frame = InfoFrame(root, 3, 1, 1, 1, "Info")
 
-temp_frame = GraphFrame(root, 0, 0, 2, 1, "Temperature", 10, 1, 8)
-light_frame = GraphFrame(root, 0, 1, 1, 1, "Light", 200, 2, 4)
-sound_frame = GraphFrame(root, 2, 0, 2, 1, "Sound", 200, 3, 8)
-pressure_frame = GraphFrame(root, 1, 1, 1, 1, "Pressure", 100, 4, 4)
-humidity_frame = GraphFrame(root, 2, 1, 1, 1, "Humidity", 400, 5, 4)
-info_frame = InfoFrame(root, 3, 1, 1, 1, "Info")
+    temp_frame.update()
+    sound_frame.update()
+    light_frame.update()
+    pressure_frame.update()
+    humidity_frame.update()
+    info_frame.update()
+    print("[OK   ] Initial frame update complete")
+    for sensor in sensors:
+        sensor.start_thread()
 
-temp_frame.update()
-sound_frame.update()
-light_frame.update()
-pressure_frame.update()
-humidity_frame.update()
-info_frame.update()
-
-for sensor in sensors:
-    sensor.start_thread()
-
-root.mainloop()
+    root.mainloop()
