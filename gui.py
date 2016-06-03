@@ -11,6 +11,11 @@ import requests.exceptions
 
 d_time = time.time()
 
+parser = argparse.ArgumentParser(description="Monitoring GUI for sensorboards.")
+parser.add_argument('-v', '--verbose', help='turn on verbose output mode (for debugging)', action='store_true')
+parser.add_argument('-n', '--debug-network', help='display connection errors', action='store_true', dest='debug')
+args = parser.parse_args()
+
 
 def debug(s, l=0, i=False):
     """
@@ -22,12 +27,15 @@ def debug(s, l=0, i=False):
     :return: None
     """
     levels = {
+        -1: 'DEBUG',
         0: 'INFO ',
         1: 'OK   ',
         2: 'WARN ',
         3: 'ERROR',
         4: 'FATAL'
     }
+    if not args.debug and l == -1:
+        return
     if not args.verbose and not i:
         if l < 3:
             return
@@ -101,7 +109,8 @@ class Sensor:
         """
         try:
             r = self.session.get('http://' + self.address + ':' + str(self.port))  # Thank god for requests
-        except requests.exceptions.ConnectionError:
+        except requests.exceptions.ConnectionError as e:
+            debug(e.strerror, 3)
             return
         if len(r.content.decode().split()) != 5:
             debug(
@@ -247,10 +256,6 @@ class InfoFrame:
 
 if __name__ == '__main__':
     stime = time.time()
-
-    parser = argparse.ArgumentParser(description="Monitoring GUI for sensorboards.")
-    parser.add_argument('-v', '--verbose', help='turn on verbose output mode (for debugging)', action='store_true')
-    args = parser.parse_args()
 
     root = Tk()
 
