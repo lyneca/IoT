@@ -27,7 +27,7 @@ def debug(s, l=0, i=False):
     :return: None
     """
     levels = {
-        -1: 'DEBUG',
+        -1: 'TEST  ',
         0: 'INFO ',
         1: 'OK   ',
         2: 'WARN ',
