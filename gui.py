@@ -27,7 +27,7 @@ def debug(s, l=0, i=False):
     :return: None
     """
     levels = {
-        -1: 'TEST  ',
+        -1: 'TEST ',
         0: 'INFO ',
         1: 'OK   ',
         2: 'WARN ',
@@ -109,8 +109,8 @@ class Sensor:
         """
         try:
             r = self.session.get('http://' + self.address + ':' + str(self.port))  # Thank god for requests
-        except requests.exceptions.ConnectionError as e:
-            debug(e.strerror, 3)
+        except requests.exceptions.ConnectionError:
+            debug("Connection error to '%s'." % self.combined_address, 3)
             return
         if len(r.content.decode().split()) != 5:
             debug(
