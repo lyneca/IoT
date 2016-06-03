@@ -37,6 +37,8 @@ class SensorRequestHandler(http_server.BaseHTTPRequestHandler):
         self.send_header("Content-type", "text/html")
         self.end_headers()
 
+print("Starting server...")
 
 server = http_server.HTTPServer(("localhost", 80), SensorRequestHandler)
+print("Server up.")
 server.serve_forever()

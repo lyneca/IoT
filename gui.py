@@ -265,9 +265,10 @@ if __name__ == '__main__':
     debug("Start time: " + ' '.join(start_time.isoformat().split("T")), 0, True)
     sensors = [
         # Sensor("192.168.0.6", 80, "Celaeno", "#FF5555"),
-        Sensor("192.168.0.15", 80, "Alcyone", "#55FF55"),
+        # Sensor("192.168.0.15", 80, "Alcyone", "#55FF55"),
         # Sensor("192.168.0.19", 80, "Maia", "#5555FF"),
         # Sensor("192.168.0.20", 80, "Atlas", "#FFFF55"),
+        Sensor("localhost", 80, "TestServer", "#FFFF55"),
     ]
     debug("Created all sensor objects", 1, True)
     temp_frame = GraphFrame(root, 0, 0, 2, 1, "Temperature", 10, 1, 8)
