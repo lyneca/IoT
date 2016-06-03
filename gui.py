@@ -9,13 +9,16 @@ import requests
 import requests.adapters
 import requests.exceptions
 
+d_time = time.time()
 
-def debug(s, l=0):
+
+def debug(s, l=0, i=False):
     """
     Debug print shorthand function
 
     :param s: print string
     :param l: error level
+    :param i: is the message priority (i.e. will it be displayed no matter what)?
     :return: None
     """
     levels = {
@@ -25,10 +28,10 @@ def debug(s, l=0):
         3: 'ERROR',
         4: 'FATAL'
     }
-    if not args.verbose:
+    if not args.verbose and not i:
         if l < 3:
             return
-    print('[' + levels[l] + ']', s)
+    print('[%.3f' % (time.time() - d_time) + '] ' + '[' + levels[l] + ']', s)
 
 
 graph_width = 220
@@ -252,16 +255,16 @@ if __name__ == '__main__':
     root = Tk()
 
     root.resizable(0, 0)
-    print("[OK   ] Created window object")
+    debug("Created window object", 1, True)
     start_time = datetime.now()
-    print("[INFO ] Start time:", start_time.isoformat())
+    debug("Start time: " + ' '.join(start_time.isoformat().split("T")), 0, True)
     sensors = [
         # Sensor("192.168.0.6", 80, "Celaeno", "#FF5555"),
         Sensor("192.168.0.15", 80, "Alcyone", "#55FF55"),
         # Sensor("192.168.0.19", 80, "Maia", "#5555FF"),
         # Sensor("192.168.0.20", 80, "Atlas", "#FFFF55"),
     ]
-    print("[OK   ] Created all sensor objects")
+    debug("Created all sensor objects", 1, True)
     temp_frame = GraphFrame(root, 0, 0, 2, 1, "Temperature", 10, 1, 8)
     light_frame = GraphFrame(root, 0, 1, 1, 1, "Light", 200, 2, 4)
     sound_frame = GraphFrame(root, 2, 0, 2, 1, "Sound", 200, 3, 8)
@@ -275,7 +278,7 @@ if __name__ == '__main__':
     pressure_frame.update()
     humidity_frame.update()
     info_frame.update()
-    print("[OK   ] Initial frame update complete")
+    debug("Initial frame update complete", 1, True)
     for sensor in sensors:
         sensor.start_thread()
 
