@@ -37,8 +37,14 @@ class SensorRequestHandler(http_server.BaseHTTPRequestHandler):
         self.send_header("Content-type", "text/html")
         self.end_headers()
 
-print("Starting server...")
 
+from socket import *
+
+sock = socket()
+sock.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
+
+print("Starting server...")
+http_server.HTTPServer.allow_reuse_address = True
 server = http_server.HTTPServer(("localhost", 80), SensorRequestHandler)
 print("Server up.")
 server.serve_forever()
