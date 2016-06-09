@@ -214,6 +214,16 @@ class GraphFrame:
 
 class InfoFrame:
     def __init__(self, root, x, y, dx, dy, t):
+        """
+        Object for rendering the general information frame
+
+        :param root: root window object
+        :param x: column x pos
+        :param y: row y pos
+        :param dx: how many columns to span
+        :param dy: how many rows to span
+        :param t: title
+        """
         self.graph_width = graph_width * dx
         self.graph_height = graph_height * dy
         self.frame = Frame(root)
@@ -221,7 +231,6 @@ class InfoFrame:
         self.frame.grid(column=x, row=y, columnspan=dx, rowspan=dy, sticky='nsew')
         self.frame.columnconfigure(x, weight=1)
         self.frame.rowconfigure(y, weight=1)
-        self.text = t
         self.graph = Canvas(self.frame, width=graph_width * dx, height=graph_height * dy, bg='black')
         self.graph.grid(row=0)
 
@@ -254,14 +263,13 @@ class InfoFrame:
         root.after(50, self.update)
 
 
-if __name__ == '__main__':
-    stime = time.time()
+if __name__ == '__main__':  # If program is run directly and not imported
+    # stime = time.time()  # I can't remember why this is here, and the program seems to run fine without it
+    root = Tk()  # Root window object
 
-    root = Tk()
-
-    root.resizable(0, 0)
+    root.resizable(0, 0)  # NO RESIZING FOR YOU
     debug("Created window object", 1, True)
-    start_time = datetime.now()
+    start_time = datetime.now()  # Displayed on the info frame
     debug("Start time: " + ' '.join(start_time.isoformat().split("T")), 0, True)
     sensors = [
         # Sensor("192.168.0.6", 80, "Celaeno", "#FF5555"),
@@ -271,6 +279,9 @@ if __name__ == '__main__':
         Sensor("localhost", 80, "TestServer", "#FFFF55"),
     ]
     debug("Created all sensor objects", 1, True)
+
+    # Now to create the frames. These objects are pluggable; you may organise them how you wish with parameters 1-4.
+    #                             x  y  w  h  title
     temp_frame = GraphFrame(root, 0, 0, 2, 1, "Temperature", 10, 1, 8)
     light_frame = GraphFrame(root, 0, 1, 1, 1, "Light", 200, 2, 4)
     sound_frame = GraphFrame(root, 2, 0, 2, 1, "Sound", 200, 3, 8)
