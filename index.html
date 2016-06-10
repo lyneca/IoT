@@ -10,6 +10,17 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
 </head>
 <body>
+
+<script type="text/javascript">
+    function toggle_visibility(id) {
+        var e = document.getElementById(id);
+        if (e.style.display == 'block')
+            e.style.display = 'none';
+        else
+            e.style.display = 'block';
+    }
+</script>
+
 <section class="page-header">
     <h1 class="project-name">IoT Core<br></h1>
     <h2 class="project-tagline"></h2>
@@ -48,9 +59,9 @@
                 <li><a href="#1_3">Modelling</a>
                     <ol>
                         <li><a href="#1_3_1">Representing the System</a></li>
-                        <li><a href="#1_3_2">Communication</a></li>
                     </ol>
                 </li>
+                <li><a href="#1_4">Communication</a></li>
             </ol>
         </li>
         <li><a href="#2">Planning and Design</a>
@@ -451,14 +462,14 @@
                     <br/>
                     <ol>
                         <li id="2_1_1"><h4>What experience do I have?</h4>
-                        <p>
-                            My primary knowledge and experience lies with Python (and Tk), and also a little of C++.
-                        </p>
+                            <p>
+                                My primary knowledge and experience lies with Python (and Tk), and also a little of C++.
+                            </p>
                         </li>
                         <li id="2_1_2"><h4>What are the language needs?</h4>
-                        <p>
-                            The language needs to have:
-                        </p>
+                            <p>
+                                The language needs to have:
+                            </p>
                             <ul>
                                 <li class="no-counter">Graphical canvas libraries</li>
                                 <li class="no-counter">Multithreading capabilities</li>
@@ -469,17 +480,121 @@
                     </ol>
                 </li>
                 <li id="2_2"><h3>Algorithms</h3>
-                <p>
-                    See section <a href="#5_4">5.4</a> for algorithms and flowcharts.
-                </p>
+                    <p>
+                        See section <a href="#5_4">5.4</a> for algorithms and flowcharts.
+                    </p>
                 </li>
             </ol>
         </li>
         <li id="3"><h2>Implementation <a href="#top" class="top">#</a></h2>
             <ol>
                 <li id="3_1"><h3>Interface Design</h3></li>
-                <li id="3_2"><h3>Program Development and Techniques</h3></li>
-                <li id="3_3"><h3>Documentation</h3></li>
+                <li id="3_2"><h3>Program Development and Techniques</h3>
+                    <ol>
+                        <li><h4>Code Generation</h4>
+                            <ol>
+                                <li><h4>Structured Approach</h4>
+                                    <p>
+
+                                    </p>
+                                </li>
+                                <li><h4>Debugging Output Statements</h4>
+                                    <p>
+                                        The program can be started from the command line with the -v argument, which
+                                        enables a more verbose debug output.
+                                    </p>
+                                    <p>
+                                        There are six levels of debug prints, which loosely follow the Apache server
+                                        style:
+                                    </p>
+                                    <table>
+                                        <tr>
+                                            <td width="110"><code>Debug -1</code></td>
+                                            <td><code>TEST</code></td>
+                                            <td>Test output sent by <code>tests.py</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>Debug 0</code></td>
+                                            <td><code>INFO</code></td>
+                                            <td>Informs about generic information (most often just printing when a
+                                                sensor has sent data)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>Debug 1</code></td>
+                                            <td><code>OK</code></td>
+                                            <td>Informs the user of important operations completing successfully.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>Debug 2</code></td>
+                                            <td><code>WARN</code></td>
+                                            <td>Warns the user about a possible error.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>Debug 3</code></td>
+                                            <td><code>ERROR</code></td>
+                                            <td>Errors that won’t necessarily
+                                                cause the termination of the program, for example, when a sensorboard
+                                                disconnects.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code>Debug 4</code></td>
+                                            <td><code>FATAL</code></td>
+                                            <td>
+                                                The highest level of error. Occurs when the program encounters an
+                                                unrecoverable error and terminates.
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </li>
+                            </ol>
+                        </li>
+                        <li><h4>Error Detection and Correction</h4>
+                            <p>
+
+                            </p>
+                        </li>
+                        <li><h4>Software Debugging Tools</h4>
+                            <p>
+                                The editor that I used to edit the Python code,
+                                <a href="https://www.jetbrains.com/pycharm/">Pycharm</a>, contains many inbuilt tools to
+                                help
+                                the debugging of a program. Pycharm has the following capabilities:
+                            </p>
+                            <ul>
+                                <li class="no-counter">Breakpoints</li>
+                                <li class="no-counter">On-the-fly variable editing</li>
+                                <li class="no-counter">Code Stepping with multiple stepping abilities</li>
+                            </ul>
+                            <p>
+                                In addition, Python itself contains <code>pydb</code>, a python debugging tool, which
+                                also contains
+                                these features.
+                            </p>
+                        </li>
+                    </ol>
+                </li>
+                <li id="3_3"><h3>Documentation</h3>
+                    <ol>
+                        <li><h4>Installation Guide</h4>
+                            <p>
+
+                            </p>
+                        </li>
+                        <li><h4>User Manual</h4>
+                            <p>
+
+                            </p>
+                        </li>
+                        <li><h4>Tutorial</h4>
+                            <p>
+
+                            </p>
+                        </li>
+
+                    </ol>
+                </li>
                 <li id="3_4"><h3>Communication</h3></li>
             </ol>
         </li>
@@ -505,16 +620,111 @@
         </li>
         <li id="5"><h2>Appendices <a href="#top" class="top">#</a></h2>
             <ol>
-                <li id="5_1"><h3>Gantt Chart</h3></li>
+                <li id="5_1"><h3>Gantt Chart</h3>
+                    <img src="static/gantt.png"/>
+                </li>
                 <li id="5_2"><h3>System model</h3>
                     <ol>
                         <li id="5_2_1"><h4>IPO</h4></li>
-                        <li id="5_2_2"><h4>Context Diagram</h4></li>
-                        <li id="5_2_3"><h4>Data Flow Diagram</h4></li>
-                        <li id="5_2_4"><h4>Structure Chart</h4></li>
-                        <li id="5_2_5"><h4>System Flowchart</h4></li>
-                        <li id="5_2_6"><h4>Data Dictionary</h4></li>
-                        <li id="5_2_7"><h4>Storyboard</h4></li>
+                        <li id="5_2_2"><h4>Context Diagram</h4>
+                            <iframe frameborder="0" style="width:100%;height:648px"
+                                    src="https://www.draw.io/?chrome=0&lightbox=1&edit=https%3A%2F%2Fwww.draw.io%2F%23G0B_JtAz3x5BQVdkZ5Z3RNc3BBeGc&nav=1&db=0&od=0#G0B_JtAz3x5BQVdkZ5Z3RNc3BBeGc"></iframe>
+                        </li>
+                        <li id="5_2_3"><h4>Data Flow Diagram</h4>
+                            <iframe frameborder="0" style="width:100%;height:443px"
+                                    src="https://www.draw.io/?chrome=0&lightbox=1&edit=https%3A%2F%2Fwww.draw.io%2F%23G0B_JtAz3x5BQVSGRnek1qUFk1bTQ&nav=1&db=0&od=0#G0B_JtAz3x5BQVSGRnek1qUFk1bTQ"></iframe>
+                        </li>
+                        <li id="5_2_4"><h4>Structure Chart</h4>
+                            <iframe frameborder="0" style="width:100%;height:661px"
+                                    src="https://www.draw.io/?chrome=0&lightbox=1&edit=https%3A%2F%2Fwww.draw.io%2F%23G0B_JtAz3x5BQVaUNKUmNwUW5ITzQ&nav=1&db=0&od=0#G0B_JtAz3x5BQVaUNKUmNwUW5ITzQ"></iframe>
+                        </li>
+                        <li id="5_2_5"><h4>System Flowchart</h4>
+                            <iframe frameborder="0" style="width:100%;height:613px"
+                                    src="https://www.draw.io/?chrome=0&lightbox=1&edit=https%3A%2F%2Fwww.draw.io%2F%23G0B_JtAz3x5BQVY0J0Q3J2dXZ1Sm8&nav=1&db=0&od=0#G0B_JtAz3x5BQVY0J0Q3J2dXZ1Sm8"></iframe>
+                        </li>
+                        <li id="5_2_6"><h4>Data Dictionary</h4>
+                            <a href="javascript:void(0);" onclick="toggle_visibility('data_dictionary');">
+                                [show/hide table]
+                            </a>
+                            <table id="data_dictionary">
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Format</td>
+                                    <td>Description</td>
+                                    <td>Example</td>
+                                </tr>
+                                <tr>
+                                    <td>frame_width</td>
+                                    <td>Integer</td>
+                                    <td>XXX</td>
+                                    <td>The width of a sensor frame</td>
+                                    <td>300</td>
+                                </tr>
+                                <tr>
+                                    <td>frame_height</td>
+                                    <td>Integer</td>
+                                    <td>XXX</td>
+                                    <td>The height of a sensor frame</td>
+                                    <td>300</td>
+                                </tr>
+                                <tr>
+                                    <td>Measurement.temp</td>
+                                    <td>Floating point</td>
+                                    <td>XXX.X</td>
+                                    <td>A temperature reading</td>
+                                    <td>22.5</td>
+                                </tr>
+                                <tr>
+                                    <td>Measurement.light</td>
+                                    <td>Integer</td>
+                                    <td>XXX</td>
+                                    <td>A light intensity reading</td>
+                                    <td>600</td>
+                                </tr>
+                                <tr>
+                                    <td>Measurement.sound</td>
+                                    <td>Floating point</td>
+                                    <td>XXX.X</td>
+                                    <td>A sound volume reading</td>
+                                    <td>400.8</td>
+                                </tr>
+                                <tr>
+                                    <td>Measurement.pressure</td>
+                                    <td>Floating point</td>
+                                    <td>XXX.XX</td>
+                                    <td>A pressure reading</td>
+                                    <td>1024.0</td>
+                                </tr>
+                                <tr>
+                                    <td>Measurement.humidity</td>
+                                    <td>Floating point</td>
+                                    <td>XXX.X</td>
+                                    <td>A humidity reading</td>
+                                    <td>503.6</td>
+                                </tr>
+                            </table>
+                        </li>
+                        <li id="5_2_7"><h4>Storyboard</h4>
+                            <p>The original storyboard for the prototype:
+                                <a href="javascript:void(0);" onclick="toggle_visibility('prototype_storyboard');">
+                                    [show/hide image]
+                                </a>
+                            </p>
+                            <img id="prototype_storyboard" class="hidden" src="static/prototype_storyboard.png">
+                            <p>The full storyboard for the final application:
+                                <a href="javascript:void(0);" onclick="toggle_visibility('final_storyboard');">
+                                    [show/hide image]
+                                </a>
+                            </p>
+                            <img id="final_storyboard" class="hidden" src="static/full_storyboard.jpg">
+                            <p>A storyboard for a possible future sensor selection menu:
+                                <a href="javascript:void(0);" onclick="toggle_visibility('selector_storyboard');">
+                                    [show/hide image]
+                                </a>
+                            </p>
+                            <img id="selector_storyboard" class="hidden" src="static/selector_storyboard.jpg">
+                        </li>
                     </ol>
                 </li>
                 <li id="5_3"><h3>Communication</h3>
@@ -540,7 +750,6 @@
     </footer>
 
 </section>
-
 
 </body>
 </html>

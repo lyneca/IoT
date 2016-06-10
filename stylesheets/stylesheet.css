@@ -354,6 +354,11 @@ li:before {
     content: counters(item, ".") ". ";
     counter-increment: item;
 }
+
+li ul {
+    margin-bottom: 20px;
+}
+
 li.no-counter {
     margin-left: 40px;
 }
@@ -361,8 +366,7 @@ li.no-counter:before {
     content: "– ";
     counter-increment: none;
 }
-ol p {
-    margin-top: 0;
+li p {
     margin-left: 40px;
 }
 
@@ -377,4 +381,8 @@ table {
 
 .underline {
     text-decoration: underline;
+}
+
+.hidden {
+    display: none;
 }
