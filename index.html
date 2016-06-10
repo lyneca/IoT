@@ -393,7 +393,7 @@
                                             there's an API).
                                         </li>
                                     </ul>
-                                    <br />
+                                    <br/>
                                     <p>
                                         Originally the project was going to be built to a windows executable file, but I
                                         realised that this would impact on the portability of the program, and the
@@ -406,28 +406,73 @@
                 <li id="1_3"><h3>Modelling</h3>
                     <ol>
                         <li id="1_3_1"><h4>Representing the System</h4>
-                        <p>
-                            See section <a href="#5_2">5.2</a> for system models.
-                        </p>
+                            <p>
+                                See section <a href="#5_2">5.2</a> for system models.
+                            </p>
                         </li>
                     </ol>
                 </li>
                 <li id="1_4"><h4>Communication</h4>
-                <p>
-                    See section <a href="#5_3">5.3</a> for project meetings and logs.
-                </p>
+                    <p>
+                        See section <a href="#5_3">5.3</a> for project meetings and logs.
+                    </p>
                 </li>
             </ol>
         </li>
         <li id="2"><h2>Planning and Design <a href="#top" class="top">#</a></h2>
             <ol>
                 <li id="2_1"><h3>Selection of Language</h3>
+                    <p>
+                        Given the reasons below, I have decided to create a prototype or proof-of-concept in Python
+                        using:
+                    </p>
+                    <ul>
+                        <li class="no-counter">
+                            The <a href="https://docs.python.org/3/library/tkinter.html"><code>Tk</code></a> graphics
+                            library
+                        </li>
+                        <li class="no-counter">
+                            The <a href="https://docs.python.org/3/library/threading.html"><code>threading</code></a>
+                            module for multithreaded sensor inputs
+                        </li>
+                        <li class="no-counter">
+                            The <a href="https://github.com/pyserial/pyserial"><code>pyserial</code></a> serial library
+                            for serial port testing
+                        </li>
+                        <li class="no-counter">
+                            The <a href="https://docs.python.org/3/library/socket.html"><code>socket</code></a> library
+                            for TCP communication.
+                        </li>
+                        <li class="no-counter">
+                            Python’s <a href="https://docs.python.org/3/library/math.html"><code>math</code></a> and
+                            <a href="https://docs.python.org/3/library/random.html"><code>random</code></a> library
+                        </li>
+                    </ul>
+                    <br/>
                     <ol>
-                        <li id="2_1_1"><h4>What experience do I have?</h4></li>
-                        <li id="2_1_2"><h4>What are the language needs?</h4></li>
+                        <li id="2_1_1"><h4>What experience do I have?</h4>
+                        <p>
+                            My primary knowledge and experience lies with Python (and Tk), and also a little of C++.
+                        </p>
+                        </li>
+                        <li id="2_1_2"><h4>What are the language needs?</h4>
+                        <p>
+                            The language needs to have:
+                        </p>
+                            <ul>
+                                <li class="no-counter">Graphical canvas libraries</li>
+                                <li class="no-counter">Multithreading capabilities</li>
+                                <li class="no-counter">Network interface capabilities</li>
+                                <li class="no-counter">Serial capabilities for debugging the boards</li>
+                            </ul>
+                        </li>
                     </ol>
                 </li>
-                <li id="2_2"><h3>Algorithms</h3></li>
+                <li id="2_2"><h3>Algorithms</h3>
+                <p>
+                    See section <a href="#5_4">5.4</a> for algorithms and flowcharts.
+                </p>
+                </li>
             </ol>
         </li>
         <li id="3"><h2>Implementation <a href="#top" class="top">#</a></h2>

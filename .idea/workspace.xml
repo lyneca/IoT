@@ -4,8 +4,6 @@
     <list id="38e8681b-fe5c-495c-81b1-e3939858830d" name="Default" comment="" />
     <list default="true" id="9bd72790-2d68-4188-b744-a5f8fa0f1351" name="Changelist" comment="modified code to send and receive actual HTTP/1.1 headers">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stylesheets/normalize.css" afterPath="$PROJECT_DIR$/stylesheets/normalize.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stylesheets/stylesheet.css" afterPath="$PROJECT_DIR$/stylesheets/stylesheet.css" />
     </list>
     <ignored path="IoT.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,8 +45,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="418" column="21" selection-start-line="418" selection-start-column="21" selection-end-line="418" selection-end-column="21" />
+            <state relative-caret-position="521">
+              <caret line="472" column="85" selection-start-line="472" selection-start-column="85" selection-end-line="472" selection-end-column="85" />
               <folding>
                 <element signature="n#ol#0;n#li#0;n#ol#0;n#li#0;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#li#0;n#ol#0;n#li#0;n#ol#0;n#li#0;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -1026,8 +1024,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="418" column="21" selection-start-line="418" selection-start-column="21" selection-end-line="418" selection-end-column="21" />
+        <state relative-caret-position="521">
+          <caret line="472" column="85" selection-start-line="472" selection-start-column="85" selection-end-line="472" selection-end-column="85" />
           <folding>
             <element signature="n#ol#0;n#li#0;n#ol#0;n#li#0;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#li#0;n#ol#0;n#li#0;n#ol#0;n#li#0;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="false" />
