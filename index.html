@@ -1,40 +1,133 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <title>IoT Core by wing2048</title>
+    <title>IoT Core by lyneca</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">IoT Core</h1>
-      <h2 class="project-tagline"></h2>
-      <a href="https://github.com/wing2048/IoT" class="btn">View on GitHub</a>
-      <a href="https://github.com/wing2048/IoT/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/wing2048/IoT/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
+</head>
+<body>
+<section class="page-header">
+    <h1 class="project-name">IoT Core</h1>
+    <h2 class="project-tagline"></h2>
+    <a href="https://github.com/wing2048/IoT" class="btn">View on GitHub</a>
+    <a href="https://github.com/wing2048/IoT/zipball/master" class="btn">Download .zip</a>
+    <a href="https://github.com/wing2048/IoT/tarball/master" class="btn">Download .tar.gz</a>
+</section>
 
-    <section class="main-content">
-      <h1>
-<a id="iot" class="anchor" href="#iot" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>IoT</h1>
+<section class="main-content">
+    <h1>
+        <a id="iot" class="anchor" href="#iot" aria-hidden="true"><span aria-hidden="true"
+                                                                        class="octicon octicon-link"></span></a>IoT</h1>
 
-<p>This is a HSC SDD/IPT project that uses a set of sensorboards to monitor climate data.
-The main file you should run right now is <code>new_grapher.py</code>, but it won't work unless you have the sensorboards.</p>
+    <p>This is a HSC SDD/IPT project that uses a set of sensorboards to monitor climate data.
+        The main file you should run right now is <code>gui.py</code>, but it won't work unless you have the
+        sensorboards. The file <code>fake_sensorboard.py</code> simulates a fake sensorboard on
+        <code>localhost:80</code>.</p>
 
-<p>If you've got an Arduino and want to look at the code, the Arduino code is in <code>sensorboard/sensorboard.ino</code>.</p>
+    <p>If you've got an Arduino and want to look at the code, the Arduino code is in
+        <code>sensorboard/sensorboard.ino</code>.</p>
+    <h2>Contents</h2>
+    <ol>
+        <li>Defining and Understanding the Problem
+            <ol>
+                <li>Defining the Problem
+                    <ol>
+                        <li>Identifying the problems</li>
+                        <li>Determining the Feasibility</li>
+                    </ol>
+                </li>
+                <li>Design Specifications
+                    <ol>
+                        <li>The Developer’s Perspective</li>
+                        <li>The User’s Perspective</li>
+                    </ol>
+                <li>Modelling
+                    <ol>
+                        <li>Representing the System</li>
+                        <li>Communication</li>
+                    </ol>
+                </li>
+            </ol>
+        <li>Planning and Design
+            <ol>
+                <li>Selection of Language
+                    <ol>
+                        <li>What experience do I have?</li>
+                        <li>What are the language needs?</li>
+                        <li>Algorithms</li>
+                    </ol>
+                </li>
+            </ol>
+        </li>
+        <li>Implementation
+            <ol>
+                <li>Interface Design</li>
+                <li>Program Development and Techniques</li>
+                <li>Documentation</li>
+                <li>Communication</li>
+            </ol>
+        </li>
+        <li>Testing and Evaluating
+            <ol>
+                <li>Testing the Software Solution
+                    <ol>
+                        <li>Comparison with Original Specifications</li>
+                        <li>Levels of Testing</li>
+                        <li>Live Test Data</li>
+                    </ol>
+                </li>
+                <li>Reporting on the Testing Progress
+                    <ol>
+                        <li>Test Requirements</li>
+                        <li>Test Plan</li>
+                        <li>Test Data and Expected Results</li>
+                        <li>Test Results</li>
+                        <li>Recommendation</li>
+                    </ol>
+                </li>
+            </ol>
+        </li>
+        <li>Appendices
+            <ol>
+                <li>Gantt Chart</li>
+                <li>System models
+                    <ol>
+                        <li>IPO</li>
+                        <li>Context Diagram</li>
+                        <li>Data Flow Diagram</li>
+                        <li>Structure Chart</li>
+                        <li>System Flowchart</li>
+                        <li>Data Dictionary</li>
+                        <li>Storyboard</li>
+                    </ol>
+                </li>
+                <li>5.3 Communication
+                    <ol>
+                        <li>Progress Meeting Agenda</li>
+                        <li>Progress Meeting Minutes</li>
+                        <li>Personal Log Book</li>
+                    </ol>
+                </li>
+                <li>Algorithms and Flowcharts</li>
+            </ol>
+        </li>
+    </ol>
 
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/wing2048/IoT">IoT Core</a> is maintained by <a href="https://github.com/wing2048">wing2048</a>.</span>
+    <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/wing2048/IoT">IoT Core</a> is maintained by <a
+                href="https://github.com/wing2048">wing2048</a>.</span>
 
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a
+                href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a
+                href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+    </footer>
 
-    </section>
+</section>
 
-  
-  </body>
+
+</body>
 </html>
