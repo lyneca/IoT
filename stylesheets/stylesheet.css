@@ -343,14 +343,38 @@ a:hover {
 }
 
 ol {
-    counter-reset: item
+    counter-reset: item;
 }
 
 li {
-    display: block
+    display: block;
 }
 
 li:before {
     content: counters(item, ".") ". ";
-    counter-increment: item
+    counter-increment: item;
+}
+li.no-counter {
+    margin-left: 40px;
+}
+li.no-counter:before {
+    content: "– ";
+    counter-increment: none;
+}
+ol p {
+    margin-top: 0;
+    margin-left: 40px;
+}
+
+table {
+    margin-left: 40px;
+    margin-bottom: 20px;
+}
+
+.top, .top:visited, .top:active, .top:link {
+    color: #159957;
+}
+
+.underline {
+    text-decoration: underline;
 }

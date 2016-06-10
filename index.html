@@ -11,7 +11,7 @@
 </head>
 <body>
 <section class="page-header">
-    <h1 class="project-name">IoT Core</h1>
+    <h1 class="project-name">IoT Core<br></h1>
     <h2 class="project-tagline"></h2>
     <a href="https://github.com/wing2048/IoT" class="btn">View on GitHub</a>
     <a href="https://github.com/wing2048/IoT/zipball/master" class="btn">Download .zip</a>
@@ -30,7 +30,7 @@
 
     <p>If you've got an Arduino and want to look at the code, the Arduino code is in
         <code>sensorboard/sensorboard.ino</code>.</p>
-    <h2>Contents</h2>
+    <h2 id="top">Contents</h2>
     <ol>
         <li><a href="#1">Defining and Understanding the Problem</a>
             <ol>
@@ -119,88 +119,367 @@
     </ol>
 
     <ol>
-        <li id="1">Defining and Understanding the Problem
+        <li id="1">
+            <h2>Defining and Understanding the Problem <a href="#top" class="top">#</a></h2>
             <ol>
-                <li id="1_1">Defining the Problem
+                <li id="1_1"><h3>Defining the Problem</h3>
                     <ol>
-                        <li id="1_1_1">Identifying the problems</li>
-                        <li id="1_1_2">Determining the Feasibility</li>
+                        <li id="1_1_1"><h4>Identifying the problem</h4>
+                            <ol>
+                                <li><h4>Needs</h4>
+                                    <p>
+                                        There is a large industry need for data collection. A system that allows a
+                                        company to remotely monitor atmospheric conditions would be of use where
+                                        employee and customer comfort is necessary.
+                                    </p>
+                                </li>
+                                <li><h4>Objectives</h4>
+                                    <p>
+                                        My main objective is to create a graphical program to track and display
+                                        temperature, light, sound, pressure and humidity data sent back from six sensors
+                                        via a shared Wi-Fi network. The program will receive TCP headed packets
+                                        containing space-separated values and display the data in a scientific format,
+                                        as well as recommend changes to the climate, such as “turn the fans on” when the
+                                        temperature is above a comfortable level, or “switch the lights off to save
+                                        power” when the lights are not needed. These recommendations will be shown on
+                                        the program display and through LEDs on the sensorboards.
+                                    </p>
+                                </li>
+                                <li><h4>Boundaries</h4>
+                                    <p>
+                                        The system will only collect data from the sensors available, will not collect
+                                        data from any other means, and will not be able to effect any change, such as
+                                        switching lights or air conditioning on or off.
+
+                                    </p>
+                                </li>
+                            </ol>
+                        </li>
+                        <li id="1_1_2"><h4>Determining the Feasibility</h4>
+                            <ol>
+                                <li><h4>Is it worth solving?</h4>
+                                    <p>
+                                        The problem is worth solving as there is yet to be a cheap IoT-style data
+                                        collection device and software. Technology in general is leaning to the
+                                        internet-enabled small device system, such as phones or smartwatches. I believe
+                                        that this system will be a beneficial addition to this future.
+                                    </p>
+                                </li>
+                                <li><h4>Constraints</h4>
+                                    <ol>
+                                        <li><h4>Budget</h4>
+                                            <p>The price for the individual boards and all of the components are not
+                                                covered by this project, as the scope of this project only concerns the
+                                                software side of the project. The boards will be paid for by my sponsor,
+                                                who is greatly interested in the project.</p>
+                                        </li>
+                                        <li><h4>Operational</h4>
+                                            <p>
+                                                The product will be able to be run in any Windows/Linux/Mac environment.
+                                                The user will need to have knowledge of networking and will have to be
+                                                able to manually program in the target network SSID and password, and
+                                                will have to be able to find the boards’ IP addresses on the network -
+                                                this is a physical constraint of the wifi chip themselves. However, the
+                                                product's target audience will most likely have these required skills,
+                                                and if not, the user manual will be adequate.
+                                            </p>
+                                        </li>
+                                        <li><h4>Technical</h4>
+                                            <p>
+                                                There are several resources that are needed for this project. First of
+                                                all, a prototyping board is needed so as to test different combinations
+                                                of sensors and the interfaces between software and hardware. This will
+                                                be done with a breadboard.
+                                            </p>
+                                            <p>
+                                                The printed circuit boards (PCBs) will need to be designed and printed
+                                                based on the prototyping board, and the individual sensor modules, along
+                                                with the Arduino Nanos, must be acquired. These will be purchased
+                                                online, and the printed circuit boards will be made overseas at low
+                                                prices and shipped here for testing and evaluating.
+                                            </p>
+                                            <p>
+                                                On the software side, I will need Python and the
+                                                required modules listed in section 2.1. I will need a version control
+                                                system (VCS) such as Git, and I will most likely use an integrated
+                                                development environment (IDE) such as Pycharm.
+                                            </p>
+                                            <p>
+                                                I have all the required resources for this project, therefore it is
+                                                technically feasible.
+                                            </p>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li><h4>Scheduling</h4>
+                                    <p>
+                                        See appendix 5.1 for a Gantt Chart.
+                                    </p>
+                                </li>
+                                <li><h4>Alternatives</h4>
+                                    <p>
+                                        Another solution to this problem would be to have USB sensors that plug into a
+                                        computer and send environmental data into a log. This would get around network
+                                        problems such as connectivity and security/privacy issues, but it would not be
+                                        able to compile data all at once – you would have to manually compile all of the
+                                        logs post-collection. This would also mean that the sensors would have to be
+                                        plugged into a computer - you would not be able to position them wherever you
+                                        want, unlike network sensors.
+                                    </p>
+                                </li>
+                                <li><h4>Social and Ethical Considerations</h4>
+                                    <p>
+                                        Sound data collected is <i>not</i> actual recordings, it
+                                        is the highest volume level collected in a set of around a thousand samples.
+                                    </p>
+                                    <p>
+                                        Light data collected is <i>not</i> a photograph or video
+                                        recording, it is the current light intensity.
+                                    </p>
+                                </li>
+                            </ol>
+                        </li>
                     </ol>
                 </li>
-                <li id="1_2">Design Specifications
+                <li id="1_2"><h3>Design Specifications</h3>
                     <ol>
-                        <li id="1_2_1">The Developer’s Perspective</li>
-                        <li id="1_2_2">The User’s Perspective</li>
+                        <li id="1_2_1"><h4>The Developer’s Perspective</h4>
+                            <ol>
+                                <li><h4>Datatypes</h4>
+                                    <p>
+                                        There will be a variety of datatypes used in the software, for example:
+                                    </p>
+                                    <table>
+                                        <tr>
+                                            <td>Integer</td>
+                                            <td>Floating Point</td>
+                                            <td>String</td>
+                                            <td>List</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Light data</td>
+                                            <td>Temperature data</td>
+                                            <td>Window heading titles</td>
+                                            <td>Measurement History</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sound data</td>
+                                            <td>Humidity data</td>
+                                            <td>CSV database data</td>
+                                            <td>List of graph points</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Message counter</td>
+                                            <td>Pressure data</td>
+                                            <td>Names of sensorboards</td>
+                                            <td>List of sensorboards</td>
+                                        </tr>
+                                    </table>
+                                </li>
+                                <li><h4>Variables</h4>
+                                    <p>
+                                        The program will need to use variables, and they are detailed in section 5.2.6.
+                                    </p>
+                                </li>
+                                <li><h4>Design Approach</h4>
+                                    <p>
+                                        I have chosen to use a combination of the Structured and the Agile approaches.
+                                        This will allow me to accurately document the project, while also prototyping
+                                        and responding to feedback.
+                                    </p>
+                                </li>
+                                <li><h4>Naming Conventions</h4>
+                                    <p>
+                                        Variables names will use Python's PEP-8 protocol for easy reading:
+                                    </p>
+                                    <table>
+                                        <tr>
+                                            <td>Object</td>
+                                            <td>Convention</td>
+                                            <td>Example</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Class names</td>
+                                            <td>Camel case</td>
+                                            <td><code>class SomeClass: ...</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Variable names</td>
+                                            <td>Lowercase (underscored)</td>
+                                            <td><code>num_sensors = 4</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Constant names</td>
+                                            <td>Capital (underscored)</td>
+                                            <td><code>SCREEN_WIDTH = 800</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Function names</td>
+                                            <td>Lowercase (underscored)</td>
+                                            <td><code>def print_data(): ...</code></td>
+                                        </tr>
+                                    </table>
+                                    <p>
+                                        You can find more about PEP-8 at
+                                        <a href="https://www.python.org/dev/peps/pep-0008/">python.org</a>.
+                                    </p>
+                                </li>
+                            </ol>
+                        </li>
+                        <li id="1_2_2"><h4>The User’s Perspective</h4>
+                            <ol>
+                                <li><h4>Screen Design Prototypes</h4>
+                                    <p>
+                                        See section 5.2.7 for an annotated storyboard.
+                                    </p>
+                                </li>
+                                <li><h4>Appropriate Messages and Icons</h4>
+                                    <p>
+                                        There will be no need for any pop up messages, but there may in the final
+                                        product be a window for warnings and tips on how to perfect the climate
+                                        conditions in a particular room.
+                                    </p>
+                                    <p>
+                                        Debug messages will be concise and relevant, and all icons used will be relevant
+                                        and non-distracting.
+                                    </p>
+                                </li>
+                                <li><h4>Relevant Data Formats</h4>
+                                    <p>
+                                        Data will be formatted in metric SI units:
+                                    </p>
+                                    <table>
+                                        <tr>
+                                            <td>Temperature</td>
+                                            <td>Celsius</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Light</td>
+                                            <td>Lux</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sound</td>
+                                            <td>Decibels</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Pressure</td>
+                                            <td>Pascals</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Humidity</td>
+                                            <td>kgm<sup>-3</sup></td>
+                                        </tr>
+                                    </table>
+                                </li>
+                                <li><h4>Ergonomic Issues</h4>
+                                    <p>
+                                        The black graphs with neon lines may have a chance of causing eye strain if the
+                                        program is run in a low light environment. Users are notified of this in the
+                                        manual.
+                                    </p>
+                                    <p>
+                                        Because the program does not require a large amount of user input, there are not
+                                        many ergonomic or safety issues associated with it.
+                                    </p>
+                                </li>
+                                <li><h4>The User's Environment</h4>
+                                    <p>
+                                        For a user to run the product, they must have the following:
+                                    </p>
+                                    <ul>
+                                        <li class="no-counter">A computer running Linux, Windows or Mac OS.</li>
+                                        <li class="no-counter">Python 3.x with the <a href="#2_1">dependencies</a>.</li>
+                                        <li class="no-counter">The OS must have a GUI (if you want to write a CLI,
+                                            there's an API).
+                                        </li>
+                                    </ul>
+                                    <br />
+                                    <p>
+                                        Originally the project was going to be built to a windows executable file, but I
+                                        realised that this would impact on the portability of the program, and the
+                                        target audience should have the skills necessary to install these dependencies.
+                                    </p>
+                                </li>
+                            </ol>
+                        </li>
                     </ol>
-                <li id="1_3">Modelling
+                <li id="1_3"><h3>Modelling</h3>
                     <ol>
-                        <li id="1_3_1">Representing the System</li>
-                        <li id="1_3_2">Communication</li>
+                        <li id="1_3_1"><h4>Representing the System</h4>
+                        <p>
+                            See section <a href="#5_2">5.2</a> for system models.
+                        </p>
+                        </li>
+                    </ol>
+                </li>
+                <li id="1_4"><h4>Communication</h4>
+                <p>
+                    See section <a href="#5_3">5.3</a> for project meetings and logs.
+                </p>
+                </li>
+            </ol>
+        </li>
+        <li id="2"><h2>Planning and Design <a href="#top" class="top">#</a></h2>
+            <ol>
+                <li id="2_1"><h3>Selection of Language</h3>
+                    <ol>
+                        <li id="2_1_1"><h4>What experience do I have?</h4></li>
+                        <li id="2_1_2"><h4>What are the language needs?</h4></li>
+                    </ol>
+                </li>
+                <li id="2_2"><h3>Algorithms</h3></li>
+            </ol>
+        </li>
+        <li id="3"><h2>Implementation <a href="#top" class="top">#</a></h2>
+            <ol>
+                <li id="3_1"><h3>Interface Design</h3></li>
+                <li id="3_2"><h3>Program Development and Techniques</h3></li>
+                <li id="3_3"><h3>Documentation</h3></li>
+                <li id="3_4"><h3>Communication</h3></li>
+            </ol>
+        </li>
+        <li id="4"><h2>Testing and Evaluating <a href="#top" class="top">#</a></h2>
+            <ol>
+                <li id="4_1"><h3>Testing the Software Solution</h3>
+                    <ol>
+                        <li id="4_1_1"><h4>Comparison with Original Specifications</h4></li>
+                        <li id="4_1_2"><h4>Levels of Testing</h4></li>
+                        <li id="4_1_3"><h4>Live Test Data</h4></li>
+                    </ol>
+                </li>
+                <li id="4_2"><h3>Reporting on the Testing Progress</h3>
+                    <ol>
+                        <li id="4_2_1"><h4>Test Requirements</h4></li>
+                        <li id="4_2_2"><h4>Test Plan</h4></li>
+                        <li id="4_2_3"><h4>Test Data and Expected Results</h4></li>
+                        <li id="4_2_4"><h4>Test Results</h4></li>
+                        <li id="4_2_5"><h4>Recommendation</h4></li>
                     </ol>
                 </li>
             </ol>
         </li>
-        <li id="2">Planning and Design
+        <li id="5"><h2>Appendices <a href="#top" class="top">#</a></h2>
             <ol>
-                <li id="2_1">Selection of Language
+                <li id="5_1"><h3>Gantt Chart</h3></li>
+                <li id="5_2"><h3>System model</h3>
                     <ol>
-                        <li id="2_1_1">What experience do I have?</li>
-                        <li id="2_1_2">What are the language needs?</li>
+                        <li id="5_2_1"><h4>IPO</h4></li>
+                        <li id="5_2_2"><h4>Context Diagram</h4></li>
+                        <li id="5_2_3"><h4>Data Flow Diagram</h4></li>
+                        <li id="5_2_4"><h4>Structure Chart</h4></li>
+                        <li id="5_2_5"><h4>System Flowchart</h4></li>
+                        <li id="5_2_6"><h4>Data Dictionary</h4></li>
+                        <li id="5_2_7"><h4>Storyboard</h4></li>
                     </ol>
                 </li>
-                <li id="2_2">Algorithms</li>
-            </ol>
-        </li>
-        <li id="3">Implementation
-            <ol>
-                <li id="3_1">Interface Design</li>
-                <li id="3_2">Program Development and Techniques</li>
-                <li id="3_3">Documentation</li>
-                <li id="3_4">Communication</li>
-            </ol>
-        </li>
-        <li id="4">Testing and Evaluating
-            <ol>
-                <li id="4_1">Testing the Software Solution
+                <li id="5_3"><h3>Communication</h3>
                     <ol>
-                        <li id="4_1_1">Comparison with Original Specifications</li>
-                        <li id="4_1_2">Levels of Testing</li>
-                        <li id="4_1_3">Live Test Data</li>
+                        <li id="5_3_1"><h4>Progress Meeting Agenda</h4></li>
+                        <li id="5_3_2"><h4>Progress Meeting Minutes</h4></li>
+                        <li id="5_3_3"><h4>Personal Log Book</h4></li>
                     </ol>
                 </li>
-                <li id="4_2">Reporting on the Testing Progress
-                    <ol>
-                        <li id="4_2_1">Test Requirements</li>
-                        <li id="4_2_2">Test Plan</li>
-                        <li id="4_2_3">Test Data and Expected Results</li>
-                        <li id="4_2_4">Test Results</li>
-                        <li id="4_2_5">Recommendation</li>
-                    </ol>
-                </li>
-            </ol>
-        </li>
-        <li id="5">Appendices
-            <ol>
-                <li id="5_1">Gantt Chart</li>
-                <li id="5_2">System models
-                    <ol>
-                        <li id="5_2_1">IPO</li>
-                        <li id="5_2_2">Context Diagram</li>
-                        <li id="5_2_3">Data Flow Diagram</li>
-                        <li id="5_2_4">Structure Chart</li>
-                        <li id="5_2_5">System Flowchart</li>
-                        <li id="5_2_6">Data Dictionary</li>
-                        <li id="5_2_7">Storyboard</li>
-                    </ol>
-                </li>
-                <li id="5_3">Communication
-                    <ol>
-                        <li id="5_3_1">Progress Meeting Agenda</li>
-                        <li id="5_3_2">Progress Meeting Minutes</li>
-                        <li id="5_3_3">Personal Log Book</li>
-                    </ol>
-                </li>
-                <li id="5_4">Algorithms and Flowcharts</li>
+                <li id="5_4"><h3>Algorithms and Flowcharts</h3></li>
             </ol>
         </li>
     </ol>
