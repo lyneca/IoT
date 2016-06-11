@@ -97,8 +97,7 @@
                         <li><a href="#4_2_1">Test Requirements</a></li>
                         <li><a href="#4_2_2">Test Plan</a></li>
                         <li><a href="#4_2_3">Test Data and Expected Results</a></li>
-                        <li><a href="#4_2_4">Test Results</a></li>
-                        <li><a href="#4_2_5">Recommendation</a></li>
+                        <li><a href="#4_2_4">Recommendation</a></li>
                     </ol>
                 </li>
             </ol>
@@ -607,8 +606,8 @@
                         <li id="4_1_3"><h4>Live Test Data</h4>
                             <p>
                                 Because of the nature of this system, acquiring live test data is quite easy -
-                                all I need to do is link the sensorboards to the application, run the program, and run
-                                the tests that I need on it.
+                                all all that needs to be done is link the sensorboards to the application, run the
+                                program, and run the tests on it.
                             </p>
                         </li>
                     </ol>
@@ -638,7 +637,7 @@
                                     <td rowspan="2">
                                         Load testing
                                     </td>
-                                    <td  rowspan="2">
+                                    <td rowspan="2">
                                         Link all available boards and run the program.
                                     </td>
                                     <td>
@@ -690,9 +689,151 @@
                                 </tr>
                             </table>
                         </li>
-                        <li id="4_2_3"><h4>Test Data and Expected Results</h4></li>
-                        <li id="4_2_4"><h4>Test Results</h4></li>
-                        <li id="4_2_5"><h4>Recommendation</h4></li>
+                        <li id="4_2_3"><h4>Test Data and Expected Results</h4>
+                            <table>
+                                <tr>
+                                    <td>
+                                        Test
+                                    </td>
+                                    <td>
+                                        Expected Result
+                                    </td>
+                                    <td>
+                                        Result
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Load Testing/Ping
+                                    </td>
+                                    <td>
+                                        Little to no ping drop
+                                    </td>
+                                    <td>
+                                        Average ping drop ~5ms, tested on all five sensors. Within acceptable limits.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Load Testing/Framerate
+                                    </td>
+                                    <td>
+                                        Little to no framerate drop
+                                    </td>
+                                    <td>
+                                        No recordable FPS drop.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Connection Testing/Connect Time
+                                    </td>
+                                    <td>
+                                        ~10 seconds connection time<br/>(ESP8266 specification)
+                                    </td>
+                                    <td>
+                                        Averaged at 7.23 seconds - a very good result!
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Ping Testing/Read Cycle
+                                    </td>
+                                    <td>
+                                        Less than a second
+                                    </td>
+                                    <td>
+                                        Average time 212ms - easily within range.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Ping Testing/Send Time
+                                    </td>
+                                    <td>
+                                        Much less than a quarter of a second
+                                    </td>
+                                    <td>
+                                        Collected in total almost half a million (424820) pings.
+                                        <br/>
+                                        Average time 62ms, within range.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Peer Testing/Survey
+                                    </td>
+                                    <td>
+                                        Good outcomes
+                                    </td>
+                                    <td>
+                                        ~93% of testers had positive feedback on application design. 55 people were
+                                        tested,
+                                        35 of whom were experienced with computing.
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        <li id="4_2_4"><h4>Recommendation</h4>
+                            <p>
+                                All tests reported that the application is able to function under the circumstances that
+                                it was built for.
+                            </p>
+                        </li>
+                        <li id="4_2_5"><h4>Outstanding Bugs</h4>
+                            <p>
+                                These are bugs that I either did not have the time to fix or did not know the cause of.
+                            </p>
+                            <table>
+                                <tr>
+                                    <td>
+                                        Issue ID
+                                    </td>
+                                    <td>
+                                        Symptoms
+                                    </td>
+                                    <td>
+                                        Reason why left open
+                                    </td>
+                                    <td>
+                                        Temporary workaround(s)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://github.com/lyneca/IoT/issues/4">#4</a>
+                                    </td>
+                                    <td>
+                                        Sensorboards drop out if the application cancels a socket request.
+                                        <br/>
+                                    </td>
+                                    <td>
+                                        Unsure of the cause of the bug; I assume it's related to the ESP8266 module and
+                                        not my code.
+                                    </td>
+                                    <td>
+                                        The board notifies you if this has happened: the green, red and blue lights will
+                                        all be on continuously.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="https://github.com/lyneca/IoT/issues/6">#6</a>
+                                    </td>
+                                    <td>
+                                        Python has a Too Many Files Open exception - this does not cause the program to
+                                        terminate, as the exception happens in a separate thread, but it's possible that
+                                        data is not written to the .csv files.
+                                    </td>
+                                    <td>
+                                        Not enough time to fix this bug.
+                                    </td>
+                                    <td>
+                                        None
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
                     </ol>
                 </li>
             </ol>
