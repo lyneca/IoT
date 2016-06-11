@@ -224,7 +224,7 @@
                                 </li>
                                 <li><h4>Scheduling</h4>
                                     <p>
-                                        See appendix 5.1 for a Gantt Chart.
+                                        See appendix <a href="#5_1">5.1</a> for a Gantt Chart.
                                     </p>
                                 </li>
                                 <li><h4>Alternatives</h4>
@@ -604,13 +604,92 @@
                     <ol>
                         <li id="4_1_1"><h4>Comparison with Original Specifications</h4></li>
                         <li id="4_1_2"><h4>Levels of Testing</h4></li>
-                        <li id="4_1_3"><h4>Live Test Data</h4></li>
+                        <li id="4_1_3"><h4>Live Test Data</h4>
+                            <p>
+                                Because of the nature of this system, acquiring live test data is quite easy -
+                                all I need to do is link the sensorboards to the application, run the program, and run
+                                the tests that I need on it.
+                            </p>
+                        </li>
                     </ol>
                 </li>
                 <li id="4_2"><h3>Reporting on the Testing Progress</h3>
                     <ol>
-                        <li id="4_2_1"><h4>Test Requirements</h4></li>
-                        <li id="4_2_2"><h4>Test Plan</h4></li>
+                        <li id="4_2_1"><h4>Test Requirements</h4>
+                            <p>
+                                To test this product, the sensors themselves are needed. I have five working
+                                sensorboards built to the specification described in the
+                                <a href="Schematic.pdf">schematic</a>, which I shall use to test the application.
+                            </p>
+                        </li>
+                        <li id="4_2_2"><h4>Test Plan</h4>
+                            <p>
+                                To fully test this project, I will need to test both the software and the hardware
+                                counterparts. The tests will comprise of load testing, timing testing, and accessibility
+                                testing.
+                            </p>
+                            <table>
+                                <tr>
+                                    <td>Test</td>
+                                    <td>Plan</td>
+                                    <td>Measurements</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">
+                                        Load testing
+                                    </td>
+                                    <td  rowspan="2">
+                                        Link all available boards and run the program.
+                                    </td>
+                                    <td>
+                                        Ping time of boards compared to a lower load
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Application framerate
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Connection testing
+                                    </td>
+                                    <td>
+                                        Link singular boards up and measure connection time to different WiFi networks
+                                    </td>
+                                    <td>
+                                        Time taken for a board to connect to a WiFi network
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">
+                                        Ping testing
+                                    </td>
+                                    <td rowspan="2">
+                                        Link singular boards up and measure time taken for various transmission tasks
+                                    </td>
+                                    <td>
+                                        Time taken for a full read cycle
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Time taken for the sending process to finish
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Accessibility testing
+                                    </td>
+                                    <td>
+                                        Utilise peer testing to evaluate the ease of use of the program
+                                    </td>
+                                    <td>
+                                        Peer testing data
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
                         <li id="4_2_3"><h4>Test Data and Expected Results</h4></li>
                         <li id="4_2_4"><h4>Test Results</h4></li>
                         <li id="4_2_5"><h4>Recommendation</h4></li>
