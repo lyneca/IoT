@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>IoT Core by lyneca</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+</head>
+<body>
+
+<section class="page-header">
+    <h1 class="project-name">IoT Core<br></h1>
+    <h2 class="project-tagline"></h2>
+    <a href="https://github.com/wing2048/IoT" class="btn">View on GitHub</a>
+    <a href="https://github.com/wing2048/IoT/zipball/master" class="btn">Download .zip</a>
+    <a href="https://github.com/wing2048/IoT/tarball/master" class="btn">Download .tar.gz</a>
+</section>
+<section class="main-content">
+
+    <h1>IoT Sensorboards User Manual</h1><br />
+    <h2>Contents</h2>
+    <ol>
+        <li>Usage</li>
+        <li>Protocol</li>
+        <li>API/Class Reference</li>
+    </ol>
+    <ol>
+        <li>Usage
+            <p>
+                This monitoring application connects to multiple data servers and graphs the data sent by them. The data
+                must be sent from the server in a specific format described in section 2 through HTTP packets. The file
+                <code>sensorboard.ino</code> contains an example Arduino sketch and a schematic for a PCB board with
+                sensors attached.
+            </p>
+            <p>
+                This schematic and sketch have been tested to work.
+            </p>
+        </li>
+        <li>Protocol
+            <p>
+                The protocol for transmitting data uses HTTP over TCP.
+                First, send a HTML header:
+            </p>
+
+<pre><code>HTTP/1.0 200 OK
+Content-Type: text/html
+Content-Length: [Length of content]</code></pre>
+            <p>
+                And then send the data as space separated values in this order:<br/>
+                <code>temperature light sound pressure humidity</code><br/>
+                Data types are dependant on the sensors, but the program is initially configured for the default
+                sensorboard:
+            </p>
+            <table>
+                <tr>
+                    <td>Temperature</td>
+                    <td>Float to 2 d.p.</td>
+                </tr>
+                <tr>
+                    <td>Light</td>
+                    <td>Integer</td>
+                </tr>
+                <tr>
+                    <td>Sound</td>
+                    <td>Integer</td>
+                </tr>
+                <tr>
+                    <td>Pressure</td>
+                    <td>Float to 2 d.p.</td>
+                </tr>
+                <tr>
+                    <td>Humidity</td>
+                    <td>Int</td>
+                </tr>
+            </table>
+            <p>
+                An example content line:
+                <code>28.13 55 331 101.54 439</code>
+            </p>
+            <p>
+                The application will deal with any errors in the amount of values sent, but it cannot verify that the
+                data
+                is correct.
+            </p>
+        </li>
+        <li>API and Class Reference
+            <p>
+                All classes and functions contain Sphinx-style documentation strings.
+            </p>
+            <h3>Measurement</h3>
+            <p>
+                Measurement objects store a set of measurements at a single point in time.<br/>
+                Parameters may be unpacked into Measurement objects using star (*) notation.
+            </p>
+            Parameters:
+            <table>
+                <tr>
+                    <td><code>ts</code></td>
+                    <td>Timestamp</td>
+                </tr>
+                <tr>
+                    <td><code>t</code></td>
+                    <td>Temperature reading</td>
+                </tr>
+                <tr>
+                    <td><code>l</code></td>
+                    <td>Light reading</td>
+                </tr>
+                <tr>
+                    <td><code>s</code></td>
+                    <td>Sound reading</td>
+                </tr>
+                <tr>
+                    <td><code>p</code></td>
+                    <td>Pressure reading</td>
+                </tr>
+                <tr>
+                    <td><code>h</code></td>
+                    <td>Humidity reading</td>
+                </tr>
+            </table>
+            Methods defined in Measurement:
+            <ul>
+                <li class="no-counter"><code>__getitem__(item)</code> allows you to index Measurement objects.</li>
+            </ul>
+
+            <h3>Sensor</h3>
+            <p>
+                Sensor objects store and communicate with a sensorboard each.
+                Each time <code>read()</code> is called, Measurement objects are stored in the Sensor object's
+                self.measurements attribute.
+            </p>
+            Parameters:
+            <table>
+                <tr>
+                    <td>addr</td>
+                    <td>IP address of the sensor</td>
+                </tr>
+                <tr>
+                    <td>port</td>
+                    <td>Port of the sensor</td>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td>Name of the board</td>
+                </tr>
+                <tr>
+                    <td>colour</td>
+                    <td>Display colour of the board</td>
+                </tr>
+            </table>
+            Methods defined in Sensor:
+            <ul>
+                <li class="no-counter"><code>read()</code> reads a single measurement set from the board, returning a
+                    Measurement object.
+                </li>
+                <li class="no-counter"><code> start()</code> starts a looping thread with a safe update time.
+                    To use this, you must be using Tk and have a <code>root</code> object.
+                </li>
+                <li class="no-counter"><code> get_ping()</code> returns the average ping time of the sensor measured by
+                    the last three data
+                    transfers.
+                </li>
+                <li class="no-counter"><code>__str__() or str(Sensor)</code> returns the sensorboard's name</li>
+            </ul>
+            <h3>GraphFrame</h3>
+            <p>
+                A Tk frame that stores a Canvas object graph.
+            </p>
+            Parameters:
+            <table>
+                <tr>
+                    <td><code>root</code></td>
+                    <td>The Tk root window</td>
+                </tr>
+                <tr>
+                    <td><code>x</code></td>
+                    <td>Grid x position of the graph</td>
+                </tr>
+                <tr>
+                    <td><code>y</code></td>
+                    <td>Grid y position of the graph</td>
+                </tr>
+                <tr>
+                    <td><code>dx</code></td>
+                    <td>Columnspan of the graph</td>
+                </tr>
+                <tr>
+                    <td><code>dy</code></td>
+                    <td>Rowspan of the graph</td>
+                </tr>
+                <tr>
+                    <td><code>t</code></td>
+                    <td>Graph title</td>
+                </tr>
+                <tr>
+                    <td><code>increment</code></td>
+                    <td>The increment of the y axis</td>
+                </tr>
+                <tr>
+                    <td><code>m_index</code></td>
+                    <td>Which index to pull out from Measurement objects</td>
+                </tr>
+                <tr>
+                    <td><code>max_measurements</code></td>
+                    <td>Max amount of measurements to be displayed on the graph</td>
+                </tr>
+            </table>
+            Methods defined in GraphFrame
+            <ul>
+                <li class="no-counter"><code>update()</code> loops through the sensors and gets the most recent
+                    measurement of type m_index, and displays it on the graph.
+                </li>
+                <li class="no-counter"><code>add_point(x, y)</code> adds a white dot to the graph at x, y.</li>
+                <li class="no-counter"><code>draw_lines(l, colour)</code> draws lines between a list of y values.</li>
+                <li class="no-counter"><code>get_grid_y(y)</code> returns the scaled value of a point to an actual pixel
+                    value.
+                </li>
+            </ul>
+            <h3>InfoFrame</h3>
+            <p>InfoFrame objects store the Tk Frame of the bottom-right info frame that lists sensors and other generic
+                data.</p>
+            Parameters:
+            <table>
+                <tr>
+                    <td><code>root</code></td>
+                    <td>Root window object</td>
+                </tr>
+                <tr>
+                    <td><code>x</code></td>
+                    <td>Column x pos</td>
+                </tr>
+                <tr>
+                    <td><code>y</code></td>
+                    <td>Row y pos</td>
+                </tr>
+                <tr>
+                    <td><code>dx</code></td>
+                    <td>How many columns to span</td>
+                </tr>
+                <tr>
+                    <td><code>dy</code></td>
+                    <td>How many rows to span</td>
+                </tr>
+                <tr>
+                    <td><code>t</code></td>
+                    <td>Title</td>
+                </tr>
+            </table>
+            Methods defined in InfoFrame:
+            <ul>
+                <li class="no-counter"><code>update()</code> updates the graph</li>
+            </ul>
+        </li>
+    </ol>
+</section>
+

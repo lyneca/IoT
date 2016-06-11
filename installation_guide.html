@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <title>IoT Core by lyneca</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+</head>
+<body>
+
+<section class="page-header">
+    <h1 class="project-name">IoT Core<br></h1>
+    <h2 class="project-tagline"></h2>
+    <a href="https://github.com/wing2048/IoT" class="btn">View on GitHub</a>
+    <a href="https://github.com/wing2048/IoT/zipball/master" class="btn">Download .zip</a>
+    <a href="https://github.com/wing2048/IoT/tarball/master" class="btn">Download .tar.gz</a>
+</section>
+<section class="main-content">
+    <h1>Installation Guide</h1>
+    <ol>
+        <li>Get Python 3 from <a href="https://www.python.org/downloads/">here</a></li>
+        <li>Check for dependencies from the command line:
+            <ol>
+                <li><code>python -c "import requests"</code></li>
+                <li><code>python -c "import tkinter"</code></li>
+            </ol>
+            <p>If any of these return ImportError, use pip to install them: <code>pip install [package]</code></p>
+        </li>
+        <li>Set up your sensorboard
+            <p> If using the default sensorboard:</p>
+            <ol>
+                <li>Build the board based on the <a href="Schematic.pdf">schematic</a>.</li>
+                <li>Install the <a href="https://www.arduino.cc/en/Main/Software">Arduino IDE</a>.</li>
+                <li>
+                    Open <code>sensorboard.ino</code> in the Arduino IDE and edit it to set the wifi SSID and password.
+                </li>
+                <li>Upload it to the board using the IDE.</li>
+            </ol>
+        </li>
+        <li>Edit <code>gui.py</code> and set your sensorboards' IP addresses and ports.</li>
+        <li>Run <code>gui.py</code>!</li>
+    </ol>
+</section>
+</body>
+</html>
