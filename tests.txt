@@ -1,0 +1,9 @@
+Tests to run:
+ - Hardware tests
+  - Time
+   - Connection time
+    - ~7s
+   - Sending of data
+    - FAST
+ - Software tests
+  - Run at capacity

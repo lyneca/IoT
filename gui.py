@@ -67,6 +67,15 @@ def count_online():
 
 class Measurement:
     def __init__(self, ts, t, l, s, p, h):
+        """
+
+        :param ts: timestamp
+        :param t: temperature reading
+        :param l: light reading
+        :param s: sound reading
+        :param p: pressure reading
+        :param h: humidity reading
+        """
         self.timestamp = ts
         self.temp = float(t)
         self.light = int(l)
@@ -79,26 +88,29 @@ class Measurement:
 
 
 class Sensor:
-    """
-    Object to handle individual sensor modules.
-
-    :param addr: IP address of the sensor
-    :param port: Port of the sensor
-    :param name: Name of the board
-    :return: Sensor object
-    """
-
     def __init__(self, addr, port, name, colour):
+        """
+        Object to handle individual sensor modules.
+
+        :param addr: IP address of the sensor
+        :param port: Port of the sensor
+        :param name: Name of the board
+        :param colour: Display colour of the board
+        :return: Sensor object
+        """
         self.name = name
         self.colour = colour
         self.thread = threading.Thread(target=self.read)
         self.address = addr
         self.port = port
         self.measurements = []
+        self.times = []
+        self.loop_times = []
         self.session = requests.Session()
         self.session.mount("http://", requests.adapters.HTTPAdapter())
         self.is_active = False
         self.combined_address = self.address + ':' + str(self.port)
+        self.loop_time = 0
         debug("Created sensor " + self.name + " at " + self.combined_address, 1)
 
     def read(self):
@@ -107,11 +119,15 @@ class Sensor:
 
         :return: Decoded data.
         """
+        mark = time.time()
         try:
             r = self.session.get('http://' + self.address + ':' + str(self.port))  # Thank god for requests
         except requests.exceptions.ConnectionError:
-            debug("Connection error to '%s'." % self.combined_address, 3)
+            # This line appears to trigger all the time, crowding out all the other info messages.
+            # Weird thing is, the boards still connect fine. Maybe it's a timeout thing
+            # debug("Connection error to '%s'." % self.combined_address, 3)
             return
+        self.times.append(time.time() - mark)
         if len(r.content.decode().split()) != 5:
             debug(
                 "Invalid data sent by board " +
@@ -127,9 +143,11 @@ class Sensor:
         with open('sensorlogs/' + self.name + '.csv', 'a') as file:
             file.write(','.join((str(hex(int(datetime.now().timestamp())) + ' ' + r.content.decode()).split())) + '\n')
         debug("Received and logged valid data from " + self.name + " at " + self.combined_address)
+        self.loop_times.append(time.time() - self.loop_time)
         return r.content.decode()
 
     def start_thread(self):
+        self.loop_time = time.time()
         """
         Starts the read process in a separate thread.
         """
@@ -137,12 +155,31 @@ class Sensor:
         self.thread.start()
         root.after(150, self.start_thread)
 
+    def get_ping(self):
+        if len(self.times) > 3:
+            return str(round(sum(self.times[-3:]), 3))
+        else:
+            return "N/A"
+
     def __str__(self):
         return self.name
 
 
 class GraphFrame:
     def __init__(self, root, x, y, dx, dy, t, increment, m_index, max_measurements):
+        """
+        Tk frame for a graph
+
+        :param root: the Tk root window
+        :param x: grid x position of the graph
+        :param y: grid y position of the graph
+        :param dx: columnspan of the graph
+        :param dy: rowspan of the graph
+        :param t: graph title
+        :param increment: the increment of the y axis
+        :param m_index: which index to pull out from Measurement objects
+        :param max_measurements: max amount of measurements to be displayed on the graph
+        """
         self.max_measurements = max_measurements
         self.increment = increment
         self.m_index = m_index
@@ -244,7 +281,8 @@ class InfoFrame:
         )
         i = 30
         for sensor in sensors:
-            self.graph.create_text(self.graph_width // 2, i, text=sensor.name, font=('Courier New', 10),
+            self.graph.create_text(self.graph_width // 2, i, text=sensor.name + ': ' + sensor.get_ping() + 'ms',
+                                   font=('Courier New', 10),
                                    fill=sensor.colour if sensor.is_active else "#999999")
             i += 15
         self.graph.create_text(
@@ -271,15 +309,17 @@ if __name__ == '__main__':  # If program is run directly and not imported
     debug("Created window object", 1, True)
     start_time = datetime.now()  # Displayed on the info frame
     debug("Start time: " + ' '.join(start_time.isoformat().split("T")), 0, True)
+    # This is the list of sensors to loop through.
     sensors = [
-        # Sensor("192.168.0.6", 80, "Celaeno", "#FF5555"),
-        # Sensor("192.168.0.15", 80, "Alcyone", "#55FF55"),
-        # Sensor("192.168.0.19", 80, "Maia", "#5555FF"),
-        # Sensor("192.168.0.20", 80, "Atlas", "#FFFF55"),
-        Sensor("localhost", 80, "TestServer", "#FFFF55"),
+        #            IP       Port  Name       Colour
+        Sensor("192.168.0.5", 80, "Asterope", "#FF5555"),
+        Sensor("192.168.0.10", 80, "Atlas", "#55FF55"),
+        Sensor("192.168.0.18", 80, "Celaeno", "#5555FF"),
+        Sensor("192.168.0.11", 80, "Alcyone", "#FFFF55"),
+        Sensor("192.168.0.17", 80, "Maia", "#55FFFF"),
+        # Sensor("localhost", 80, "TestServer", "#FFFF55"),
     ]
     debug("Created all sensor objects", 1, True)
-
     # Now to create the frames. These objects are pluggable; you may organise them how you wish with parameters 1-4.
     #                             x  y  w  h  title
     temp_frame = GraphFrame(root, 0, 0, 2, 1, "Temperature", 10, 1, 8)
@@ -289,6 +329,7 @@ if __name__ == '__main__':  # If program is run directly and not imported
     humidity_frame = GraphFrame(root, 2, 1, 1, 1, "Humidity", 400, 5, 4)
     info_frame = InfoFrame(root, 3, 1, 1, 1, "Info")
 
+    # Initial update
     temp_frame.update()
     sound_frame.update()
     light_frame.update()
