@@ -362,10 +362,12 @@ li ul {
 li.no-counter {
     margin-left: 40px;
 }
+
 li.no-counter:before {
-    content: "– ";
+    content: " – ";
     counter-increment: none;
 }
+
 li p {
     margin-left: 40px;
 }

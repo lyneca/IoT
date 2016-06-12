@@ -39,8 +39,15 @@
         sensorboards. The file <code>fake_sensorboard.py</code> simulates a fake sensorboard on
         <code>localhost:80</code>.</p>
 
-    <p>If you've got an Arduino and want to look at the code, the Arduino code is in
-        <code>sensorboard/sensorboard.ino</code>.</p>
+    <p>
+        If you've got an Arduino and want to look at the code, the Arduino code is in
+        <code>sensorboard/sensorboard.ino</code>.
+    </p>
+
+    <p>
+        If you happen to want the project, scroll down!
+    </p>
+
     <h2 id="top">Contents</h2>
     <ol>
         <li><a href="#1">Defining and Understanding the Problem</a>
@@ -119,8 +126,7 @@
                 <li><a href="#5_3">Communication</a>
                     <ol>
                         <li><a href="#5_3_1">Progress Meeting Agenda</a></li>
-                        <li><a href="#5_3_2">Progress Meeting Minutes</a></li>
-                        <li><a href="#5_3_3">Personal Log Book</a></li>
+                        <li><a href="#5_3_2">Personal Log Book</a></li>
                     </ol>
                 </li>
                 <li><a href="#5_4">Algorithms and Flowcharts</a></li>
@@ -210,7 +216,7 @@
                                             </p>
                                             <p>
                                                 On the software side, I will need Python and the
-                                                required modules listed in section 2.1. I will need a version control
+                                                required modules listed in section <a href="#2_1">2.1</a>. I will need a version control
                                                 system (VCS) such as Git, and I will most likely use an integrated
                                                 development environment (IDE) such as Pycharm.
                                             </p>
@@ -288,7 +294,8 @@
                                 </li>
                                 <li><h4>Variables</h4>
                                     <p>
-                                        The program will need to use variables, and they are detailed in section 5.2.6.
+                                        The program will need to use variables, and they are detailed in section
+                                        <a href="#5_2_6">5.2.6</a>.
                                     </p>
                                 </li>
                                 <li><h4>Design Approach</h4>
@@ -340,7 +347,7 @@
                             <ol>
                                 <li><h4>Screen Design Prototypes</h4>
                                     <p>
-                                        See section 5.2.7 for an annotated storyboard.
+                                        See section <a href="#5_2_7">5.2.7</a> for an annotated storyboard.
                                     </p>
                                 </li>
                                 <li><h4>Appropriate Messages and Icons</h4>
@@ -403,7 +410,6 @@
                                             there's an API).
                                         </li>
                                     </ul>
-                                    <br/>
                                     <p>
                                         Originally the project was going to be built to a windows executable file, but I
                                         realised that this would impact on the portability of the program, and the
@@ -485,16 +491,90 @@
                 </li>
             </ol>
         </li>
-        <li id="3"><h2>Implementation <a href="#top" class="top">#</a></h2>
+        <li id="3"><h2>Implementation <a href="#top" class="top">#</a></h2><br/>
+            <h3>General notes</h3>
+            <p>
+                This was probably the biggest project I've done, and I have learned much.
+            </p>
+            <p>
+                I came up with the idea after being briefly obsessed with the idea of the Internet of Things - tiny
+                internet enabled devices inside everyday objects, all working together as a huge system. I already
+                had experience in networking and Arduino (especially after January 2016 when I went to NCSS and did a
+                course centering around Arduinos), and I didn't really want to do another game.
+            </p>
+            <p>
+                Inspired by one of last year's software projects, a drone controller, I wanted to make something
+                <em>useful</em>. So, putting these two concepts together, I came up with this so far unnamed project -
+                a monitoring application that can monitor its environment.
+            </p>
+            <p>
+                There are a lot of things you could do with this - especially if you were to integrate it with other
+                things, like light switch controllers (especially ones like
+                <a href="http://www.belkin.com/au/p/P-F7C030/">this</a>). Unfortunately, it's not like I could go
+                and ripping out light switches and replacing them with smarter ones, so I decided that this project's
+                scope should only be monitoring, not enacting a change.
+            </p>
+            <p>
+                The one major bug I had with this project was when I was setting up the WiFi module on the boards.
+                I used an ESP8266 module, and we bought six of them. They all appeared to be broken, but after about six
+                hours of work my Dad and I discovered that it was a problem relating to the baud rate of messages being
+                sent. This resulted in commit
+                <code>
+                    <a href="https://github.com/lyneca/IoT/commit/dd135018a6c136b4190d529682ed4cc667cf7c53">#dd1350</a>:
+                    "added in the wifi code after much gnashing of teethies"
+                </code>.
+            </p>
+            <p>
+                I went through a few interface designs before I decided on the current one. My main problem was how to
+                fit five sensorboards, each with five sensors, onto a window that fits on to your screen nicely and
+                isn't impossible to read. My two solutions for this were to either have five frames, each
+                representing a specific sensor, and then split that up into five separate windows representing
+                each type of data measured. This setup is shown in <a href="#v2">version 2.0</a>, albeit with only
+                three different environmental properties shown (temperature, light and sound).
+            </p>
+            <p>
+                However, this setup failed on two aspects: ease of reading and dynamic-ness. The graphs were
+                <em>tiny</em>, and there were still another ten of them to fit on (pressure and humidity).
+            </p>
+            <p>
+                Also at this time I wasn't very satisfied about the way the program was functioning network-wise, so I
+                completely recreated it from scratch to make <a href="#v3">version 3.0</a>. This had no "GUI" as such,
+                as it displayed its data through a command line, but the network improvements I made were <em>huge</em>.
+                The main thing that I did was to move from the pure Python <code>socket</code> to the higher-level
+                <code>requests</code> library - changing the sensorboard code so that the responses they sent were HTTP
+                compliant. Using the higher level library, along with <code>requests</code>' <code>keep-alive</code>
+                server, allowed for sensors to disconnect and reconnect at any time - as well as the ability to run the
+                program, and <em>then</em> turn the boards on. That helped a lot with debugging the boards; I could
+                reboot or reupload code and keep the program running.
+            </p>
+            <p>
+                However, I longed for the coming of the GUI. I tried a couple of services - Bokeh and Django to make a
+                web application, Kivy to make a fancy interface, but none of them really fit the idea of what I wanted.
+                Eventually I settled back to using Tk, but redesigned the interface: Instead of organising it by
+                individual boards and then separating into graphs for each type of data collected, I organised it by the
+                datatype first and put all the sensors onto the same graph. This allowed me to fit theoretically as many
+                boards on at once, allowing for quite a few new design prospects.
+            </p>
+            <p>
+                There are still a few <a href="">bugs</a> left, and the display isn't quite as polished as I would like,
+                but the program is in a beta/release stage now.
+            </p>
             <ol>
-                <li id="3_1"><h3>Interface Design</h3></li>
+                <li id="3_1"><h3>Interface Design</h3>
+                    <p>
+                        Version two of the program was what I originally thought would be my final design, but it was
+                        too cramped and not dynamic enough, so I redesigned it to have all of the measurements from all
+                        of the sensors organised by data type as in version 4 of the program. This also meant that I
+                        could theoretically put as many sensors onto the program as I wanted.
+                    </p>
+                </li>
                 <li id="3_2"><h3>Program Development and Techniques</h3>
                     <ol>
                         <li><h4>Code Generation</h4>
                             <ol>
                                 <li><h4>Structured Approach</h4>
                                     <p>
-
+                                        <!--TODO-->
                                     </p>
                                 </li>
                                 <li><h4>Debugging Output Statements</h4>
@@ -551,7 +631,7 @@
                         </li>
                         <li><h4>Error Detection and Correction</h4>
                             <p>
-
+                                <!--TODO-->
                             </p>
                         </li>
                         <li><h4>Software Debugging Tools</h4>
@@ -586,12 +666,6 @@
                                 The user manual can be found <a href="user_manual.html">here</a>.
                             </p>
                         </li>
-                        <li><h4>Tutorial</h4>
-                            <p>
-
-                            </p>
-                        </li>
-
                     </ol>
                 </li>
                 <li id="3_4"><h3>Communication</h3></li>
@@ -601,8 +675,38 @@
             <ol>
                 <li id="4_1"><h3>Testing the Software Solution</h3>
                     <ol>
-                        <li id="4_1_1"><h4>Comparison with Original Specifications</h4></li>
-                        <li id="4_1_2"><h4>Levels of Testing</h4></li>
+                        <li id="4_1_1"><h4>Comparison with Original Specifications</h4>
+                            <p>
+                                The product turned out to be identical to the original idea on the inside, but the
+                                display and graphics are very different to what I originally imagined - but they are
+                                more effective than the original idea. My original idea was going to be more like
+                                <a href="">this revision</a>,
+                                <!-- TODO -->
+                            </p>
+                        </li>
+                        <li id="4_1_2"><h4>Levels of Testing</h4>
+                            <table>
+                                <tr>
+                                    <td>Level</td>
+                                    <td>What I tested</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="2">Module</td>
+                                    <td><code>Sensor.read()</code> can be tested for efficiency and reliability</td>
+                                </tr>
+                                <tr>
+                                    <td>The <code>GraphFrame</code> class can be tested for efficiency</td>
+                                </tr>
+                                <tr>
+                                    <td>Program</td>
+                                    <td>Read cycle time can be tested for efficiency</td>
+                                </tr>
+                                <tr>
+                                    <td>System</td>
+                                    <td>System reliability tests</td>
+                                </tr>
+                            </table>
+                        </li>
                         <li id="4_1_3"><h4>Live Test Data</h4>
                             <p>
                                 Because of the nature of this system, acquiring live test data is quite easy -
@@ -845,27 +949,43 @@
                 </li>
                 <li id="5_2"><h3>System model</h3>
                     <ol>
-                        <li id="5_2_1"><h4>IPO</h4></li>
+                        <li id="5_2_1"><h4>IPO</h4>
+                            <table>
+                                <tr>
+                                    <td>
+                                        Input
+                                    </td>
+                                    <td>
+                                        Process
+                                    </td>
+                                    <td>
+                                        Output
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Sensor data</td>
+                                    <td>Receive, decode, remap, format</td>
+                                    <td>Formatted data in graph form</td>
+                                </tr>
+                            </table>
+                        </li>
                         <li id="5_2_2"><h4>Context Diagram</h4>
-                            <iframe frameborder="0" style="width:100%;height:648px"
-                                    src="https://www.draw.io/?chrome=0&lightbox=1&edit=https%3A%2F%2Fwww.draw.io%2F%23G0B_JtAz3x5BQVdkZ5Z3RNc3BBeGc&nav=1&db=0&od=0#G0B_JtAz3x5BQVdkZ5Z3RNc3BBeGc"></iframe>
+                            <div class="mxgraph" style="max-width:100%;background-color:#ffffff;"
+                                 data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile userAgent=\&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.84 Safari/537.36\&quot; version=\&quot;5.5.1.6\&quot; editor=\&quot;www.draw.io\&quot; type=\&quot;google\&quot;&gt;&lt;diagram&gt;3VdNb9swDP01PrbwR5ymx7pfuwwYEAzbjqqt2MJky5OVJu2vL2WT/lJStEhXYMshiCiKpJ4enxQvui7395rVxVeVcemFfrb3ohsvDFcXS/i2hqfOsIj8zpBrkXWmYDCsxTNHI7ltRcabiaNRShpRT42pqiqemomNaa12U7eNktOsNcsp42BYp0y61h8iMwVuK8RtWfsXLvKCMgfLy27mgaW/c622FebzwmjTfrrpklEs3GhTsEztRqboFmDVSkFk+6vcX3NpoSXYunV3R2b7ujWvsLbXF8CUXfDI5Ba37oXLP1ubPlnzquHDENyu6lqKlBmhKizfPBFkEBdOBwbJrhCGr2uW2pkd8ANshSkljII2TpuRa8ORLgeqbk1Y8j1XJTf6CVxwQbRA+JBeMfFmNxxWQBAXo4NaoY0hP/I+9IAR/ECYDkMWOZBZoJQGW6KYzhoHmr8PSOBPAVnEbwRk+QGALBxAvjcc4Ph0FJYzFOJV/HkooDRMOmmGQLrVj9y62/3yKruySgXDVLKmEekUD74X5ufo9y/47Z/H7UoozU75NBjmupw8c+RthiHUpba6PYqB0obpnKNXW72L9AhJotgYSLJpLkElHqdFHEIXM3xTAsob0XlyjtH8fLracdFY3WZxIqqHCHE5C9Tt2AkEB8Psbsmttg5tXx/O0+8b8xARB+p0EQci9ZC+iVuBK9O95twwwxymQQ9ZyR7RSfNGPLOH1sHyBrcE3nHixTeWOlHCpMgrS0ggC3RwlNh2BMGXVzhRiiyzIRLJHrhM+svuWkkoxqam6+6VhsZLG4sZ7sIxSdtuOtroZ/55uLrE5kbMg4vTqEcuarNpoAnmnf++A8PXwD8pBljqWAxahT96GgtqT+qyC/fyeU0s3q4LRzO9VxhieghQw9KD4oOFoX+YUB58B3+YMLh3753S8Mo0QK3Q/89Fou0yl5anXj6TEzujXj5FH2A4POk79+FvU3T7Ag==&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
                         </li>
                         <li id="5_2_3"><h4>Data Flow Diagram</h4>
-                            <iframe frameborder="0" style="width:100%;height:443px"
-                                    src="https://www.draw.io/?chrome=0&lightbox=1&edit=https%3A%2F%2Fwww.draw.io%2F%23G0B_JtAz3x5BQVSGRnek1qUFk1bTQ&nav=1&db=0&od=0#G0B_JtAz3x5BQVSGRnek1qUFk1bTQ"></iframe>
+                            <div class="mxgraph" style="max-width:100%;background-color:#ffffff;"
+                                 data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile userAgent=\&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.84 Safari/537.36\&quot; version=\&quot;5.5.1.6\&quot; editor=\&quot;www.draw.io\&quot; type=\&quot;google\&quot;&gt;&lt;diagram&gt;zVjdbusoEH6aXDayYydNbvu7e7E6VaPq7Lk6oja2UQlEmDTpPn0HPMQ/JNnoyI2biwiGAYbvmxnGjKLb1e5RkXXxj0wpH02CdDeK7kaTyfx6Bv9G8FEJ4iioBLliaSUKa8GS/UdR6NQ2LKVlS1FLyTVbt4WJFIImuiUjSsltWy2TvL3rmuRux1qwTAj3pT9Zqgs81gSPZeR/UZYXbudwtqhGXknyliu5EbjfaBJl9lcNr4hbCw9aFiSV24YougdYlZSwsmmtdreUG2gdbNW8hyOje7sVFWjb6QkxncfxIgjSaBFm19P4Cld4J3yDWNwRTUByKzkHqKWC9pOSCS1LPIL+cLDB2sAQdG62BdN0uSaJGdmCj4Cs0CsOvRCauAlVmqLLHLDcitDsRypXVKsPUMEJUYAQoouFzne2NWGhg7lokDVHGUEfyfdL1zhBA6E6E7bIg21JRSnVqyQq9YH6enimbXRc9//AmX0FOFMPnMeXv0HwTEVKFQWPGtCPZi41IVJ7CAbxI0wwfvj9UDkRrDRgfYvw6zrY2R72JbBde7C9WKguHnZdb3KnHSTuwvkxb7JX3bBxF8ed/L0Y0oFCP4E7qODKox5SpVbybV8bwDGb6MClvjZ6q11uqqNxxuU2KYjSYyKE1EQzKX4bRcJZLkCR0wwO1wuqnbCMzkXVzesX1dhD1eWxFMQVwl0fTKESw65UupC5FITf19IbW17BAtFd0Mad7pj+t9H+5doCDmIGjL7tmJFgPHXdJ6oYnBYiotKpjDKWnKYBDJcbZWPkRDLXROUUpx1xPJ9PRTn4yXvbgH7JwZL1MDkzbjwyZe/QzE2zqmf2rFXjsGlDpU8uL0mBTZNDUOACsVk2msz8DfA/FEuNiDkSTT2x5i6uk7TZqnIQ1vxvpA45/dOA0B9MajUrlogeaTiDBRtgR6+jq2A8i2Z4C5zNDC73JBlYW6vILCvBji51+13/kE3/jnom2wvdTheLKCxvTufBwQLK/0B8kAreSrQtEwg8ppiPRZKSV4DYT41YqTFh35Og4rJPPmp1uSzZDs89jQfCs8e7DVE7yan9MOqfU+jWb1RVFNbvgNH9Jw==&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
                         </li>
                         <li id="5_2_4"><h4>Structure Chart</h4>
-                            <iframe frameborder="0" style="width:100%;height:661px"
-                                    src="https://www.draw.io/?chrome=0&lightbox=1&edit=https%3A%2F%2Fwww.draw.io%2F%23G0B_JtAz3x5BQVaUNKUmNwUW5ITzQ&nav=1&db=0&od=0#G0B_JtAz3x5BQVaUNKUmNwUW5ITzQ"></iframe>
+                            <div class="mxgraph" style="max-width:100%;background-color:#ffffff;"
+                                 data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile userAgent=\&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.84 Safari/537.36\&quot; version=\&quot;5.5.1.6\&quot; editor=\&quot;www.draw.io\&quot; type=\&quot;google\&quot;&gt;&lt;diagram&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
                         </li>
                         <li id="5_2_5"><h4>System Flowchart</h4>
-                            <iframe frameborder="0" style="width:100%;height:613px"
-                                    src="https://www.draw.io/?chrome=0&lightbox=1&edit=https%3A%2F%2Fwww.draw.io%2F%23G0B_JtAz3x5BQVY0J0Q3J2dXZ1Sm8&nav=1&db=0&od=0#G0B_JtAz3x5BQVY0J0Q3J2dXZ1Sm8"></iframe>
+                            <div class="mxgraph" style="max-width:100%;background-color:#ffffff;"
+                                 data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile userAgent=\&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.84 Safari/537.36\&quot; version=\&quot;5.5.1.6\&quot; editor=\&quot;www.draw.io\&quot; type=\&quot;google\&quot;&gt;&lt;diagram&gt;1VjLcuI6EP0alpPCDyBZTp53M1WpYTH3LoUtbFWERcniNV+fltztN4S6cULCgpKPW63W6dNt2aPgbrV/0myd/lIxlyN/HO9Hwf3I969nU/i3wKEAwmBcAIkWcQF5FTAXfzmCZLYRMc8bhkYpacS6CUYqy3hkGhjTWu2aZkslm6uuWUIrVsA8YrKL/hGxSXFbPm7L4v9wkaS0sje9Ke4sWPSSaLXJcL2RHyzdr7i9YuQLN5qnLFa7GhQ8AK1aKfBsR6v9HZeWWqKtmPd45G4Zt+YZxnZ6QjC58fxo7IWRv+CzhfcDPWyZ3CAXI38qwddtLLYwTOyQoIVuI7BSzW7Os1xZm7aDe2ZY/xSkxRwoFcDQ2g6jgxRZzDXY7FJh+HzNIovvQICApWYl4corXWy5Nhz12EOLg5CTJ65W3OgDmOAEP8T8oH490u+uUsMUobQmhGvEGOovKT1XOYABpuHMlMDUVkp+8xVsGsrL0dgi7OPZCSZBgx2/hx2PFF6nhygblB6MpUbPo9JQaF+Hn4DUdBF+wp6KblHCY+h+eKm0SVWiMiYfKvTWtTRulxg36coN0+anbbkAZCqzxg57FDZEZ86zmCwiyfJcRAWIJoUbrV74nZLQLmxIwdj9ynzYCE9nAzakNtol9UQRQWQJx2n9SupmVXPJjNg21x80RfhYqaXIPVa/joLDiyp4NqRg+V6Yfy18NcGr/+hOBoHWbtlLe886+C4yx7SdlLlT2yVkft2R+b3I15LZ1Z3g8+7T3xFGZzAIu9F78Giw2id29tVSql2UQlKuYvTbf1YYokCmzQKZTHoKBBL7OQWCh89LFoi7eOZawG7sIe1bVQ3235NV48R7iaqhd6Jhs0tjlz+Xzg9PVimfUkvV4p+YSO9IZZ+dSZz6rASEVnaECVU2vTJQRyAXRVA4q9ID8OkaIJmtrYFrhEfWocM2PZpnrTe8N+y9pj0MiggqcZac/E+9dl8hQQ3SvqZ/mfOMd9HzjDfoCfx4RVf9ultw36U109efD63oczM5m41vZuFiyRdROJ0u/N6vJe3M9pH47sftUOyeQ6/bU5fdWulQq6tXDmHvbKv09Gt1r9JDsb1OV+34aXdnKvY3uvPbDREuq891hXn1STR4eAU=&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
                         </li>
                         <li id="5_2_6"><h4>Data Dictionary</h4>
-                            <a href="javascript:void(0);" onclick="toggle_visibility('data_dictionary');">
-                                [show/hide table]
-                            </a>
                             <table id="data_dictionary">
                                 <tr>
                                     <td>Name</td>
@@ -926,35 +1046,277 @@
                             </table>
                         </li>
                         <li id="5_2_7"><h4>Storyboard</h4>
-                            <p>The original storyboard for the prototype:
-                                <a href="javascript:void(0);" onclick="toggle_visibility('prototype_storyboard');">
-                                    [show/hide image]
-                                </a>
-                            </p>
-                            <img id="prototype_storyboard" class="hidden" src="static/prototype_storyboard.png">
-                            <p>The full storyboard for the final application:
-                                <a href="javascript:void(0);" onclick="toggle_visibility('final_storyboard');">
-                                    [show/hide image]
-                                </a>
-                            </p>
-                            <img id="final_storyboard" class="hidden" src="static/full_storyboard.jpg">
-                            <p>A storyboard for a possible future sensor selection menu:
-                                <a href="javascript:void(0);" onclick="toggle_visibility('selector_storyboard');">
-                                    [show/hide image]
-                                </a>
-                            </p>
-                            <img id="selector_storyboard" class="hidden" src="static/selector_storyboard.jpg">
+                            <p>The original storyboard for the prototype:</p>
+                            <img id="prototype_storyboard" src="static/prototype_storyboard.png">
+                            <p>The full storyboard for the final application:</p>
+                            <img id="final_storyboard" src="static/full_storyboard.jpg">
+                            <p>A storyboard for a possible future sensor selection menu:</p>
+                            <img id="selector_storyboard" src="static/selector_storyboard.jpg">
                         </li>
                     </ol>
                 </li>
                 <li id="5_3"><h3>Communication</h3>
                     <ol>
-                        <li id="5_3_1"><h4>Progress Meeting Agenda</h4></li>
-                        <li id="5_3_2"><h4>Progress Meeting Minutes</h4></li>
-                        <li id="5_3_3"><h4>Personal Log Book</h4></li>
+                        <li id="5_3_1"><h4>Progress Meeting Agenda</h4>
+                            <ol>
+                                <li><h4>Progress Meeting 1</h4><br/>
+                                    <ul>
+                                        <li class="no-counter">Progress
+                                            <ul>
+                                                <li class="no-counter">Project Progress</li>
+                                                <li class="no-counter">Problems Encountered</li>
+                                            </ul>
+                                        </li>
+                                        <li class="no-counter">Questions
+                                            <ul>
+                                                <li class="no-counter">What are the “needs” of the project?</li>
+                                                <li class="no-counter">Is it feasible?</li>
+                                                <li class="no-counter">Structure</li>
+                                                <li class="no-counter">Link with IPT</li>
+                                                <li class="no-counter">
+                                                    Am I able to prototype in Python and design the final solution in
+                                                    C++?
+                                                </li>
+                                                <li class="no-counter">Questions from the interviewer</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <p>
+                                        All topics in the agenda were discussed and all questions I had were answered.
+                                        I have since decided that the final application should be in Python, not C++,
+                                        and I am able to link with the IPT project.
+                                    </p>
+                                </li>
+                                <li><h4>Progress Meeting 2</h4>
+                                    <ul>
+                                        <li class="no-counter">Progress
+                                            <ul>
+                                                <li class="no-counter">Version 2 of the program</li>
+                                                <li class="no-counter">Thinking about Django</li>
+                                            </ul>
+                                        </li>
+                                        <li class="no-counter">Questions
+                                            <ul>
+                                                <li class="no-counter">Should I make it a web app?</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <p>
+                                        At this time I was thinking about Django integrations, and whether to make a web
+                                        app. I came away from that meeting thinking that I should do a web app, but
+                                        later decided against it.
+                                    </p>
+                                </li>
+                                <li><h4>Progress Meeting 3</h4>
+                                    <ul>
+                                        <li class="no-counter">Progress
+                                            <ul>
+                                                <li class="no-counter">Version 4</li>
+                                                <li class="no-counter">Have excellent networking framework</li>
+                                                <li class="no-counter">Have excellent GUI</li>
+                                            </ul>
+                                        </li>
+                                        <li class="no-counter">Questions
+                                            <ul>
+                                                <li class="no-counter">Various documentation questions</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <p>
+                                        At this point, nearly all of the software was done, but I had not finished the
+                                        documentation.
+                                    </p>
+                                </li>
+                            </ol>
+                        </li>
+                        <li id="5_3_2"><h4>Personal Log Book</h4>
+                            <p>
+                                What follows are the four major version updates. There is a much more lengthy list on
+                                the <a href="https://github.com/lyneca/IoT/commits/master">github repo commit list.</a>
+                            </p>
+                            <ol>
+                                <li id="v1"><h4>Version 1.0</h4>
+                                    (short commit hash:
+                                    <a href="https://github.com/lyneca/IoT/commit/f8a74d2">
+                                        <samp>#f8a74d2</samp>
+                                    </a>)
+                                    <img src="static/version_1.png"/>
+                                    <p>
+                                        This was the first version of the application. It felt more like a proof of
+                                        concept than anything else.
+                                    </p>
+                                    <p>
+                                        Features/Improvements:
+                                    </p>
+                                    <ul>
+                                        <li class="no-counter">
+                                            Graphs light, temperature and sound from a single board on a serial port
+                                        </li>
+                                    </ul>
+                                    <p>
+                                        Problems:
+                                    </p>
+                                    <ul>
+                                        <li class="no-counter">Only one board</li>
+                                        <li class="no-counter">Graph scale is very inaccurate</li>
+                                        <li class="no-counter">No network capabilities</li>
+                                        <li class="no-counter">Only three sensors - no pressure or humidity</li>
+                                    </ul>
+                                </li>
+                                <li id="v2"><h4>Version 2.0</h4>
+                                    (short commit hash:
+                                    <a href="https://github.com/lyneca/IoT/commit/1925437">
+                                        <samp>#1925437</samp>
+                                    </a>)
+                                    <img src="static/version_2.png"/>
+                                    <p>
+                                        Version 2 was the first version where I felt that the project was on track -
+                                        most of the features were there, and it all worked.
+                                    </p>
+                                    <p>
+                                        Features/Improvements:
+                                    </p>
+                                    <ul>
+                                        <li class="no-counter">
+                                            Graphs temperature, light and sound from six different boards over the
+                                            network.
+                                        </li>
+                                        <li class="no-counter">
+                                            Has "Comparing graphs" which show you relative differences in the graph
+                                            levels.
+                                        </li>
+                                        <li class="no-counter">
+                                            Could use both serial and network connections.
+                                        </li>
+                                    </ul>
+                                    <p>
+                                        Problems:
+                                    </p>
+                                    <ul>
+                                        <li class="no-counter">Still only three data types</li>
+                                        <li class="no-counter">Interface was clunky and scrolling was difficult</li>
+                                        <li class="no-counter">UI felt cramped and the graphs were hard to read</li>
+                                        <li class="no-counter">Loads of bugs</li>
+                                    </ul>
+                                </li>
+                                <li id="v3"><h4>Version 3.0</h4>
+                                    (short commit hash:
+                                    <a href="https://github.com/lyneca/IoT/commit/49af37e">
+                                        <samp>#9638095</samp>
+                                    </a>)
+                                    <img src="static/version_3.png"/>
+                                    <p>
+                                        In version 3, I stripped the application down and rebuilt it without a GUI.
+                                    </p>
+                                    <p>
+                                        Features/Improvements
+                                    </p>
+                                    <ul>
+                                        <li class="no-counter">Works as a pure console application</li>
+                                        <li class="no-counter">Works dynamically with any number of boards</li>
+                                        <li class="no-counter">Very fast</li>
+                                        <li class="no-counter">Reliable data transfers</li>
+                                        <li class="no-counter">Stores data in .csv files</li>
+                                    </ul>
+                                    <p>
+                                        Problems:
+                                    </p>
+                                    <ul>
+                                        <li class="no-counter">No GUI</li>
+                                        <li class="no-counter">No graphs</li>
+                                    </ul>
+                                </li>
+                                <li id="v4"><h4>Version 4.0</h4>
+                                    (short commit hash:
+                                    <a href="https://github.com/lyneca/IoT/commit/49af37e">
+                                        <samp>#49af37e</samp>
+                                    </a>)
+                                    <img src="static/version_4.png"/>
+                                    <p>
+                                        Version four combined the reliability and network benefits of version 3 with
+                                        an updated graphical display as in version 2.
+                                    </p>
+                                    <p>
+                                        Features/Improvements
+                                    </p>
+                                    <ul>
+                                        <li class="no-counter">Allows for boards to disconnect and reconnect</li>
+                                        <li class="no-counter">Dynamic</li>
+                                        <li class="no-counter">Very fast</li>
+                                        <li class="no-counter">Very reliable</li>
+                                        <li class="no-counter">List of online boards</li>
+                                        <li class="no-counter">Colour coded</li>
+                                        <li class="no-counter">Better measurement scales</li>
+                                        <li class="no-counter">Stores data in .csv</li>
+                                        <li class="no-counter">Shows ping time of boards</li>
+                                    </ul>
+                                    <p>
+                                        Problems:
+                                    </p>
+                                    <ul>
+                                        <li class="no-counter">
+                                            I would have liked the fancy comparation graphs from version 2
+                                        </li>
+                                        <li class="no-counter">
+                                            Sensors stop responding if a request is cancelled before a response can be
+                                            made (bug <a href="#4_2_5">#4</a>)
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </li>
                     </ol>
                 </li>
-                <li id="5_4"><h3>Algorithms and Flowcharts</h3></li>
+                <li id="5_4"><h3>Algorithms and Flowcharts</h3>
+                    <p>The subroutine to read data from a sensor</p>
+                    <pre>BEGIN ReadDataFromSensor(measurement_history)
+    temp_list = an array
+    IF connected via serial
+        character = a single char
+        WHILE character is not a newline (newline terminates a measurement)
+            read from serial into character
+            append character to temp_list
+        ENDWHILE
+    ELSE IF connected via network
+        receive 100 characters of data into temp_list
+    ENDIF
+    append the data in Measurement objects into measurement_history
+    RETURN measurement_history
+END ReadDataFromSensor</pre>
+                    <div class="mxgraph" style="max-width:100%;background-color:#ffffff;"
+                         data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile userAgent=\&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.84 Safari/537.36\&quot; version=\&quot;5.5.1.6\&quot; editor=\&quot;www.draw.io\&quot; type=\&quot;google\&quot;&gt;&lt;diagram&gt;7Vrdc6JIEP9rfIwFjKI+xmyydw97tXV52NunqxFG4BYYFzAm99dvD9OtDKBmFTS5Pav8anq+en6/7p6GAbtLnj9mfBV+kr6IB47lPw/Yh4HjjC0bPpXgRQuckasFQRb5WoQaSvAY/StQaKF0HfkiNxQLKeMiWplCT6ap8ApDxrNMbky1pYzNUVc8oBF3gkePx03pl8gvQi2dOrgKJf9NREFII9vuTF9ZcO9bkMl1iuMNHLYsX/pywqkvXGgecl9uKiJ2D2bNpISe1a/k+U7EyrRkNt3uYc/V7bwzkeLcjjSYTifTxcxaehPbYQvvBnt44vEabfE7zJ0MLfyB48bQ89yPnuBnoH4+RVytRGQRh671ZRixooFrLV7Ivlkok8UaNmm+CaNCPK64p65sAEwgC4skhn/2tuWTyAqB2GpZYinC9X0UMhFF9gIq2ICNp7oJYtGeou03u521CXihsaso5IimYNv3zqLwA43abmB3AbjxXe4uPM+zvBvWsO9XAHrdPsIHOOJfmRWhDGTK4/uddF5iDLaDfbBMi+UFz4pbxQEQpDJVyqXsIVKTLNVF6pOGF/M8jzwtRBXdTSa/iTsZy6ycErPKV6kHJvhL9TQc09+v2LFeiJr94c2Cxcp1Vu75ARDCrAOBzep2HB3c8xtrOLFw2zMR8yJ6MmfUtqXY22cZwVy3XY1s3DKED5vVUKFnia2qVKOOSFEulzkspw6e7exPwlNpBwNPfwoOLLXyKA0AKUDdkGccqJs1UNY/90YMjUXGG7dwj3xhlXtuD9RD510x1R/yXTHvcuxyJsfoNbVorDP55YxMiIxgqW+IX6UhzHgI7toqwhq1GlFxML7L4J2C2oA9vMG4OGJj0/DEuavERXTW3TBRPEdFJULBPxWgyisHgtcb5e8ej3+IvnvY+2qmnrqJmARXyHK7WoF1TKpAKq8+RLKSGS8nFke55u1loxOzTQa4BOxrRCcbmtaM917TwkmDWltCVuioGdgNJ9BLH+JEic0zOFE2BfNw1YoUVioElen7nuTRMhE2RsTtMKJ77Cpa2c108BfIcE5Ag96Hc+HQ2G8ofAxt15nMLHc2cScj3A7yLy4bTtnEsWbMcpgzxoT0SKLzs5hzazl3DXNH9aeYo/eGUaREBaN3MllF5WHF54UqJkQqbdI5VjNOwNUygnwSPF9nIlHQcCy5+AcKFM2jdP9hxGG4kWRAChnVMMLwFFkNI5M+wgjOpc9EynT3hq/Xvv+d+AlMV04oM/QbNRgY0Sw59Bw1moecbd6mSbiHapjJlSqJoRICU+U1czuIvYYNZ1S2qZJyjAvvPbfD082vHZbJ8R+My9c6unS7IwcOoPD7M5TKYcJwFjrsS5135EupmNC7M216y9opjlFBibrQ0z47r2qM4/brlXUNrq20q0DguDxRXjNd5OqL6kv5iqvUaYdi9/ta3Uuax1EqbsjP3YKKPYTO6SoVpJRWpVSle6NaVbPE1c2gUt1g0olf+6L2zOTMYTGLbOaXBwc9UsDrP7DZ0/r9CITlNYoWzqXKdi1e84IVDdMtd1e2oEPBKaX4M72mTVtH1V86BXbsNW0q59M4ENT2es1ma7pftG39upsDXbhfPB38X5E+CmOKVP0XXH4WffWbSy4euffVQphlOteafucxnjWLvnMRqOpHDXp6C+lZFFiukf+HfKX0kudAPY0zXMZyo+rtxRC8ZRKlHI5ie24pdVFFJ6bQSavloOVe6KBFDrVizy8RQEzk6rT6KNIcLOFYc8kzv1kqOtHIPE1lASCW6d9KkcdRkIJiLJa7FOE8C5sgbrUwAb13Czerdy2Z4SM+DLQ1eScZ22XzQwLJOengW0WUMzbPMttS5LEkkuJxp5C6YhL5H4i+FEOq0bf9mY8rlFVY85bwvaorvp/w5ozNlMC22p4fpCy3b/dLbv6aWWn55+KnsY5qkK9IVTVmuycL/N092KuTx93D0+z+Bw==&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+                    <p>The subroutine to update a graph</p>
+<pre>BEGIN UpdateOverviewGraph(sensor_list, data_to_graph, graph_title)
+    delete all objects on graph
+    create the blue baseline
+    create the graph title using graph_title
+    FOR sensor_num = 0 TO length of sensor_list
+        sensor = sensor_list[sensor_num]
+        CASEWHERE data_to_graph is
+            temperature: map according to min/max temperature values
+            light: map according to min/max light values
+            sound: map according to min/max sound values
+            pressure: map according to min/max pressure values
+            humidity: map according to min/max humidity values
+        ENDCASE
+        create the sensor id text
+        draw the sensor level rectangle
+    NEXT sensor_num
+END UpdateOverviewGraph</pre>
+                    <p>The subroutine to draw the base of a graph</p>
+<pre>BEGIN DrawSensorGraph(point_list, increment, title)
+    delete all objects on graph
+    create title text
+    create graph axis
+    create graph ticks
+    create # of measurements text
+    FOR point_number = 0 TO length of point_list
+        create a point on the graph using point_list[point_number]
+    NEXT point_number
+END DrawSensorGraph
+                    </pre>
+
+                </li>
             </ol>
         </li>
     </ol>
@@ -970,6 +1332,6 @@
     </footer>
 
 </section>
-
+<script type="text/javascript" src="https://www.draw.io/embed2.js?s=flowchart"></script>
 </body>
 </html>
