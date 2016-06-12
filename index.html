@@ -44,8 +44,11 @@
         <code>sensorboard/sensorboard.ino</code>.
     </p>
 
-    <p>
-        If you happen to want to mark the project, scroll down!
+    <p><strong>
+        Here is the original <a href="static/notification.pdf">assessment notification</a>, and here is the
+        <a href="https://www.boardofstudies.nsw.edu.au/syllabus_hsc/pdf_doc/software-design-development-course-specs.pdf">
+            SDD course specification
+        </a>.</strong>
     </p>
 
     <h2 id="top">Contents</h2>
@@ -166,7 +169,6 @@
                                         The system will only collect data from the sensors available, will not collect
                                         data from any other means, and will not be able to effect any change, such as
                                         switching lights or air conditioning on or off.
-
                                     </p>
                                 </li>
                             </ol>
@@ -216,7 +218,8 @@
                                             </p>
                                             <p>
                                                 On the software side, I will need Python and the
-                                                required modules listed in section <a href="#2_1">2.1</a>. I will need a version control
+                                                required modules listed in section <a href="#2_1">2.1</a>. I will need a
+                                                version control
                                                 system (VCS) such as Git, and I will most likely use an integrated
                                                 development environment (IDE) such as Pycharm.
                                             </p>
@@ -562,21 +565,39 @@
             <ol>
                 <li id="3_1"><h3>Interface Design</h3>
                     <p>
+                        The target audience for this project were either people working in businesses looking for a
+                        data collection solution, or IoT developers that wanted a framework to build upon. Hence, the
+                        main thing that the interface needed was customisation options - It needed to have support for
+                        any number of sensors, and the colours and screen design had to be completely user configurable.
+                    </p>
+                    <p>
+                        That was part of the reason why I chose Python/Tk as the language that the program would be
+                        written in - both of these are designed to be really easy to read and change.
+                    </p>
+                    <p>
+                        I chose Tk's <code>grid</code> layout, as I thought that it was much easier to understand for
+                        anyone wanting to plug in sensor graphs (or, indeed, their own Tk apps). It also allows for a
+                        higher degree of customisation over their layout.
+                    </p>
+                    <p>
+                        The default colour scheme of the graphs (black with bright almost neon graph lines) was designed
+                        with as much reduce on eye strain in low-light environments as possible, whilst still allowing
+                        for easy reading; and, of course, it looks very aesthetic and tech-y. The graphs are aligned to
+                        a 5px grid for consistency, and the font is Courier New - the monospacing of the font allows
+                        for a uniform, grid based interface, with all characters aligning above each other.
+                    </p>
+                    <p>
                         Version two of the program was what I originally thought would be my final design, but it was
                         too cramped and not dynamic enough, so I redesigned it to have all of the measurements from all
                         of the sensors organised by data type as in version 4 of the program. This also meant that I
-                        could theoretically put as many sensors onto the program as I wanted.
+                        could theoretically put as many sensors onto the program as I wanted - granting me the pluggable
+                        nature of the program that I wanted.
                     </p>
                 </li>
                 <li id="3_2"><h3>Program Development and Techniques</h3>
                     <ol>
                         <li><h4>Code Generation</h4>
                             <ol>
-                                <li><h4>Structured Approach</h4>
-                                    <p>
-                                        <!--TODO-->
-                                    </p>
-                                </li>
                                 <li><h4>Debugging Output Statements</h4>
                                     <p>
                                         The program can be started from the command line with the -v argument, which
@@ -629,11 +650,6 @@
                                 </li>
                             </ol>
                         </li>
-                        <li><h4>Error Detection and Correction</h4>
-                            <p>
-                                <!--TODO-->
-                            </p>
-                        </li>
                         <li><h4>Software Debugging Tools</h4>
                             <p>
                                 The editor that I used to edit the Python code,
@@ -668,7 +684,11 @@
                         </li>
                     </ol>
                 </li>
-                <li id="3_4"><h3>Communication</h3></li>
+                <li id="3_4"><h3>Communication</h3>
+                    <p>
+                        See section <a href="#5_3">5.3</a> for project meetings and logs.
+                    </p>
+                </li>
             </ol>
         </li>
         <li id="4"><h2>Testing and Evaluating <a href="#top" class="top">#</a></h2>
@@ -680,8 +700,13 @@
                                 The product turned out to be identical to the original idea on the inside, but the
                                 display and graphics are very different to what I originally imagined - but they are
                                 more effective than the original idea. My original idea was going to be more like
-                                <a href="">this revision</a>,
-                                <!-- TODO -->
+                                <a href="">this revision</a>, but I feel that it turned out for the better with the
+                                final layout.
+                            </p>
+                            <p>
+                                The product conforms to the original idea of an environmental data collection system,
+                                and I feel that its modular nature, expandability, and application in different fields
+                                has come out exactly the way I want it.
                             </p>
                         </li>
                         <li id="4_1_2"><h4>Levels of Testing</h4>
@@ -722,7 +747,7 @@
                             <p>
                                 To test this product, the sensors themselves are needed. I have five working
                                 sensorboards built to the specification described in the
-                                <a href="Schematic.pdf">schematic</a>, which I shall use to test the application.
+                                <a href="static/schematic.pdf">schematic</a>, which I shall use to test the application.
                             </p>
                         </li>
                         <li id="4_2_2"><h4>Test Plan</h4>

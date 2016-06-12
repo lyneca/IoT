@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list id="38e8681b-fe5c-495c-81b1-e3939858830d" name="Default" comment="" />
     <list default="true" id="9bd72790-2d68-4188-b744-a5f8fa0f1351" name="Changelist" comment="modified code to send and receive actual HTTP/1.1 headers">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/notification.pdf" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Schematic.pdf" afterPath="$PROJECT_DIR$/static/schematic.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/installation_guide.html" afterPath="$PROJECT_DIR$/installation_guide.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user_manual.html" afterPath="$PROJECT_DIR$/user_manual.html" />
     </list>
     <ignored path="IoT.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,9 +50,10 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="47" column="38" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
+            <state relative-caret-position="293">
+              <caret line="748" column="53" selection-start-line="748" selection-start-column="53" selection-end-line="748" selection-end-column="53" />
               <folding>
+                <element signature="n#li#1;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#div#0;n#li#1;n#ol#0;n#li#1;n#ol#0;n#li#4;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#li#2;n#ol#0;n#li#1;n#ol#0;n#li#4;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#li#3;n#ol#0;n#li#1;n#ol#0;n#li#4;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -61,8 +67,8 @@
       <file leaf-file-name="installation_guide.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/installation_guide.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+            <state relative-caret-position="450">
+              <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -71,8 +77,8 @@
       <file leaf-file-name="user_manual.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user_manual.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3567">
-              <caret line="22" column="47" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
+            <state relative-caret-position="431">
+              <caret line="38" column="44" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -160,10 +166,11 @@
         <option value="$PROJECT_DIR$/stylesheets/normalize.css" />
         <option value="$PROJECT_DIR$/installation_guide.txt" />
         <option value="$PROJECT_DIR$/user_manual.txt" />
-        <option value="$PROJECT_DIR$/user_manual.html" />
         <option value="$PROJECT_DIR$/installation_guide.html" />
         <option value="$PROJECT_DIR$/stylesheets/stylesheet.css" />
+        <option value="$PROJECT_DIR$/../IoT/gui.py" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/user_manual.html" />
       </list>
     </option>
   </component>
@@ -242,6 +249,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IoT_gh_pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IoT_gh_pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -282,6 +303,11 @@
         <option name="myModuleName" value="IoT" />
       </console-settings>
     </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.gui">
     <configuration default="false" name="grapher" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -936,7 +962,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md" />
     <entry file="file://$PROJECT_DIR$/setup.py" />
     <entry file="file://$PROJECT_DIR$/new_grapher.py" />
     <entry file="file://$PROJECT_DIR$/linux.py" />
@@ -1008,10 +1033,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user_manual.html">
+    <entry file="file://$PROJECT_DIR$/../IoT/gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3567">
-          <caret line="22" column="47" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
+        <state relative-caret-position="774">
+          <caret line="327" column="23" selection-start-line="327" selection-start-column="23" selection-end-line="327" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -1024,19 +1049,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/user_manual.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="38" column="44" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/installation_guide.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+        <state relative-caret-position="450">
+          <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="47" column="38" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
+        <state relative-caret-position="293">
+          <caret line="748" column="53" selection-start-line="748" selection-start-column="53" selection-end-line="748" selection-end-column="53" />
           <folding>
+            <element signature="n#li#1;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#0;n#li#1;n#ol#0;n#li#1;n#ol#0;n#li#4;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#li#2;n#ol#0;n#li#1;n#ol#0;n#li#4;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#li#3;n#ol#0;n#li#1;n#ol#0;n#li#4;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />

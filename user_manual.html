@@ -32,8 +32,8 @@
             <p>
                 This monitoring application connects to multiple data servers and graphs the data sent by them. The data
                 must be sent from the server in a specific format described in section 2 through HTTP packets. The file
-                <code>sensorboard.ino</code> contains an example Arduino sketch and a schematic for a PCB board with
-                sensors attached.
+                <code>sensorboard.ino</code> contains an example Arduino sketch, and here is a
+                <a href="static/schematic.pdf">schematic</a> for a PCB board with sensors attached.
             </p>
             <p>
                 This schematic and sketch have been tested to work.
@@ -82,8 +82,25 @@ Content-Length: [Length of content]</code></pre>
             </p>
             <p>
                 The application will deal with any errors in the amount of values sent, but it cannot verify that the
-                data
-                is correct.
+                data is correct.
+            </p>
+            <p>
+                On the default, unchanged graph view, each graph represents a datatype collected by the boards. The
+                datatype collected is shown on the title of each graph.
+            </p>
+            <p>
+                The bottom right graph is then <em>info frame</em>, it shows the sensors that are online, the ping time
+                of each sensor, the number of messages collected, and the time that the application was started.
+                The info frame also acts as a legend of the other graphs.
+            </p>
+            <p>
+                To configure your own sensors, edit <code>gui.py</code> and add values to the <code>sensors</code> list.
+                The format is shown in the documentation for sensor objects, and in a comment above the list.
+            </p>
+            <p>
+                To run the program using the testing server, run <code>fake_sensorboard.py</code>, wait until it outputs
+                <code>Server up.</code>, and then run <code>gui.py</code>. By default the gui is configured to use the
+                fake server.
             </p>
         </li>
         <li>API and Class Reference
