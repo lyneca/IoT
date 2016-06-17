@@ -4,6 +4,7 @@
     <list id="38e8681b-fe5c-495c-81b1-e3939858830d" name="Default" comment="" />
     <list default="true" id="9bd72790-2d68-4188-b744-a5f8fa0f1351" name="Changelist" comment="modified code to send and receive actual HTTP/1.1 headers">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="IoT.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,10 +46,12 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="63" column="60" selection-start-line="63" selection-start-column="60" selection-end-line="63" selection-end-column="60" />
+            <state relative-caret-position="702">
+              <caret line="1316" column="41" selection-start-line="1316" selection-start-column="41" selection-end-line="1316" selection-end-column="41" />
               <folding>
                 <element signature="n#li#1;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#p#0;n#li#0;n#ol#0;n#li#0;n#ol#0;n#li#1;n#ol#0;n#li#2;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#p#1;n#li#0;n#ol#0;n#li#0;n#ol#0;n#li#1;n#ol#0;n#li#2;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#div#0;n#li#1;n#ol#0;n#li#1;n#ol#0;n#li#4;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#li#2;n#ol#0;n#li#1;n#ol#0;n#li#4;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#li#3;n#ol#0;n#li#1;n#ol#0;n#li#4;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -164,8 +167,8 @@
         <option value="$PROJECT_DIR$/installation_guide.html" />
         <option value="$PROJECT_DIR$/stylesheets/stylesheet.css" />
         <option value="$PROJECT_DIR$/../IoT/gui.py" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/user_manual.html" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -176,10 +179,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="361" />
-    <option name="y" value="198" />
-    <option name="width" value="881" />
-    <option name="height" value="540" />
+    <option name="y" value="24" />
+    <option name="width" value="1680" />
+    <option name="height" value="1026" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -225,7 +227,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -260,6 +261,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -855,10 +857,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="361" y="198" width="881" height="540" extended-state="0" />
-    <editor active="false" />
+    <frame x="0" y="24" width="1680" height="1026" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27065867" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27784577" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32795697" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3422713" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1062,10 +1064,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="63" column="60" selection-start-line="63" selection-start-column="60" selection-end-line="63" selection-end-column="60" />
+        <state relative-caret-position="702">
+          <caret line="1316" column="41" selection-start-line="1316" selection-start-column="41" selection-end-line="1316" selection-end-column="41" />
           <folding>
             <element signature="n#li#1;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#p#0;n#li#0;n#ol#0;n#li#0;n#ol#0;n#li#1;n#ol#0;n#li#2;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#p#1;n#li#0;n#ol#0;n#li#0;n#ol#0;n#li#1;n#ol#0;n#li#2;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#0;n#li#1;n#ol#0;n#li#1;n#ol#0;n#li#4;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#li#2;n#ol#0;n#li#1;n#ol#0;n#li#4;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#li#3;n#ol#0;n#li#1;n#ol#0;n#li#4;n#ol#1;n#section#1;n#body#0;n#html#0;n#!!top" expanded="true" />

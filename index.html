@@ -735,7 +735,7 @@
                         <li id="4_1_3"><h4>Live Test Data</h4>
                             <p>
                                 Because of the nature of this system, acquiring live test data is quite easy -
-                                all all that needs to be done is link the sensorboards to the application, run the
+                                all that needs to be done is link the sensorboards to the application, run the
                                 program, and run the tests on it.
                             </p>
                         </li>
@@ -748,6 +748,12 @@
                                 To test this product, the sensors themselves are needed. I have five working
                                 sensorboards built to the specification described in the
                                 <a href="static/schematic.pdf">schematic</a>, which I shall use to test the application.
+                            </p>
+                            <p>
+                                I have also included a file <code>fake_sensorboard.py</code>, which is able to emulate
+                                random signals from a sensorboard. This acts as a server running off localhost, and
+                                to connect to it you need only to point a <code>Sensor</code> object to
+                                <code>localhost</code>.
                             </p>
                         </li>
                         <li id="4_2_2"><h4>Test Plan</h4>
